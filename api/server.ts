@@ -8,7 +8,7 @@ import cors from 'cors';
 // npm install helmet @types/helmet
 import helmet from 'helmet';
 
-import { getCountries, getCountryById, getVisaPaths, getVisaPathById, getChangelog } from './public.ts';
+import { getCountries, getCountryById, getVisaPaths, getVisaPathById, getChangelog } from './public';
 
 // Load environment variables from .env.local
 dotenv.config({ path: '.env.local' });
