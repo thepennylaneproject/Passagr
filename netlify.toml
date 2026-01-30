@@ -2,6 +2,9 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  SECRETS_SCAN_ENABLED = "false"
+
 # Proxy API requests to the live backend
 # REPLACE 'https://passagr-backend.up.railway.app' with your actual backend URL
 [[redirects]]
