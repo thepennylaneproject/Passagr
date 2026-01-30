@@ -1,0 +1,70 @@
+{
+  "project": "passagr",
+  "stack": {
+    "db": "postgres",
+    "storage": "object-store",
+    "search": "typesense_or_algolia"
+  },
+  "files": [
+    {
+      "path": "db/migrations/001_init.sql",
+      "description": "Tables and indexes"
+    },
+    {
+      "path": "infra/cron.yaml",
+      "description": "Cron schedules"
+    },
+    {
+      "path": "workers/fetcher.ts",
+      "description": "Fetcher agent"
+    },
+    {
+      "path": "workers/extractor.ts",
+      "description": "Extractor agent"
+    },
+    {
+      "path": "workers/validator.ts",
+      "description": "Validator agent"
+    },
+    {
+      "path": "workers/differ.ts",
+      "description": "Differ agent"
+    },
+    {
+      "path": "workers/editorial_router.ts",
+      "description": "Routing logic"
+    },
+    {
+      "path": "workers/publisher.ts",
+      "description": "Publisher agent"
+    },
+    {
+      "path": "workers/alert_writer.ts",
+      "description": "Notifications"
+    },
+    {
+      "path": "api/public.ts",
+      "description": "Public REST endpoints"
+    },
+    {
+      "path": "api/admin.ts",
+      "description": "Admin endpoints"
+    },
+    {
+      "path": "search/schema.json",
+      "description": "Search index schemas"
+    },
+    {
+      "path": "search/sync_worker.ts",
+      "description": "Index sync logic"
+    },
+    {
+      "path": "ui/editor/ReviewPanel.tsx",
+      "description": "Minimal editor UI"
+    },
+    {
+      "path": "tests/acceptance.spec.md",
+      "description": "Acceptance tests"
+    }
+  ]
+}

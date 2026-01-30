@@ -1,0 +1,31 @@
+# infra/cron.yaml
+# Uses a standard cron format (e.g., for Google Cloud Scheduler or similar)
+jobs:
+  - name: nightly-freshness-scan
+    schedule: "0 2 * * *"  # Every night at 2:00 AM UTC
+    httpTarget:
+      uri: "https://api.passagr.com/jobs/freshness-scan"
+      httpMethod: POST
+      body: '{"jobName": "nightly-freshness-scan"}'
+    description: "Scans for stale entities and enqueues tasks for Fetcher."
+
+  - name: weekly-link-check
+    schedule: "0 3 * * 0"  # Every Sunday at 3:00 AM UTC
+    httpTarget:
+      uri: "https://api.passagr.com/jobs/link-check"
+      httpMethod: POST
+      body: '{"jobName": "weekly-link-check"}'
+    description: "Verifies source URLs and adds warnings for 404s."
+
+  - name: hourly-index-refresh
+    schedule: "0 * * * *"  # Every hour at the 0-minute mark
+    httpTarget:
+      uri: "https://api.passagr.com/jobs/index-refresh"
+      httpMethod: POST
+      body: '{"jobName": "hourly-index-refresh"}'
+    description: "Triggers a sync of updated entities to the search index."
+
+# Task queue worker endpoints
+# These are typically triggered by the cron jobs or other agents
+# The cron jobs themselves just enqueue the tasks, and a separate worker pool processes them.
+# The cron.yaml file focuses on the scheduled triggers, not the workers themselves.

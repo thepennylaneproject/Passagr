@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0F1214;
+  --color-ivory: #f1eee2;
+  --color-accent: #2ec4b6;
+
+  --color-primary-50: var(--color-accent);
+  --color-primary-100: var(--color-accent);
+  --color-primary-500: var(--color-accent);
+  --color-primary-600: var(--color-accent);
+  --color-primary-800: var(--color-accent);
+  --color-primary-900: var(--color-accent);
+
+  --color-secondary-50: var(--color-accent);
+  --color-secondary-100: var(--color-accent);
+  --color-secondary-500: var(--color-accent);
+  --color-secondary-600: var(--color-accent);
+  --color-secondary-800: var(--color-accent);
+
+  --color-accent-50: var(--color-accent);
+  --color-accent-100: var(--color-accent);
+  --color-accent-500: var(--color-accent);
+  --color-accent-600: var(--color-accent);
+
+  --color-surface-50: var(--color-ivory);
+  --color-surface-100: #f2efec;
+  --color-surface-200: #d9d4cf;
+  --color-surface-300: #bfb7b0;
+  --color-surface-400: #9f958f;
+  --color-surface-500: #7f7670;
+  --color-surface-600: #5f5751;
+  --color-surface-700: #3f3a36;
+  --color-surface-800: #1f1c1a;
+  --color-surface-900: var(--color-ink);
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+}
+
+:root {
+  --ink: var(--color-ink);
+  --ivory: var(--color-ivory);
+  --accent: var(--color-accent);
+  --rule: color-mix(in srgb, var(--ink) 14%, transparent);
+  --rule-light: color-mix(in srgb, var(--ink) 5%, transparent);
+  --muted: color-mix(in srgb, var(--ink) 60%, transparent);
+}
+
+@layer base {
+  body {
+    @apply bg-surface-50 text-surface-900 font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-bold;
+    color: var(--ink);
+  }
+}
+
+@layer components {
+  .section-kicker {
+    color: var(--accent);
+  }
+
+  .passagr-lockup {
+    display: block;
+    color: inherit;
+  }
+
+  .passagr-glyph {
+    height: 28px;
+    width: auto;
+    color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .filters {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .filters__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 10px 0 12px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+
+  .filters__title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+
+  .filters__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .filters__titleMark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent);
+    margin-right: 8px;
+  }
+
+  .control,
+  select,
+  input[type="text"] {
+    height: 38px;
+    border: 0px solid var(--rule);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--ink);
+    padding: 0 12px;
+    box-shadow: none;
+    transition: all 0.2s ease;
+  }
+
+  /* Specific override for the search input to behave like a margin note */
+  input[type="text"].search-input {
+    border: none;
+    border-bottom: 1px solid var(--rule-light);
+    border-radius: 0;
+    padding-left: 0;
+    font-style: italic;
+  }
+
+  .control:focus,
+  select:focus,
+  input[type="text"]:focus {
+    outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    outline-offset: 2px;
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--ink) 65%);
+  }
+
+  /* Custom Select Arrow Styling */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  
+    padding-right: 36px;
+    /* room for chevron */
+    background-color: transparent;
+  
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px 12px;
+  
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%230F1214' d='M5.5 7.5 10 12l4.5-4.5 1.1 1.1L10 14.2 4.4 8.6z'/%3E%3C/svg%3E");
+  }
+  
+  /* Extra arrows removal for legacy engines */
+  select::-ms-expand {
+    display: none;
+    }
+
+  select,
+  input[type="text"] {
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    color: color-mix(in srgb, var(--ink) 66%, transparent);
+  }
+    
+  select {
+    border: .5px solid var(--rule-light);
+    border-radius: 4px;
+    height: 36px;
+  }
+  
+  .emptyState {
+    padding: 24px 0;
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+    color: var(--muted);
+    text-align: left;
+  }
+
+  .emptyState__title {
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .emptyState__detail {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .disclaimer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px;
+    color: var(--muted);
+    text-align: left;
+  }
+
+  .disclaimer__title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Masthead: editorial dateline */
+.masthead__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-ink);
+}
+
+.masthead__sigil {
+  opacity: .99;
+  transform: translateY(1px);
+}
+
+.masthead__lockup {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.masthead__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  opacity: .9;
+}

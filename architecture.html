@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive visualization of Passagr's multi-agent immigration data verification system">
+    <title>Passagr System Architecture | Interactive Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* =================================
+           CUSTOM PROPERTIES & BASE STYLES
+           ================================= */
+        :root {
+            --color-base-light: #F3F4E6;
+            --color-ink: #0F1214;
+            --color-passage-teal: #4E808D;
+            --color-passage-teal-dark: #3d6570;
+            --color-port-gold: #C7A76A;
+            --color-port-gold-dark: #b08f4d;
+            --color-surface: #FFFFFF;
+            --color-border: #D2D7CB;
+            --color-border-hover: #BFD6DB;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-error: #ef4444;
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background-color: var(--color-base-light);
+            color: var(--color-ink);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .font-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* =================================
+           NAVIGATION STYLES
+           ================================= */
+        .nav-container {
+            background: var(--color-surface);
+            border-bottom: 2px solid var(--color-border);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 3px solid transparent;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--color-passage-teal);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            color: var(--color-passage-teal);
+            background-color: rgba(78, 128, 141, 0.05);
+        }
+
+        .nav-link.active {
+            color: var(--color-passage-teal);
+            font-weight: 700;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* =================================
+           CONTENT SECTION ANIMATIONS
+           ================================= */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =================================
+           INTERACTIVE CARDS & COMPONENTS
+           ================================= */
+        .card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            border: 2px solid var(--color-border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-interactive {
+            cursor: pointer;
+        }
+
+        .card-interactive:hover {
+            border-color: var(--color-passage-teal);
+            box-shadow: 0 8px 24px -4px rgba(78, 128, 141, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .card-interactive.active {
+            border-color: var(--color-passage-teal);
+            box-shadow: 0 12px 32px -8px rgba(78, 128, 141, 0.25);
+            background: linear-gradient(135deg, #ffffff 0%, rgba(78, 128, 141, 0.03) 100%);
+            transform: translateY(-4px);
+        }
+
+        .card-interactive.active .card-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 4px 8px rgba(78, 128, 141, 0.2));
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        /* =================================
+           PIPELINE FLOW CONNECTORS
+           ================================= */
+        .flow-connector {
+            color: var(--color-passage-teal);
+            font-size: 2rem;
+            font-weight: 600;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-interactive:hover + .flow-connector,
+        .card-interactive.active + .flow-connector {
+            opacity: 1;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* =================================
+           BADGE & STATUS INDICATORS
+           ================================= */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.375rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .badge-teal {
+            background-color: rgba(78, 128, 141, 0.1);
+            color: var(--color-passage-teal-dark);
+        }
+
+        .badge-gold {
+            background-color: rgba(199, 167, 106, 0.1);
+            color: var(--color-port-gold-dark);
+        }
+
+        /* =================================
+           CHART STYLES
+           ================================= */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 320px;
+            }
+        }
+
+        /* =================================
+           DETAIL PANEL STYLES
+           ================================= */
+        .detail-panel {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(78, 128, 141, 0.02) 100%);
+            border-left: 4px solid var(--color-passage-teal);
+        }
+
+        .detail-section {
+            background: rgba(78, 128, 141, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid rgba(78, 128, 141, 0.1);
+        }
+
+        /* =================================
+           RESPONSIVE ADJUSTMENTS
+           ================================= */
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 0.75rem 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            .card-icon {
+                font-size: 2rem;
+            }
+
+            .flow-connector {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* =================================
+           ACCESSIBILITY
+           ================================= */
+        .card-interactive:focus,
+        .nav-link:focus {
+            outline: 3px solid var(--color-passage-teal);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* =================================
+           LOADING STATE
+           ================================= */
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s ease-in-out infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* =================================
+           UTILITY CLASSES
+           ================================= */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-passage-teal) 0%, var(--color-port-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =================================
+         MAIN CONTAINER
+         ================================= -->
+    <div class="min-h-screen">
+        
+        <!-- HEADER -->
+        <header class="text-center py-12 md:py-16 px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="font-display text-5xl md:text-6xl font-extrabold text-[#0F1214] mb-4">
+                    Passagr System
+                </h1>
+                <p class="text-xl md:text-2xl font-semibold gradient-text mb-4">
+                    Architecture Dashboard
+                </p>
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                    An interactive exploration of the multi-agent data verification system. 
+                    Click on any component to dive deeper into how truth is verified and maintained.
+                </p>
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav class="nav-container" role="navigation" aria-label="Main navigation">
+            <div class="container mx-auto px-4 max-w-7xl">
+                <div class="flex justify-center overflow-x-auto">
+                    <button data-target="overview" class="nav-link active" role="tab" aria-selected="true" aria-controls="overview">
+                        <span class="hidden md:inline">System </span>Overview
+                    </button>
+                    <button data-target="pipeline" class="nav-link" role="tab" aria-selected="false" aria-controls="pipeline">
+                        Data Pipeline
+                    </button>
+                    <button data-target="model" class="nav-link" role="tab" aria-selected="false" aria-controls="model">
+                        Data Model
+                    </button>
+                    <button data-target="automation" class="nav-link" role="tab" aria-selected="false" aria-controls="automation">
+                        Automation
+                    </button>
+                    <button data-target="api" class="nav-link" role="tab" aria-selected="false" aria-controls="api">
+                        API & UI
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="container mx-auto px-4 md:px-8 py-8 md:py-12 max-w-7xl">
+            
+            <!-- =================================
+                 SECTION: SYSTEM OVERVIEW
+                 ================================= -->
+            <section id="overview" class="content-section active" role="tabpanel" aria-labelledby="overview-tab">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">System Data Flow</h2>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                        From raw government sources to verified public truth, 
+                        watch how data flows through automated verification and human oversight.
+                    </p>
+                </div>
+
+                <!-- Flow Diagram -->
+                <div class="mb-16">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                        
+                        <div class="card card-interactive w-full md:w-48 p-6" data-stage="source" tabindex="0" role="button" aria-pressed="false">
+                            <div class="card-icon mb-3">📄</div>
+                            <h3 class="font-semibold text-sm md:text-base">Official Sources</h3>
+                            <p class="text-xs text-gray-500 mt-1">URL/PDF</p>
+                        </div>
+
+                        <div class="flow-connector">→</div>
+
+                        <div class="card card-interactive active w-full md:w-48 p-6" data-stage="pipeline" tabindex="0" role="button" aria-pressed="true">
+                            <div class="card-icon mb-3">🤖</div>
+                            <h3 class="font-semibold text-sm md:text-base">7-Agent Pipeline</h3>
+                            <p class="text-xs text-gray-500 mt-1">Processing</p>
+                        </div>
+
+                        <div class="flow-connector">→</div>
+
+                        <div class="card card-interactive w-full md:w-48 p-6" data-stage="review" tabindex="0" role="button" aria-pressed="false">
+                            <div class="card-icon mb-3">👨‍💻</div>
+                            <h3 class="font-semibold text-sm md:text-base">Human Review</h3>
+                            <p class="text-xs text-gray-500 mt-1">Editor</p>
+                        </div>
+
+                        <div class="flow-connector">→</div>
+
+                        <div class="card card-interactive w-full md:w-48 p-6" data-stage="database" tabindex="0" role="button" aria-pressed="false">
+                            <div class="card-icon mb-3">💾</div>
+                            <h3 class="font-semibold text-sm md:text-base">Database</h3>
+                            <p class="text-xs text-gray-500 mt-1">Postgres</p>
+                        </div>
+
+                        <div class="flow-connector">→</div>
+
+                        <div class="card card-interactive w-full md:w-48 p-6" data-stage="public" tabindex="0" role="button" aria-pressed="false">
+                            <div class="card-icon mb-3">🌐</div>
+                            <h3 class="font-semibold text-sm md:text-base">Public Website</h3>
+                            <p class="text-xs text-gray-500 mt-1">Search</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Details Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    
+                    <!-- Detail Panel -->
+                    <div id="overview-details" class="card detail-panel p-6 md:p-8 min-h-[320px]">
+                        <div class="mb-4">
+                            <span class="badge badge-teal">ACTIVE STAGE</span>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-4 text-[#4E808D]"></h3>
+                        <p class="text-gray-700 leading-relaxed text-base"></p>
+                    </div>
+
+                    <!-- Chart Panel -->
+                    <div class="card p-6 md:p-8">
+                        <div class="mb-6 text-center">
+                            <h3 class="font-display font-bold text-xl mb-2">System Metrics</h3>
+                            <p class="text-sm text-gray-600">Real-time confidence and performance indicators</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="overviewChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- =================================
+                 SECTION: DATA PIPELINE
+                 ================================= -->
+            <section id="pipeline" class="content-section" role="tabpanel" aria-labelledby="pipeline-tab">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">The 7-Agent Data Pipeline</h2>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                        The heart of Passagr's verification engine. Seven specialized agents work in sequence, 
+                        each with a single responsibility, to transform raw data into verified truth.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Pipeline Flow -->
+                    <div class="lg:col-span-2">
+                        <div class="flex flex-wrap items-center justify-center gap-3">
+                            
+                            <div class="card card-interactive active w-32 md:w-36 p-4 text-center" data-agent="fetcher" tabindex="0" role="button">
+                                <div class="card-icon text-3xl mb-2">📥</div>
+                                <p class="font-semibold text-sm">1. Fetcher</p>
+                            </div>
+                            <div class="flow-connector">→</div>
+
+                            <div class="card card-interactive w-32 md:w-36 p-4 text-center" data-agent="extractor" tabindex="0" role="button">
+                                <div class="card-icon text-3xl mb-2">🧩</div>
+                                <p class="font-semibold text-sm">2. Extractor</p>
+                            </div>
+                            <div class="flow-connector">→</div>
+
+                            <div class="card card-interactive w-32 md:w-36 p-4 text-center" data-agent="validator" tabindex="0" role="button">
+                                <div class="card-icon text-3xl mb-2">✅</div>
+                                <p class="font-semibold text-sm">3. Validator</p>
+                            </div>
+                            <div class="flow-connector">→</div>
+
+                            <div class="card card-interactive w-32 md:w-36 p-4 text-center" data-agent="differ" tabindex="0" role="button">
+                                <div class="card-icon text-3xl mb-2">🔍</div>
+                                <p class="font-semibold text-sm">4. Differ</p>
+                            </div>
+                            <div class="flow-connector">→</div>
+
+                            <div class="card card-interactive w-32 md:w-36 p-4 text-center" data-agent="router" tabindex="0" role="button">
+                                <div class="card-icon text-3xl mb-2">🚦</div>
+                                <p class="font-semibold text-sm">5. Router</p>
+                            </div>
+                            <div class="flow-connector">→</div>
+
+                            <div class="card card-interactive w-32 md:w-36 p-4 text-center" data-agent="publisher" tabindex="0" role="button">
+                                <div class="card-icon text-3xl mb-2">🚀</div>
+                                <p class="font-semibold text-sm">6. Publisher</p>
+                            </div>
+                            <div class="flow-connector">→</div>
+
+                            <div class="card card-interactive w-32 md:w-36 p-4 text-center" data-agent="alerter" tabindex="0" role="button">
+                                <div class="card-icon text-3xl mb-2">🔔</div>
+                                <p class="font-semibold text-sm">7. Alerter</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Agent Details Panel -->
+                    <div id="agent-details" class="card detail-panel p-6">
+                        <div class="mb-4">
+                            <span class="badge badge-teal agent-badge"></span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl mb-2 text-[#4E808D]"></h3>
+                        <p class="text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wide"></p>
+                        <p class="text-gray-700 leading-relaxed mb-6"></p>
+                        
+                        <div class="space-y-4">
+                            <div class="detail-section">
+                                <p class="font-semibold text-sm text-[#4E808D] mb-2">📥 INPUT</p>
+                                <p class="text-sm text-gray-700"></p>
+                            </div>
+                            <div class="detail-section">
+                                <p class="font-semibold text-sm text-[#4E808D] mb-2">📤 OUTPUT</p>
+                                <p class="text-sm text-gray-700"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- =================================
+                 SECTION: DATA MODEL
+                 ================================= -->
+            <section id="model" class="content-section" role="tabpanel" aria-labelledby="model-tab">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Core Data Model</h2>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                        Truth lives in Postgres. Every table serves a purpose: 
+                        storing facts, maintaining history, or enabling auditability.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="card card-interactive p-6" tabindex="0">
+                        <div class="mb-4">
+                            <div class="inline-block p-3 bg-[#4E808D] bg-opacity-10 rounded-lg mb-3">
+                                <span class="text-2xl">🗃️</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-[#0C3A40]">countries & visa_paths</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            The core entities storing all verified immigration rules, fees, timelines, and requirements. 
+                            This is the primary data served to the public.
+                        </p>
+                    </div>
+
+                    <div class="card card-interactive p-6" tabindex="0">
+                        <div class="mb-4">
+                            <div class="inline-block p-3 bg-[#4E808D] bg-opacity-10 rounded-lg mb-3">
+                                <span class="text-2xl">🔗</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-[#0C3A40]">sources</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            A critical audit table. Every fact in the system is bound to a record here, 
+                            containing the source URL, title, publisher, and when it was last checked.
+                        </p>
+                    </div>
+
+                    <div class="card card-interactive p-6" tabindex="0">
+                        <div class="mb-4">
+                            <div class="inline-block p-3 bg-[#4E808D] bg-opacity-10 rounded-lg mb-3">
+                                <span class="text-2xl">📜</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-[#0C3A40]">changelogs</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            The immutable history of all changes. Every time an entity is added or updated, 
+                            a new record is created here with a summary of what changed.
+                        </p>
+                    </div>
+
+                    <div class="card card-interactive p-6" tabindex="0">
+                        <div class="mb-4">
+                            <div class="inline-block p-3 bg-[#C7A76A] bg-opacity-10 rounded-lg mb-3">
+                                <span class="text-2xl">👁️</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-[#0C3A40]">editorial_reviews</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            The gatekeeper's log. When a change is high-impact or a new path is created, 
+                            a record is added here, locking the data until a human editor approves it.
+                        </p>
+                    </div>
+
+                    <div class="card card-interactive p-6" tabindex="0">
+                        <div class="mb-4">
+                            <div class="inline-block p-3 bg-[#4E808D] bg-opacity-10 rounded-lg mb-3">
+                                <span class="text-2xl">📋</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-[#0C3A40]">requirements & steps</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Detailed, structured data linked to each visa_path, outlining specific documents needed 
+                            and the procedural steps for the application process.
+                        </p>
+                    </div>
+
+                    <div class="card card-interactive p-6" tabindex="0">
+                        <div class="mb-4">
+                            <div class="inline-block p-3 bg-[#C7A76A] bg-opacity-10 rounded-lg mb-3">
+                                <span class="text-2xl">⏰</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-[#0C3A40]">freshness_policies</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            The system's internal clock. This table defines how often different types of data 
+                            (e.g., fees, processing times) must be automatically re-verified.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- =================================
+                 SECTION: AUTOMATION
+                 ================================= -->
+            <section id="automation" class="content-section" role="tabpanel" aria-labelledby="automation-tab">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Jobs & Automation</h2>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                        Truth decays over time. Passagr runs automated jobs to proactively detect 
+                        and refresh stale information before users ever encounter it.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="card p-6 hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="inline-block p-3 bg-[#4E808D] bg-opacity-10 rounded-lg">
+                                <span class="text-3xl">🌙</span>
+                            </div>
+                            <span class="badge badge-teal">DAILY</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-[#0C3A40] mb-2">Nightly Freshness Scan</h3>
+                        <p class="text-xs text-gray-500 font-semibold mb-3 uppercase tracking-wide">Midnight UTC</p>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Queries the database to find any data that has passed its TTL defined in freshness_policies. 
+                            Automatically triggers the Fetcher pipeline to re-verify the information.
+                        </p>
+                    </div>
+
+                    <div class="card p-6 hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="inline-block p-3 bg-[#C7A76A] bg-opacity-10 rounded-lg">
+                                <span class="text-3xl">🔗</span>
+                            </div>
+                            <span class="badge badge-gold">WEEKLY</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-[#0C3A40] mb-2">Weekly Link Check</h3>
+                        <p class="text-xs text-gray-500 font-semibold mb-3 uppercase tracking-wide">Every Monday</p>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Iterates through every URL in the sources table to ensure they're still active. 
+                            Broken links are flagged and trigger a refetch to find alternatives.
+                        </p>
+                    </div>
+
+                    <div class="card p-6 hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="inline-block p-3 bg-[#4E808D] bg-opacity-10 rounded-lg">
+                                <span class="text-3xl">🔄</span>
+                            </div>
+                            <span class="badge badge-teal">HOURLY</span>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-[#0C3A40] mb-2">Hourly Index Sync</h3>
+                        <p class="text-xs text-gray-500 font-semibold mb-3 uppercase tracking-wide">Every Hour</p>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Pushes newly published or updated rows to the search index (Typesense/Algolia) 
+                            to ensure public search is always current.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- =================================
+                 SECTION: API & UI
+                 ================================= -->
+            <section id="api" class="content-section" role="tabpanel" aria-labelledby="api-tab">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">API & UI Layer</h2>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                        The verified data is exposed through a secure API, serving two distinct experiences: 
+                        the public guide and the internal editor dashboard.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    
+                    <!-- Frontend Clients -->
+                    <div class="space-y-6">
+                        <div class="card p-6 border-dashed hover:border-solid hover:shadow-lg transition-all">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="text-3xl">🌐</div>
+                                <h3 class="font-display font-semibold text-lg">Public Website</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">
+                                Read-only, high-cache, static content optimized for SEO and performance.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">Fast</span>
+                                <span class="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded">Cached</span>
+                            </div>
+                        </div>
+
+                        <div class="card p-6 border-dashed hover:border-solid hover:shadow-lg transition-all">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="text-3xl">🛠️</div>
+                                <h3 class="font-display font-semibold text-lg">Editor Dashboard</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">
+                                Secure, dynamic interface for human review and system management.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-red-100 text-red-700 rounded">Protected</span>
+                                <span class="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded">Real-time</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Connector Arrow -->
+                    <div class="flex justify-center">
+                        <div class="flow-connector text-5xl">↔</div>
+                    </div>
+
+                    <!-- API Gateway -->
+                    <div class="card border-[#4E808D] shadow-xl p-6">
+                        <div class="text-center mb-6">
+                            <div class="inline-block p-4 bg-[#4E808D] bg-opacity-10 rounded-xl mb-3">
+                                <span class="text-4xl">⚡</span>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-[#4E808D]">API Gateway</h3>
+                            <p class="text-sm text-gray-600 mt-2">Secure RESTful endpoints</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="detail-section border-l-4 border-green-500">
+                                <p class="font-semibold text-sm mb-2 flex items-center gap-2">
+                                    <span>🌍</span> Public Routes
+                                </p>
+                                <code class="text-xs text-gray-600 block">GET /public/countries/:id</code>
+                                <code class="text-xs text-gray-600 block mt-1">GET /public/visa-paths</code>
+                            </div>
+
+                            <div class="detail-section border-l-4 border-red-500 bg-red-50">
+                                <p class="font-semibold text-sm mb-2 text-red-800 flex items-center gap-2">
+                                    <span>🔒</span> Admin Routes
+                                </p>
+                                <code class="text-xs text-red-600 block">POST /admin/reviews/:id/approve</code>
+                                <code class="text-xs text-red-600 block mt-1">PATCH /admin/sources/:id</code>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="mt-20 py-8 border-t border-[#D2D7CB] bg-white">
+            <div class="container mx-auto px-4 max-w-7xl text-center">
+                <p class="text-sm text-gray-600">
+                    <span class="font-semibold">Passagr System Architecture</span> · 
+                    Built with transparency and verification at its core
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- =================================
+         JAVASCRIPT
+         ================================= -->
+    <script>
+        // Data store for all interactive content
+        const appData = {
+            overviewStages: {
+                source: {
+                    title: 'Official Sources',
+                    content: 'The pipeline begins with a URL pointing to an official government source, such as an immigration ministry website or a PDF document containing visa rules. The system prioritizes primary, non-forum sources to ensure data reliability. Every source is archived for future auditing.'
+                },
+                pipeline: {
+                    title: '7-Agent Processing Pipeline',
+                    content: 'This is the automated core of Passagr. Raw data is ingested, structured by an LLM, validated for quality, compared against existing records, and routed for approval. Each step is an independent, auditable agent. The pipeline can process hundreds of sources per day. Click the "Data Pipeline" tab for a detailed view of each agent.'
+                },
+                review: {
+                    title: 'Human Editor Review',
+                    content: 'A critical, non-negotiable step. All new visa paths and any high-impact changes (like fee increases over $100 or timeline changes over 30 days) are locked and placed in a review queue. A human editor must manually verify the change against the source before it can be published to prevent algorithmic errors from reaching users.'
+                },
+                database: {
+                    title: 'Postgres Database',
+                    content: 'The verified "source of truth". The database stores all published data, a complete history of all changes via the changelogs table, and links every fact back to its original source document. The schema is designed for auditability: nothing is ever deleted, only marked as superseded. Click the "Data Model" tab to explore the tables.'
+                },
+                public: {
+                    title: 'Public Website & Search',
+                    content: 'Once data is published, it is immediately pushed to the search index (Typesense) and the public-facing website is regenerated. Every public page includes a visible "Sources" section listing all references and a changelog showing when information was last verified. Users can click through to original government documents.'
+                }
+            },
+            agents: {
+                fetcher: {
+                    title: '1. Fetcher',
+                    subtitle: 'Data Ingestion',
+                    description: 'Downloads the raw HTML or PDF from a source URL, saves an immutable snapshot to object storage (S3) for future auditing, and creates a metadata record in the sources table with the URL, fetch time, and content hash. This ensures every piece of data can be traced back to its original form.',
+                    input: 'Source URL',
+                    output: 'Raw file snapshot & source metadata',
+                    badge: 'AGENT 1'
+                },
+                extractor: {
+                    title: '2. Extractor',
+                    subtitle: 'Data Structuring',
+                    description: 'Uses a strong LLM (Gemini Pro) with a carefully designed prompt to read the raw text and transform it into a structured JSON object that matches the database schema. It extracts entities like visa types, fees, timelines, and requirements. Every extracted fact is bound to its source with inline citations.',
+                    input: 'Raw source text',
+                    output: 'Schema-compliant JSON',
+                    badge: 'AGENT 2'
+                },
+                validator: {
+                    title: '3. Validator',
+                    subtitle: 'Quality Control',
+                    description: 'Checks the structured JSON for logical consistency (e.g., min_days <= max_days), valid currency codes (ISO 4217), properly formatted dates, and required fields. It assigns an impact level (low, medium, high) based on the magnitude of data changes. Invalid data is rejected and flagged for manual review.',
+                    input: 'Structured JSON',
+                    output: 'Validated JSON with impact score',
+                    badge: 'AGENT 3'
+                },
+                differ: {
+                    title: '4. Differ',
+                    subtitle: 'Change Detection',
+                    description: 'Compares the newly validated JSON against the currently published version in the database using a field-by-field diff algorithm. It generates a precise list of exactly which fields have been added, removed, or changed, along with before/after values. This diff is stored in the changelogs table for transparency.',
+                    input: 'Validated JSON & Current DB data',
+                    output: 'Structured diff object',
+                    badge: 'AGENT 4'
+                },
+                router: {
+                    title: '5. Editorial Router',
+                    subtitle: 'Workflow Management',
+                    description: 'The system\'s gatekeeper. Based on the impact score and diff type, it decides the next step using a rules engine. High-impact changes (new entities, fee increases >$100, timeline changes >30 days) are routed to the editorial_reviews table. Low-impact changes (typo fixes, formatting) can be auto-published. Medium-impact changes are configurable.',
+                    input: 'Impact score & Diff object',
+                    output: 'Decision: "pending_review" or "approved"',
+                    badge: 'AGENT 5'
+                },
+                publisher: {
+                    title: '6. Publisher',
+                    subtitle: 'Data Commitment',
+                    description: 'The final step. Upon approval (either automatic or human), this agent writes the new data to the database, updates the last_verified_at timestamp, creates a changelog entry with a human-readable summary, triggers the search index sync, purges the CDN cache for affected pages, and marks any previous versions as superseded.',
+                    input: 'Approved data',
+                    output: 'Live public data',
+                    badge: 'AGENT 6'
+                },
+                alerter: {
+                    title: '7. Alert Writer',
+                    subtitle: 'Notification',
+                    description: 'For high-impact changes, this agent uses an LLM to generate a concise, human-readable notification (140-200 characters) suitable for display on the website or in emails. The notification summarizes what changed, why it matters, and when it was verified. Stakeholders are automatically emailed for critical updates.',
+                    input: 'High-impact diff object',
+                    output: 'Plain-text notification',
+                    badge: 'AGENT 7'
+                }
+            }
+        };
+
+        // Global state
+        let overviewChart = null;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeNavigation();
+            initializePipeline();
+            initializeOverview();
+            initializeChart();
+            addKeyboardNavigation();
+        });
+
+        // Navigation system
+        function initializeNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const target = link.getAttribute('data-target');
+                    
+                    // Update nav state
+                    navLinks.forEach(l => {
+                        l.classList.remove('active');
+                        l.setAttribute('aria-selected', 'false');
+                    });
+                    link.classList.add('active');
+                    link.setAttribute('aria-selected', 'true');
+
+                    // Update content state
+                    contentSections.forEach(section => {
+                        section.classList.toggle('active', section.id === target);
+                    });
+
+                    // Scroll to top smoothly
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Pipeline interaction
+        function initializePipeline() {
+            const pipelineSteps = document.querySelectorAll('.pipeline-step, [data-agent]');
+            
+            pipelineSteps.forEach(step => {
+                step.addEventListener('click', () => {
+                    const agentId = step.dataset.agent;
+                    if (!agentId) return;
+
+                    // Update visual state
+                    pipelineSteps.forEach(s => {
+                        s.classList.remove('active');
+                        s.setAttribute('aria-pressed', 'false');
+                    });
+                    step.classList.add('active');
+                    step.setAttribute('aria-pressed', 'true');
+
+                    // Update details panel
+                    updateAgentDetails(agentId);
+                });
+            });
+
+            // Initialize with first agent
+            updateAgentDetails('fetcher');
+        }
+
+        function updateAgentDetails(agentId) {
+            const agent = appData.agents[agentId];
+            if (!agent) return;
+
+            const container = document.getElementById('agent-details');
+            
+            // Update badge
+            container.querySelector('.agent-badge').textContent = agent.badge;
+            
+            // Update title and subtitle
+            container.querySelector('h3').textContent = agent.title;
+            container.querySelector('p.uppercase').textContent = agent.subtitle;
+            
+            // Update description
+            container.querySelector('p.leading-relaxed').textContent = agent.description;
+            
+            // Update input/output
+            const detailSections = container.querySelectorAll('.detail-section p.text-sm');
+            detailSections[0].textContent = agent.input;
+            detailSections[1].textContent = agent.output;
+        }
+
+        // Overview interaction
+        function initializeOverview() {
+            const overviewStages = document.querySelectorAll('[data-stage]');
+            
+            overviewStages.forEach(stage => {
+                stage.addEventListener('click', () => {
+                    const stageId = stage.dataset.stage;
+                    if (!stageId) return;
+
+                    // Update visual state
+                    overviewStages.forEach(s => {
+                        s.classList.remove('active');
+                        s.setAttribute('aria-pressed', 'false');
+                    });
+                    stage.classList.add('active');
+                    stage.setAttribute('aria-pressed', 'true');
+
+                    // Update details and chart
+                    updateOverviewDetails(stageId);
+                    updateOverviewChart(stageId);
+                });
+            });
+
+            // Initialize with pipeline
+            updateOverviewDetails('pipeline');
+        }
+
+        function updateOverviewDetails(stageId) {
+            const stage = appData.overviewStages[stageId];
+            if (!stage) return;
+
+            const container = document.getElementById('overview-details');
+            container.querySelector('h3').textContent = stage.title;
+            container.querySelector('p').textContent = stage.content;
+        }
+
+        function updateOverviewChart(stageId) {
+            if (!overviewChart) return;
+
+            const chartConfigs = {
+                source: {
+                    labels: ['Source Reliability', 'Uptime'],
+                    data: [98, 99.5],
+                    colors: ['rgba(78, 128, 141, 0.8)', 'rgba(199, 167, 106, 0.8)']
+                },
+                pipeline: {
+                    labels: ['Extractor Confidence', 'Validator Pass', 'Processing Speed'],
+                    data: [94, 99, 87],
+                    colors: ['rgba(78, 128, 141, 0.8)', 'rgba(199, 167, 106, 0.8)', 'rgba(78, 128, 141, 0.6)']
+                },
+                review: {
+                    labels: ['Approval Rate', 'Avg Review Time'],
+                    data: [96, 4.2],
+                    colors: ['rgba(78, 128, 141, 0.8)', 'rgba(199, 167, 106, 0.8)']
+                },
+                database: {
+                    labels: ['Write Latency', 'Query Speed', 'Uptime'],
+                    data: [45, 12, 99.99],
+                    colors: ['rgba(78, 128, 141, 0.8)', 'rgba(199, 167, 106, 0.8)', 'rgba(78, 128, 141, 0.6)']
+                },
+                public: {
+                    labels: ['Search Sync Time', 'Page Load', 'API Response'],
+                    data: [3.5, 0.8, 125],
+                    colors: ['rgba(78, 128, 141, 0.8)', 'rgba(199, 167, 106, 0.8)', 'rgba(78, 128, 141, 0.6)']
+                }
+            };
+
+            const config = chartConfigs[stageId] || chartConfigs.pipeline;
+            
+            overviewChart.data.labels = config.labels;
+            overviewChart.data.datasets[0].data = config.data;
+            overviewChart.data.datasets[0].backgroundColor = config.colors;
+            overviewChart.data.datasets[0].borderColor = config.colors.map(c => c.replace('0.8', '1'));
+            overviewChart.update('active');
+        }
+
+        // Chart initialization
+        function initializeChart() {
+            const ctx = document.getElementById('overviewChart');
+            if (!ctx) return;
+
+            overviewChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Extractor Confidence', 'Validator Pass', 'Processing Speed'],
+                    datasets: [{
+                        label: 'Performance Metrics',
+                        data: [94, 99, 87],
+                        backgroundColor: [
+                            'rgba(78, 128, 141, 0.8)',
+                            'rgba(199, 167, 106, 0.8)',
+                            'rgba(78, 128, 141, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(78, 128, 141, 1)',
+                            'rgba(199, 167, 106, 1)',
+                            'rgba(78, 128, 141, 1)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 800,
+                        easing: 'easeInOutQuart'
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 12
+                                },
+                                color: '#6b7280',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 11,
+                                    weight: '600'
+                                },
+                                color: '#4b5563'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 18, 20, 0.95)',
+                            titleFont: {
+                                family: 'Inter',
+                                weight: 'bold',
+                                size: 13
+                            },
+                            bodyFont: {
+                                family: 'Inter',
+                                size: 14,
+                                weight: '600'
+                            },
+                            padding: 12,
+                            cornerRadius: 8,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + '% efficiency';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Keyboard navigation for accessibility
+        function addKeyboardNavigation() {
+            const interactiveElements = document.querySelectorAll('.card-interactive, [data-agent], [data-stage]');
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        element.click();
+                    }
+                });
+            });
+        }
+
+        // Console easter egg for developers
+        console.log('%cPassagr System Architecture', 'font-size: 24px; font-weight: bold; color: #4E808D;');
+        console.log('%cBuilt with care by developers who believe in verified truth.', 'font-size: 14px; color: #6b7280;');
+        console.log('%cExplore the code: This dashboard uses vanilla JS, Tailwind CSS, and Chart.js', 'font-size: 12px; color: #9ca3af;');
+    </script>
+
+</body>
+</html>

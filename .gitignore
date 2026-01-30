@@ -1,0 +1,40 @@
+# Node artifacts
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Supabase CLI
+.supabase/
+
+# Vite cache
+data/
+.vite
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+*.swp
+*~
+path/to/file

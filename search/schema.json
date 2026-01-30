@@ -1,0 +1,37 @@
+{
+  "visa_paths": {
+    "fields": [
+      { "name": "id", "type": "string", "facet": false },
+      { "name": "country_id", "type": "string", "facet": true },
+      { "name": "name", "type": "string", "sort": true },
+      { "name": "type", "type": "string", "facet": true },
+      { "name": "description", "type": "string" },
+      { "name": "eligibility", "type": "string[]", "facet": true },
+      { "name": "work_rights", "type": "string" },
+      { "name": "min_income_amount", "type": "float" },
+      { "name": "min_income_currency", "type": "string", "facet": true },
+      { "name": "in_country_conversion_path", "type": "string" },
+      { "name": "last_verified_at", "type": "int64", "sort": true },
+      { "name": "country_name", "type": "string", "optional": true, "facet": true },
+      { "name": "tags", "type": "string[]", "facet": true, "optional": true }
+    ],
+    "default_sorting_field": "last_verified_at"
+  },
+  "countries": {
+    "fields": [
+      { "name": "id", "type": "string", "facet": false },
+      { "name": "name", "type": "string", "sort": true },
+      { "name": "iso2", "type": "string", "facet": true },
+      { "name": "regions", "type": "string[]", "facet": true },
+      { "name": "languages", "type": "string[]", "facet": true },
+      { "name": "currency", "type": "string", "facet": true },
+      { "name": "climate_tags", "type": "string[]", "facet": true },
+      { "name": "last_verified_at", "type": "int64", "sort": true },
+      
+      { "name": "lgbtq_rights_index", "type": "int32", "facet": true, "sort": true },
+      { "name": "abortion_access_status", "type": "string", "facet": true },
+      { "name": "hate_crime_law_snapshot", "type": "string" }
+    ],
+    "default_sorting_field": "last_verified_at"
+  }
+}

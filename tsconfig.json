@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es2020",                                /* Specify ECMAScript target version for output. */
+    "module": "CommonJS",                              /* Specify module code generation: CommonJS is standard for Node.js backends. */
+    "rootDir": "./",                                   /* Specify the root directory of input files. */
+    "outDir": "./dist",                                /* Specify the output directory for compiled code (if you were running 'tsc'). */
+    
+    /* Module Resolution Options */
+    "moduleResolution": "node",                        /* Strategy for resolving modules: Node's algorithm is necessary here. */
+    "esModuleInterop": true,                           /* Enables compatibility between CommonJS and ES Modules (like import/export). CRITICAL for libraries like Express/Supabase. */
+    "resolveJsonModule": true,                         /* Allows importing modules with a .json extension. */
+    "baseUrl": "./",                                   /* Base directory to resolve non-relative module names. */
+    
+    /* Emit Options */
+    "sourceMap": true,                                 /* Generates corresponding .map file. */
+    "declaration": false,                              /* Do not generate declaration files (.d.ts). */
+    
+    /* Strictness Options */
+    "strict": true,                                    /* Enable all strict type-checking options. Highly recommended. */
+    "noImplicitAny": true,                             /* Raise error on expressions and declarations with an implied 'any' type. */
+    "forceConsistentCasingInFileNames": true,          /* Ensure that casing is correct in imports. */
+    
+    /* Linter/Skip Options */
+    "skipLibCheck": true                               /* Skip type checking of all declaration files (*.d.ts). Speeds up compilation. */
+  },
+  "include": [
+    "api/**/*.ts",                                     /* Include all API files. */
+    "workers/**/*.ts",                                 /* Include all Worker files. */
+    "search/**/*.ts",                                  /* Include all Search files. */
+    "tests/**/*.ts"                                    /* Include all test files. */
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
