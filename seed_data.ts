@@ -17,7 +17,14 @@ async function seedData() {
         const existingNames = existingCountries.rows.map(r => r.name);
         console.log(`Found ${existingNames.length} existing countries: ${existingNames.join(', ') || 'none'}\n`);
         // Seed Canada
-      ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+        console.log('Seeding Canada...');
+        const canadaResult = await pool.query(
+            `INSERT INTO countries(
+            name, iso2, regions, languages, currency, timezones, climate_tags,
+            healthcare_overview, rights_snapshot, tax_snapshot,
+            lgbtq_rights_index, abortion_access_status, hate_crime_law_snapshot,
+            last_verified_at, status
+        ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
       RETURNING id`,
             [
                 'Canada',
@@ -39,7 +46,7 @@ async function seedData() {
         );
         const canadaId = canadaResult.rows[0].id;
         console.log(`✓ Canada created with ID: ${ canadaId } `);
-    }
+
 
         // Seed Canada visa paths
         console.log('Seeding Canada visa paths...');

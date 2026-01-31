@@ -20,9 +20,9 @@ const mockCountries: CountrySummary[] = [
 ];
 
 const getSafetyColor = (index: number) => {
-    if (index >= 4) return 'bg-green-100 text-green-800';
-    if (index >= 2) return 'bg-yellow-100 text-yellow-800';
-    return 'bg-red-100 text-red-800';
+    if (index >= 4) return 'bg-ivory text-turquoise';
+    if (index >= 2) return 'bg-ivory text-gold';
+    return 'bg-ivory text-crimson';
 };
 
 export const CountryFilter: React.FC = () => {

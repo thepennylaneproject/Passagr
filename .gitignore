@@ -38,3 +38,6 @@ data/
 *.swp
 *~
 path/to/file
+
+# Local Netlify folder
+.netlify

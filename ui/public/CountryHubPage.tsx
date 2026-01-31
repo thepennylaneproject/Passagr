@@ -57,7 +57,7 @@ const SafetyScoreBadge: React.FC<{ score: number }> = ({ score }) => {
     }
 
     return (
-        <div className={`text-white p-4 rounded-lg shadow-xl ${colorClass}`}>
+        <div className={`text-charcoal p-4 rounded-lg shadow-xl ${colorClass}`}>
             <div className="text-4xl font-extrabold flex items-center justify-between">
                 <div>{score}/5</div> 
                 <span className="text-xl font-semibold">{status}</span>

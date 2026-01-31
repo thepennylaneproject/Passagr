@@ -2,6 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Shield, MapPin, Anchor, Heart, AlertTriangle, Loader2, ArrowLeft, FileText, ChevronRight } from 'lucide-react';
 import './index.css';
 import { PassagrLockup } from './components/PassagrMarks.jsx';
+import { GhostTextLayer } from './components/GhostTextLayer.jsx';
+import { fetchCountries, fetchVisaPaths, fetchVisaPathDetail } from './lib/api';
 
 // --- UTILITY FUNCTIONS ---
 
@@ -52,7 +54,7 @@ const CountryCard = ({ country, onClick }) => {
         >
             <div className="flex justify-between items-start mb-4">
                 <div>
-                    <h3 className="text-2xl font-serif font-bold text-primary-900 group-hover:text-primary-600 transition-colors">
+                    <h3 className="text-2xl font-serif font-bold text-ink group-hover:text-primary-600 transition-colors">
                         {country.name}
                     </h3>
                     <span className="text-sm font-sans text-surface-500 font-medium tracking-wide">{country.iso2}</span>
@@ -92,41 +94,46 @@ const VisaPathList = ({ countryId, onSelectPath, onBack }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/public/visa-paths?country_id=${countryId}`)
-            .then(res => res.json())
-            .then(setPaths)
-            .catch(console.error)
-            .finally(() => setLoading(false));
+        if (countryId) {
+            setLoading(true);
+            fetchVisaPaths(countryId)
+                .then(setPaths)
+                .catch(console.error)
+                .finally(() => setLoading(false));
+        }
     }, [countryId]);
 
     if (loading) return <div className="flex justify-center py-20"><Loader2 className="animate-spin text-primary-500" /></div>;
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-10">
-            <button onClick={onBack} className="flex items-center text-surface-500 hover:text-primary-600 mb-6 transition-colors">
-                <ArrowLeft className="w-4 h-4 mr-2" /> Back to Countries
-            </button>
-            <h2 className="text-3xl font-serif font-bold mb-8">Available Visa Pathways</h2>
-            <div className="grid gap-4">
-                {paths.map(path => (
-                    <div
-                        key={path.id}
-                        onClick={() => onSelectPath(path.id)}
-                        className="p-6 rounded-sm border border-surface-200 hover:border-primary-200 cursor-pointer transition-all flex justify-between items-center group"
-                    >
-                        <div>
-                            <h3 className="text-xl font-bold text-primary-900 group-hover:text-primary-600 transition-colors">{path.name}</h3>
-                            <p className="text-surface-600 mt-1">{path.description}</p>
-                            <span className="inline-block mt-3 px-2 py-1 bg-surface-100 text-surface-600 text-xs rounded font-medium uppercase tracking-wide">{path.type}</span>
+            <GhostTextLayer state="shortlist" />
+            <div className="relative z-10">
+                <button onClick={onBack} className="flex items-start text-surface-500 hover:text-primary-600 mb-6 transition-colors">
+                    <ArrowLeft className="w-4 h-4 mr-2" /> Back to Countries
+                </button>
+                <h2 className="text-3xl font-serif font-bold mb-8">Available Visa Pathways</h2>
+                <div className="grid gap-4">
+                    {paths.map(path => (
+                        <div
+                            key={path.id}
+                            onClick={() => onSelectPath(path.id)}
+                            className="p-6 rounded-sm border border-surface-200 hover:border-primary-200 cursor-pointer transition-all flex justify-between items-center group"
+                        >
+                            <div>
+                                <h3 className="text-xl font-bold text-primary-900 group-hover:text-primary-600 transition-colors">{path.name}</h3>
+                                <p className="text-surface-600 mt-1">{path.description}</p>
+                                <span className="inline-block mt-3 px-2 py-1 bg-surface-100 text-surface-600 text-xs rounded font-medium uppercase tracking-wide">{path.type}</span>
+                            </div>
+                            <ChevronRight className="w-5 h-5 text-surface-400 group-hover:text-primary-500" />
                         </div>
-                        <ChevronRight className="w-5 h-5 text-surface-400 group-hover:text-primary-500" />
-                    </div>
-                ))}
-                {paths.length === 0 && (
-                    <div className="text-center py-10 text-surface-500 border-2 border-dashed border-surface-200 rounded-sm">
-                        No visa paths found for this country yet.
-                    </div>
-                )}
+                    ))}
+                    {paths.length === 0 && (
+                        <div className="text-center py-10 text-surface-500 border-2 border-dashed border-surface-200 rounded-sm">
+                            No visa paths found for this country yet.
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
@@ -137,11 +144,13 @@ const VisaPathDetail = ({ pathId, onBack }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/public/visa-paths/${pathId}`)
-            .then(res => res.json())
-            .then(setPath)
-            .catch(console.error)
-            .finally(() => setLoading(false));
+        if (pathId) {
+            setLoading(true);
+            fetchVisaPathDetail(pathId)
+                .then(setPath)
+                .catch(console.error)
+                .finally(() => setLoading(false));
+        }
     }, [pathId]);
 
     if (loading) return <div className="flex justify-center py-20"><Loader2 className="animate-spin text-primary-500" /></div>;
@@ -149,37 +158,41 @@ const VisaPathDetail = ({ pathId, onBack }) => {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-10">
-            <button onClick={onBack} className="flex items-center text-surface-500 hover:text-primary-600 mb-6 transition-colors">
-                <ArrowLeft className="w-4 h-4 mr-2" /> Back to Pathways
-            </button>
+            <GhostTextLayer state="verify" />
 
-            <div className="mb-10">
-                <h1 className="text-4xl font-serif font-bold text-primary-900 mb-4">{path.name}</h1>
-                <p className="text-xl text-surface-600 leading-relaxed">{path.description}</p>
+            <div className="relative z-10">
+                <button onClick={onBack} className="flex items-center text-surface-500 hover:text-primary-600 mb-6 transition-colors">
+                    <ArrowLeft className="w-4 h-4 mr-2" /> Back to Pathways
+                </button>
 
-                <div className="flex gap-4 mt-6">
-                    <div className="px-4 py-2 bg-surface-100 rounded-sm">
-                        <span className="block text-xs font-bold text-surface-500 uppercase">Type</span>
-                        <span className="font-medium text-surface-900">{path.type}</span>
-                    </div>
-                    {path.processing_min_days && (
+                <div className="mb-10">
+                    <h1 className="text-4xl font-serif font-bold text-primary-900 mb-4">{path.name}</h1>
+                    <p className="text-xl text-surface-600 leading-relaxed">{path.description}</p>
+
+                    <div className="flex gap-4 mt-6">
                         <div className="px-4 py-2 bg-surface-100 rounded-sm">
-                            <span className="block text-xs font-bold text-surface-500 uppercase">Processing</span>
-                            <span className="font-medium text-surface-900">{path.processing_min_days} - {path.processing_max_days} days</span>
+                            <span className="block text-xs font-bold text-surface-500 uppercase">Type</span>
+                            <span className="font-medium text-surface-900">{path.type}</span>
                         </div>
-                    )}
+                        {path.processing_min_days && (
+                            <div className="px-4 py-2 bg-surface-100 rounded-sm">
+                                <span className="block text-xs font-bold text-surface-500 uppercase">Processing</span>
+                                <span className="font-medium text-surface-900">{path.processing_min_days} - {path.processing_max_days} days</span>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
 
-            <div className="rounded-sm border border-surface-200 overflow-hidden">
-                <div className="p-6 border-b border-surface-100 bg-surface-50">
-                    <h2 className="text-2xl font-serif font-bold flex items-center">
-                        <FileText className="w-6 h-6 mr-3 text-primary-600" />
-                        Requirements Checklist
-                    </h2>
-                </div>
-                <div className="p-6">
-                    <VisaPathChecklist requirements={path.requirements} />
+                <div className="rounded-sm border border-surface-200 overflow-hidden">
+                    <div className="p-6 border-b border-surface-100 bg-surface-50">
+                        <h2 className="text-2xl font-serif font-bold flex items-center">
+                            <FileText className="w-6 h-6 mr-3 text-primary-600" />
+                            Requirements Checklist
+                        </h2>
+                    </div>
+                    <div className="p-6">
+                        <VisaPathChecklist requirements={path.requirements} />
+                    </div>
                 </div>
             </div>
         </div>
@@ -196,12 +209,10 @@ const CountryFilterContainer = ({ onSelectCountry }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchCountries = async () => {
+        const loadCountries = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch('/public/countries');
-                if (!response.ok) throw new Error('Failed to fetch countries');
-                const data = await response.json();
+                const data = await fetchCountries();
                 setCountries(data);
             } catch (err) {
                 console.error("Error fetching countries:", err);
@@ -211,7 +222,7 @@ const CountryFilterContainer = ({ onSelectCountry }) => {
             }
         };
 
-        fetchCountries();
+        loadCountries();
     }, []);
 
     const availableRegions = useMemo(() => {
@@ -232,11 +243,19 @@ const CountryFilterContainer = ({ onSelectCountry }) => {
         });
     }, [countries, searchQuery, minLgbtqIndex, accessFilter, regionFilter]);
 
+    // Determine semantic state for GhostTextLayer
+    const ghostState = useMemo(() => {
+        if (!isLoading && filteredCountries.length === 0) return 'empty';
+        if (searchQuery || minLgbtqIndex !== 3 || accessFilter !== 'All' || regionFilter !== 'All') return 'filter';
+        return 'explore';
+    }, [isLoading, filteredCountries.length, searchQuery, minLgbtqIndex, accessFilter, regionFilter]);
+
     return (
         <div className="min-h-screen bg-surface-50 pb-20">
+            <GhostTextLayer state={ghostState} />
 
 {/* Editorial Masthead */}
-<header className="bg-surface-50 text-surface-900 pt-10 pb-7 px-4 md:px-8 border-b border-surface-200">
+<header className="relative z-10 bg-surface-50 text-surface-900 pt-10 pb-7 px-4 md:px-8 border-b border-surface-200">
   <div className="max-w-7xl mx-auto flex items-start justify-between gap-5">
     {/* Left stack: lockup + tagline (nested) */}
     <div className="flex flex-col items-start gap-2">
@@ -259,7 +278,7 @@ const CountryFilterContainer = ({ onSelectCountry }) => {
 
 
 
-            <div className="max-w-7xl mx-auto px-4 md:px-8">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
                 <section className="filters mb-12">
                     <div className="filters__header">
                         <div className="filters__title">
@@ -376,7 +395,7 @@ const CountryFilterContainer = ({ onSelectCountry }) => {
             </div>
 
             {/* Footer */}
-            <footer className="max-w-7xl mx-auto px-4 md:px-8 pb-20 mt-12">
+            <footer className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pb-20 mt-12">
                 <div className="disclaimer">
                     <div className="disclaimer__title">
                         <span className="filters__titleMark" />
