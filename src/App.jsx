@@ -2,8 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Shield, MapPin, Anchor, Heart, AlertTriangle, Loader2, ArrowLeft, FileText, ChevronRight } from 'lucide-react';
 import './index.css';
 import { PassagrLockup } from './components/PassagrMarks.jsx';
-import { GhostTextLayer } from './components/GhostTextLayer.jsx';
 import { fetchCountries, fetchVisaPaths, fetchVisaPathDetail } from './lib/api';
+import ImmigrationMap from './components/ImmigrationMap.jsx';
 
 // --- UTILITY FUNCTIONS ---
 
@@ -107,7 +107,6 @@ const VisaPathList = ({ countryId, onSelectPath, onBack }) => {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-10">
-            <GhostTextLayer state="shortlist" />
             <div className="relative z-10">
                 <button onClick={onBack} className="flex items-start text-surface-500 hover:text-primary-600 mb-6 transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" /> Back to Countries
@@ -158,7 +157,6 @@ const VisaPathDetail = ({ pathId, onBack }) => {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-10">
-            <GhostTextLayer state="verify" />
 
             <div className="relative z-10">
                 <button onClick={onBack} className="flex items-center text-surface-500 hover:text-primary-600 mb-6 transition-colors">
@@ -241,19 +239,10 @@ const CountryFilterContainer = ({ onSelectCountry }) => {
 
             return nameMatch && lgbtqMatch && accessMatch && regionMatch;
         });
-    }, [countries, searchQuery, minLgbtqIndex, accessFilter, regionFilter]);
-
-    // Determine semantic state for GhostTextLayer
-    const ghostState = useMemo(() => {
-        if (!isLoading && filteredCountries.length === 0) return 'empty';
-        if (searchQuery || minLgbtqIndex !== 3 || accessFilter !== 'All' || regionFilter !== 'All') return 'filter';
-        return 'explore';
-    }, [isLoading, filteredCountries.length, searchQuery, minLgbtqIndex, accessFilter, regionFilter]);
+    }, [countries, searchQuery, minLgbtqIndex, accessFilter, regionFilter]);   
 
     return (
         <div className="min-h-screen bg-surface-50 pb-20">
-            <GhostTextLayer state={ghostState} />
-
 {/* Editorial Masthead */}
 <header className="relative z-10 bg-surface-50 text-surface-900 pt-10 pb-7 px-4 md:px-8 border-b border-surface-200">
   <div className="max-w-7xl mx-auto flex items-start justify-between gap-5">
@@ -359,39 +348,45 @@ const CountryFilterContainer = ({ onSelectCountry }) => {
                         </div>
                     </div>
 
-                {/* Results Section Header */}
-                <div className="filters__header mt-16">
-                    <div className="filters__title">
-                        <span className="filters__titleMark" />
-                        Matching Destinations
-                    </div>
-                    <span className="text-surface-500 font-medium text-xs uppercase tracking-wide">
-                        {filteredCountries.length} results
-                    </span>
+                <div className="mb-10">
+                    <ImmigrationMap />
                 </div>
 
-                {isLoading ? (
-                    <div className="flex flex-col items-center justify-center py-20 text-surface-400">
-                        <Loader2 className="w-10 h-10 animate-spin mb-4 text-primary-500" />
-                        <p>Verifying latest data...</p>
+                {/* Results Section Header */}
+                <section id="country-table">
+                    <div className="filters__header mt-16">
+                        <div className="filters__title">
+                            <span className="filters__titleMark" />
+                            Matching Destinations
+                        </div>
+                        <span className="text-surface-500 font-medium text-xs uppercase tracking-wide">
+                            {filteredCountries.length} results
+                        </span>
                     </div>
-                ) : error ? (
-                    <div className="emptyState text-left">
-                        <p className="emptyState__title">No data available yet</p>
-                        <p className="emptyState__detail">Verified country data could not be loaded at this time.</p>
-                    </div>
-                ) : filteredCountries.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredCountries.map(country => (
-                            <CountryCard key={country.id} country={country} onClick={onSelectCountry} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="emptyState text-left">
-                        <p className="emptyState__title">No matching destinations</p>
-                        <p className="emptyState__detail">Try lowering the Rights Score or broadening Access Status.</p>
-                    </div>
-                )}
+
+                    {isLoading ? (
+                        <div className="flex flex-col items-center justify-center py-20 text-surface-400">
+                            <Loader2 className="w-10 h-10 animate-spin mb-4 text-primary-500" />
+                            <p>Verifying latest data...</p>
+                        </div>
+                    ) : error ? (
+                        <div className="emptyState text-left">
+                            <p className="emptyState__title">No data available yet</p>
+                            <p className="emptyState__detail">Verified country data could not be loaded at this time.</p>
+                        </div>
+                    ) : filteredCountries.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {filteredCountries.map(country => (
+                                <CountryCard key={country.id} country={country} onClick={onSelectCountry} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="emptyState text-left">
+                            <p className="emptyState__title">No matching destinations</p>
+                            <p className="emptyState__detail">Try lowering the Rights Score or broadening Access Status.</p>
+                        </div>
+                    )}
+                </section>
             </div>
 
             {/* Footer */}

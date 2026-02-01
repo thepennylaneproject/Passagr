@@ -1,0 +1,755 @@
+[
+  {
+    "name": "Portugal",
+    "lgbtq_rights_index": 5.0,
+    "abortion_access_status": "Protected by Law",
+    "hate_crime_protections": "Comprehensive protections for sexual orientation, gender identity, race",
+    "remote_work_pathway": {
+      "name": "D7 Passive Income Visa",
+      "min_monthly_income": "€920/month (~$950 USD)",
+      "processing_time": "6+ months",
+      "path_to_pr_citizenship": "After 5 years of legal residence, eligible for PR or citizenship. Must maintain passive income and prove integration"
+    },
+    "skilled_worker_pathway": {
+      "name": "Skilled Worker Visa / EU Blue Card",
+      "job_offer_required": "Yes",
+      "processing_time": "4-8 weeks standard"
+    },
+    "protection_or_special_status": {
+      "name": "EU Asylum Procedure / Ancestry Visa (grandparent citizenship)",
+      "entry_requirement": "Must be physically present in Portugal or apply at consulate with proof of Portuguese grandparent",
+      "first_step": "Lodge asylum application with immigration authorities (SEF) or submit citizenship documentation at consulate"
+    },
+    "citations": {
+      "A. Hate Crime Protections": [
+        "https://ilga.org/news/pride-month-2025-lgbti-data-maps/",
+        "https://www.ilga-europe.org/report/rainbow-map-2025/",
+        "https://rainbowmap.ilga-europe.org"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://immigrantinvest.com/blog/portugal-d7-visa-income-requirements/",
+        "https://www.globalcitizensolutions.com/portugal-d7-visa/",
+        "https://www.portugalist.com/d7-changes-2026/"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://immigrantinvest.com/blog/portugal-d7-visa-income-requirements/"
+      ],
+      "D1. Entry Requirement": [
+        "https://www.imidaily.com/eu-citizenship-by-descent/",
+        "https://www.italiandualcitizenship.net/italian-citizenship-through-parents-grandparents-great-grandparents/"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://asylumineurope.org/reports/country/netherlands/asylum-procedure/general/short-overview-asylum-procedure/"
+      ]
+    }
+  },
+  {
+    "name": "Spain",
+    "lgbtq_rights_index": 5.0,
+    "abortion_access_status": "Protected by Law (up to 14 weeks)",
+    "hate_crime_protections": "Strong protections under EU Framework Decision; includes sexual orientation, gender identity, race",
+    "remote_work_pathway": {
+      "name": "Digital Nomad Visa (Law 28/2022)",
+      "min_monthly_income": "€2,762/month net (~$3,000 USD)",
+      "processing_time": "20 business days",
+      "path_to_pr_citizenship": "Eligible for permanent residence after 5 years; citizenship after 10 years of legal residence"
+    },
+    "skilled_worker_pathway": {
+      "name": "EU Blue Card / Highly Qualified Professional Visa",
+      "job_offer_required": "Yes",
+      "processing_time": "20 business days to 2 months"
+    },
+    "protection_or_special_status": {
+      "name": "EU Asylum Procedure / Law of Grandchildren (Spanish ancestry, extended to Oct 2025)",
+      "entry_requirement": "Physical presence in Spain for asylum; proof of Spanish grandparent/exile descendant for ancestry",
+      "first_step": "Register asylum claim with National Police or submit heritage documentation at consulate"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-comparative-review.pdf"
+      ],
+      "A. Hate Crime Protections": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/",
+        "https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2025)767219"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://prospainconsulting.com/2025/10/07/spain-digital-nomad-visa-requirements-application-process-and-key-advantages/",
+        "https://nodisea.com/spanish-digital-nomad-visa-timeline/",
+        "https://getgoldenvisa.com/spain-digital-nomad-visa"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://getgoldenvisa.com/spain-digital-nomad-visa",
+        "https://immigrantinvest.com/spain-digital-nomad-residence/"
+      ],
+      "D1. Entry Requirement": [
+        "https://armenian-lawyer.com/global/top-countries-for-citizenship-by-descent-and-ancestry-programs-connecting-with-your-roots/",
+        "https://orience.com/blog/spain-vs-italy-which-citizenship-by-descent-program-is-right-for-you/"
+      ],
+      "D1. First Step": [
+        "https://www.migrationsverket.se/en/about-the-swedish-migration-agency/the-swedish-migration-agency-answers/2025/2025-06-18-what-is-the-new-eu-migration-and-asylum-pact-about.html",
+        "https://ecre.org/european-parliament-draft-reports-on-amendments-to-the-asylum-procedure-regulation-on-safe-country-concepts/"
+      ]
+    }
+  },
+  {
+    "name": "Germany",
+    "lgbtq_rights_index": 4.5,
+    "abortion_access_status": "Legal on broad grounds (up to 12 weeks with counseling)",
+    "hate_crime_protections": "Strong hate crime legislation covering sexual orientation, gender identity, race under Federal Criminal Code",
+    "remote_work_pathway": {
+      "name": "Freelance Visa (Freiberufler) - Section 21(5) Residence Act",
+      "min_monthly_income": "No fixed minimum; must prove financial means and project income",
+      "processing_time": "6-12 weeks standard; 2-3 months via fast-track",
+      "path_to_pr_citizenship": "After 5 years of freelance activity can apply for permanent settlement permit; citizenship after 8 years"
+    },
+    "skilled_worker_pathway": {
+      "name": "EU Blue Card / Skilled Worker Visa (Section 18a/18b)",
+      "job_offer_required": "Yes",
+      "processing_time": "6-12 weeks; Fast-track: 2-3 months"
+    },
+    "protection_or_special_status": {
+      "name": "EU Asylum Procedure / Citizenship by Descent (limited to parent born in Germany post-1975)",
+      "entry_requirement": "Physical presence for asylum; birth after 1975 with German parent for descent",
+      "first_step": "Submit asylum application to Federal Office for Migration and Refugees (BAMF) or citizenship certificate at local authority"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-comparative-review.pdf"
+      ],
+      "A. Hate Crime Protections": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/",
+        "https://www.ilga-europe.org/sites/default/files/responding_to_hate_speech_against_lgbti_people.pdf"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://www.germany-visa.org/freelance-visa/",
+        "https://www.make-it-in-germany.com/en/visa-residence/types/other/self-employment",
+        "https://www.migrun.tech/germany/guide-freelance-visa-for-germany"
+      ],
+      "B1. Processing Time": [
+        "https://www.jobbatical.com/blog/germany-work-visa-processing-times-2025",
+        "https://www.boundless.com/blog/fast-track-immigration-options-for-high-skill-talent-in-germany"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://www.make-it-in-germany.com/en/visa-residence/types/other/self-employment"
+      ],
+      "C1. Processing Time": [
+        "https://www.jobbatical.com/blog/germany-work-visa-processing-times-2025",
+        "https://www.boundless.com/blog/fast-track-immigration-options-for-high-skill-talent-in-germany"
+      ],
+      "D1. Protection/Special Status": [
+        "https://se-legal.de/services/immigration-lawyer-germany/german-citizenship-by-descent/?lang=en"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.bmi.bund.de/EN/topics/migration/common-european-asylum-system/common-european-asylum-system-node.html",
+        "https://se-legal.de/services/immigration-lawyer-germany/german-citizenship-by-descent/?lang=en"
+      ]
+    }
+  },
+  {
+    "name": "Mexico",
+    "lgbtq_rights_index": 3.5,
+    "abortion_access_status": "Decriminalized (federal 2023, varies by state)",
+    "hate_crime_protections": "Variable by state; federal recognition of hate crimes based on sexual orientation since 2019",
+    "remote_work_pathway": {
+      "name": "Temporary Resident Visa (Non-Lucrative)",
+      "min_monthly_income": "$4,356 USD/month income OR $73,389 USD in savings (2026 estimates)",
+      "processing_time": "Varies by consulate; typically 2-8 weeks",
+      "path_to_pr_citizenship": "After 4 years of temporary residency, eligible for permanent residency. Citizenship after 5 years of PR"
+    },
+    "skilled_worker_pathway": {
+      "name": "Temporary Resident with work permit",
+      "job_offer_required": "Yes",
+      "processing_time": "4-12 weeks depending on consulate"
+    },
+    "protection_or_special_status": {
+      "name": "Asylum via Mexican Commission for Refugee Assistance (COMAR) / Citizenship by Descent (parent born in Mexico)",
+      "entry_requirement": "Physical presence in Mexico for asylum; proof of Mexican parent for descent",
+      "first_step": "Submit asylum request at any immigration office or COMAR; citizenship via consulate with parent's birth certificate"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://reproductiverights.org/resources/latin-america-green-wave/",
+        "https://reproductiverights.org/maps/world-abortion-laws/",
+        "https://www.as-coa.org/articles/explainer-abortion-rights-latin-america"
+      ],
+      "A. Hate Crime Protections": [
+        "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6836409/"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://mexicorelocationguide.com/mexican-residency-income-requirements-updates-in-2026/",
+        "https://www.mexperience.com/financial-criteria-for-residency-in-mexico/"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://www.mexperience.com/financial-criteria-for-residency-in-mexico/"
+      ],
+      "D1. Protection/Special Status": [
+        "https://www.linkedin.com/posts/investmentmigrationinsider_mexican-and-european-programs-offer-generous-activity-7412669097101963264-qitp"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.linkedin.com/posts/investmentmigrationinsider_mexican-and-european-programs-offer-generous-activity-7412669097101963264-qitp"
+      ]
+    }
+  },
+  {
+    "name": "Costa Rica",
+    "lgbtq_rights_index": 3.0,
+    "abortion_access_status": "Highly Restricted (life/health/rape only)",
+    "hate_crime_protections": "Limited hate crime protections; no specific LGBTQ+ hate crime laws",
+    "remote_work_pathway": {
+      "name": "Rentista Visa (Passive Income)",
+      "min_monthly_income": "$2,500 USD/month OR $60,000 deposit",
+      "processing_time": "3-6 months",
+      "path_to_pr_citizenship": "After 3 years, eligible for permanent residency; citizenship after 7 years of residency"
+    },
+    "skilled_worker_pathway": {
+      "name": "General Work Permit",
+      "job_offer_required": "Yes",
+      "processing_time": "2-4 months"
+    },
+    "protection_or_special_status": {
+      "name": "Refugee status determination via Costa Rican immigration / No major ancestry programs",
+      "entry_requirement": "Physical presence and demonstration of persecution",
+      "first_step": "Submit application to Dirección General de Migración y Extranjería with UNHCR referral if applicable"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://www.guttmacher.org/fact-sheet/abortion-latin-america-and-caribbean",
+        "https://www.guttmacher.org/fact-sheet/abortion-asia"
+      ],
+      "A. Hate Crime Protections": [
+        "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://www.jaroscr.com/best-way-to-meet-costa-rica-rentista-visa-income-requirements/",
+        "https://www.simple-legal.consulting/costa-rica-investment-and-immigration-blog/the-ultimate-guide-to-acquiring-rentista-residency-in-costa-rica-for-expats",
+        "https://www.rippling.com/blog/costa-rica-digital-nomad-visa"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://www.jaroscr.com/best-way-to-meet-costa-rica-rentista-visa-income-requirements/"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd"
+      ]
+    }
+  },
+  {
+    "name": "Italy",
+    "lgbtq_rights_index": 4.0,
+    "abortion_access_status": "Legal on request (up to 90 days)",
+    "hate_crime_protections": "Protected under national hate crime laws; includes sexual orientation, gender identity",
+    "remote_work_pathway": {
+      "name": "Digital Nomad Visa (Decreto Flussi 2024)",
+      "min_monthly_income": "€24,789/year (~$2,065/month)",
+      "processing_time": "4-8 weeks",
+      "path_to_pr_citizenship": "After 5 years can apply for permanent EU long-term residence; citizenship after 10 years"
+    },
+    "skilled_worker_pathway": {
+      "name": "EU Blue Card / Nulla Osta Work Visa",
+      "job_offer_required": "Yes",
+      "processing_time": "30-90 days"
+    },
+    "protection_or_special_status": {
+      "name": "EU Asylum Procedure / Citizenship by Descent LIMITED (parent or grandparent only as of March 2025)",
+      "entry_requirement": "Physical presence for asylum; proof of Italian parent/grandparent birth in Italy (great-grandparents no longer eligible as of 2025 reform)",
+      "first_step": "Submit asylum at border/Questura or citizenship application at Italian consulate with vital records"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-comparative-review.pdf"
+      ],
+      "A. Hate Crime Protections": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/",
+        "https://www.ilga-europe.org/sites/default/files/responding_to_hate_speech_against_lgbti_people.pdf"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://www.rippling.com/blog/italy-digital-nomad-visa",
+        "https://www.localyze.com/blog/italy-digital-nomad-visa-guide",
+        "https://consnewyork.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visas-to-enter-italy/digital-nomad-remote-worker-visa/"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://www.localyze.com/blog/italy-digital-nomad-visa-guide"
+      ],
+      "D1. Protection/Special Status": [
+        "https://armenian-lawyer.com/global/top-countries-for-citizenship-by-descent-and-ancestry-programs-connecting-with-your-roots/",
+        "https://etias.com/articles/italy-curtails-ancestry-based-citizenship-rights"
+      ],
+      "D1. Entry Requirement": [
+        "https://www.italiandualcitizenship.net/italian-citizenship-through-parents-grandparents-great-grandparents/",
+        "https://etias.com/articles/italy-curtails-ancestry-based-citizenship-rights"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.italiandualcitizenship.net/italian-citizenship-through-parents-grandparents-great-grandparents/"
+      ]
+    }
+  },
+  {
+    "name": "France",
+    "lgbtq_rights_index": 5.0,
+    "abortion_access_status": "Constitutional Right (up to 14 weeks)",
+    "hate_crime_protections": "Comprehensive protections under national law and EU directives",
+    "remote_work_pathway": {
+      "name": "Talent Passport - Qualified Employee",
+      "min_monthly_income": "€39,582/year (~$3,298/month)",
+      "processing_time": "2-4 months",
+      "path_to_pr_citizenship": "After 4 years of Talent Passport, eligible for 10-year resident card; citizenship after 5 years"
+    },
+    "skilled_worker_pathway": {
+      "name": "Talent Passport / EU Blue Card (€59,373/year)",
+      "job_offer_required": "Yes",
+      "processing_time": "2-4 months standard"
+    },
+    "protection_or_special_status": {
+      "name": "EU Asylum Procedure / Limited ancestry pathways (primarily for French parent)",
+      "entry_requirement": "Physical presence for asylum; proof of French parent for citizenship",
+      "first_step": "Lodge asylum with prefecture (OFPRA); citizenship via consulate with parent documentation"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://www.cfr.org/articles/abortion-law-global-comparisons",
+        "https://reproductiverights.org/maps/world-abortion-laws/"
+      ],
+      "A. Hate Crime Protections": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/",
+        "https://www.hrw.org/world-report/2025/country-chapters/france"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://www.envoyglobal.com/news-alert/france-updates-salary-thresholds-for-talent-passport-and-blue-card-routes/",
+        "https://www.jobbatical.com/blog/france-salary-threshold-talent-eu-blue-card-2025",
+        "https://www.welcometofrance.com/en/fiche/talent-passport-qualified-employee"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://newlandchase.com/increased-salary-threshold-for-french-talent-passport-permits/"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.csbgroup.com/citizenship-by-investment/"
+      ]
+    }
+  },
+  {
+    "name": "Canada",
+    "lgbtq_rights_index": 5.0,
+    "abortion_access_status": "Legal on request (all stages)",
+    "hate_crime_protections": "Federal hate crime legislation includes sexual orientation and gender identity",
+    "remote_work_pathway": {
+      "name": "Not applicable (no non-work digital nomad visa)",
+      "min_monthly_income": "N/A",
+      "processing_time": "N/A",
+      "path_to_pr_citizenship": "N/A"
+    },
+    "skilled_worker_pathway": {
+      "name": "Express Entry (Federal Skilled Worker, Canadian Experience Class)",
+      "job_offer_required": "No (points-based; job offer adds points but not mandatory)",
+      "processing_time": "10-14 months (current backlog); standard 6-7 months"
+    },
+    "protection_or_special_status": {
+      "name": "Refugee Status Determination via Immigration, Refugees and Citizenship Canada (IRCC)",
+      "entry_requirement": "Must be outside Canada or at port of entry; claim protection at border or inland office",
+      "first_step": "Submit asylum claim at port of entry or IRCC office; attend hearing before Immigration and Refugee Board (IRB)"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://en.wikipedia.org/wiki/Abortion_law",
+        "https://www.guttmacher.org/fact-sheet/abortion-asia"
+      ],
+      "A. Hate Crime Protections": [
+        "https://www.hrw.org/video-photos/interactive/2020/06/22/human-rights-watch-country-profiles-sexual-orientation-and",
+        "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf"
+      ],
+      "C1. Job Offer Required?": [
+        "https://www.y-axis.co.uk/migrate/canada/express-entry/",
+        "https://immigration.ca/who-qualifies-for-canadian-permanent-residence-skilled-worker-immigration/"
+      ],
+      "C1. Processing Time": [
+        "https://www.visahq.com/news/2026-01-21/ca/express-entry-backlog-swells-to-three-year-high-pushing-skilled-workers-wait-times/",
+        "https://skylam.ca/ircc-processing-time-trends-moving-into-2026-what-applicants-need-to-know/"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.youtube.com/watch?v=ebBT40YYyM4"
+      ]
+    }
+  },
+  {
+    "name": "Netherlands",
+    "lgbtq_rights_index": 5.0,
+    "abortion_access_status": "Legal on request (up to 24 weeks)",
+    "hate_crime_protections": "Comprehensive hate crime protections under national law; includes sexual orientation, gender identity",
+    "remote_work_pathway": {
+      "name": "Not applicable (no specific digital nomad visa)",
+      "min_monthly_income": "N/A",
+      "processing_time": "N/A",
+      "path_to_pr_citizenship": "N/A"
+    },
+    "skilled_worker_pathway": {
+      "name": "Highly Skilled Migrant Permit",
+      "job_offer_required": "Yes",
+      "processing_time": "5-10 weeks (digital portal); up to 90 days standard"
+    },
+    "protection_or_special_status": {
+      "name": "EU Asylum Procedure via Immigration and Naturalisation Service (IND)",
+      "entry_requirement": "Physical presence in Netherlands or at border",
+      "first_step": "Register at Central Reception Centre (COL) in Ter Apel; complete registration interview with IND"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-comparative-review.pdf"
+      ],
+      "A. Hate Crime Protections": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/",
+        "https://www.equaldex.com/issue/hate-crime-protections"
+      ],
+      "C1. Processing Time": [
+        "https://ind.nl/en/required-amounts-income-requirements",
+        "https://www.jobbatical.com/blog/netherlands-work-permit-reforms-2025-salary-increase-ind-restrictions",
+        "https://www.meijburg.com/news/annual-adjustment-salary-criterion-highly-skilled-migrants-2025"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://asylumineurope.org/reports/country/netherlands/asylum-procedure/general/short-overview-asylum-procedure/"
+      ]
+    }
+  },
+  {
+    "name": "Australia",
+    "lgbtq_rights_index": 4.5,
+    "abortion_access_status": "Legal (varies by state; mostly on request)",
+    "hate_crime_protections": "Hate crime laws vary by state; federal protections for sexual orientation, race",
+    "remote_work_pathway": {
+      "name": "Not applicable (no non-work digital nomad visa)",
+      "min_monthly_income": "N/A",
+      "processing_time": "N/A",
+      "path_to_pr_citizenship": "N/A"
+    },
+    "skilled_worker_pathway": {
+      "name": "Skilled Independent Visa (Subclass 189) / Skilled Nominated (190)",
+      "job_offer_required": "No for 189; Yes for 190 (state nomination)",
+      "processing_time": "8-18 months for 189; 9-19 months for 190"
+    },
+    "protection_or_special_status": {
+      "name": "Protection Visa (Refugee/Humanitarian) via Department of Home Affairs",
+      "entry_requirement": "Must be in Australia or apply offshore through UNHCR referral",
+      "first_step": "Lodge protection visa application online or at immigration office; attend interview"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://en.wikipedia.org/wiki/Abortion_law"
+      ],
+      "A. Hate Crime Protections": [
+        "https://www.hrw.org/news/2026/01/23/australias-new-hate-crime-laws-need-human-rights-monitoring",
+        "https://www.equaldex.com/issue/hate-crime-protections"
+      ],
+      "C1. Job Offer Required?": [
+        "https://www.visafast.com.au/blog/other-visas-12/australia-visa-processing-time-guide-57",
+        "https://www.edvisehub.com/189-visa-processing-time-everything-you-need-to-know-in-2026/"
+      ],
+      "C1. Processing Time": [
+        "https://www.visafast.com.au/blog/other-visas-12/australia-visa-processing-time-guide-57"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.visafast.com.au/blog/other-visas-12/australia-visa-processing-time-guide-57"
+      ]
+    }
+  },
+  {
+    "name": "New Zealand",
+    "lgbtq_rights_index": 4.5,
+    "abortion_access_status": "Legal on request (up to 20 weeks)",
+    "hate_crime_protections": "Hate crime and hate speech protections include sexual orientation, gender identity",
+    "remote_work_pathway": {
+      "name": "Not applicable (no digital nomad visa)",
+      "min_monthly_income": "N/A",
+      "processing_time": "N/A",
+      "path_to_pr_citizenship": "N/A"
+    },
+    "skilled_worker_pathway": {
+      "name": "Skilled Migrant Category Resident Visa",
+      "job_offer_required": "Yes (accredited employer required)",
+      "processing_time": "6-12 months"
+    },
+    "protection_or_special_status": {
+      "name": "Refugee Status Determination via Immigration New Zealand",
+      "entry_requirement": "Physical presence in New Zealand or apply at offshore location",
+      "first_step": "Submit expression of interest or refugee claim at Immigration New Zealand office or UNHCR referral"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://www.supremecourt.gov/opinions/URLs_Cited/OT2021/19-1392/19-1392-2.pdf"
+      ],
+      "A. Hate Crime Protections": [
+        "https://www.equaldex.com/issue/hate-crime-protections"
+      ],
+      "C1. Job Offer Required?": [
+        "https://vialtopartners.com/regional-alerts/new-zealand-immigration-wage-threshold-changes-for-accredited-employer-work-visa-aewv-and-skilled-residence",
+        "https://www.newzealandshores.com/residence-via-employment/skilled-migrant-category-resident-visa/",
+        "https://aspiringimmigration.kiwi/skilled-migrant"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.immigration.govt.nz/work/requirements-for-work-visas/wage-rates-for-work-visas/"
+      ]
+    }
+  },
+  {
+    "name": "United Kingdom",
+    "lgbtq_rights_index": 3.5,
+    "abortion_access_status": "Legal (up to 24 weeks)",
+    "hate_crime_protections": "Protected characteristics include sexual orientation, race; gender identity protections weakening",
+    "remote_work_pathway": {
+      "name": "Not applicable (no digital nomad visa)",
+      "min_monthly_income": "N/A",
+      "processing_time": "N/A",
+      "path_to_pr_citizenship": "N/A"
+    },
+    "skilled_worker_pathway": {
+      "name": "Skilled Worker Visa (Tier 2)",
+      "job_offer_required": "Yes",
+      "processing_time": "3 weeks (outside UK); 8 weeks (inside UK)"
+    },
+    "protection_or_special_status": {
+      "name": "Asylum via UK Visas and Immigration (UKVI)",
+      "entry_requirement": "Physical presence in UK or at port of entry",
+      "first_step": "Submit asylum claim to Home Office; attend substantive interview"
+    },
+    "citations": {
+      "A. LGBTQ+ Rights Index (0-5)": [
+        "https://www.ilga-europe.org/report/rainbow-map-2025/",
+        "https://www.ilga-europe.org/video/the-2025-rainbow-map-is-coming-up-on-14-may/"
+      ],
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://www.supremecourt.gov/opinions/URLs_Cited/OT2021/19-1392/19-1392-2.pdf"
+      ],
+      "A. Hate Crime Protections": [
+        "https://www.ilga-europe.org/report/rainbow-map-2025/",
+        "https://www.hrw.org/news/2026/01/23/australias-new-hate-crime-laws-need-human-rights-monitoring",
+        "https://www.hrw.org/world-report/2025/country-chapters/bosnia-and-herzegovina"
+      ],
+      "C1. Processing Time": [
+        "https://immigrationbarrister.co.uk/uk-visa-processing-decision-waiting-times-2026/",
+        "https://www.gov.uk/guidance/visa-processing-times-applications-outside-the-uk"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://immigrationbarrister.co.uk/uk-visa-processing-decision-waiting-times-2026/"
+      ]
+    }
+  },
+  {
+    "name": "Ireland",
+    "lgbtq_rights_index": 4.5,
+    "abortion_access_status": "Legal on request (up to 12 weeks since 2018)",
+    "hate_crime_protections": "Comprehensive hate crime legislation includes sexual orientation, gender identity",
+    "remote_work_pathway": {
+      "name": "Not applicable (no specific digital nomad visa)",
+      "min_monthly_income": "N/A",
+      "processing_time": "N/A",
+      "path_to_pr_citizenship": "N/A"
+    },
+    "skilled_worker_pathway": {
+      "name": "Critical Skills Employment Permit",
+      "job_offer_required": "Yes",
+      "processing_time": "8-12 weeks"
+    },
+    "protection_or_special_status": {
+      "name": "International Protection via International Protection Office (IPO)",
+      "entry_requirement": "Physical presence in Ireland",
+      "first_step": "Make asylum application at International Protection Office; preliminary interview within 5 working days"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://www.supremecourt.gov/opinions/URLs_Cited/OT2021/19-1392/19-1392-2.pdf"
+      ],
+      "A. Hate Crime Protections": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/",
+        "https://www.equaldex.com/issue/hate-crime-protections"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd"
+      ]
+    }
+  },
+  {
+    "name": "Uruguay",
+    "lgbtq_rights_index": 4.5,
+    "abortion_access_status": "Legal on request (up to 12 weeks)",
+    "hate_crime_protections": "Comprehensive hate crime protections; sexual orientation and gender identity included",
+    "remote_work_pathway": {
+      "name": "Independent Means (Rentista) Visa",
+      "min_monthly_income": "$1,500 USD/month passive income",
+      "processing_time": "Immediate temporary residency; 6-12 months for permanent residency",
+      "path_to_pr_citizenship": "Immediate permanent residency upon approval; citizenship after 3-5 years of residence"
+    },
+    "skilled_worker_pathway": {
+      "name": "General Work Visa",
+      "job_offer_required": "Yes",
+      "processing_time": "2-4 months"
+    },
+    "protection_or_special_status": {
+      "name": "Refugee Status Determination via National Commission for Refugees (CONARE)",
+      "entry_requirement": "Physical presence in Uruguay",
+      "first_step": "Submit asylum application to immigration authority (Dirección Nacional de Migración) or CONARE"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+        "https://reproductiverights.org/resources/latin-america-green-wave/"
+      ],
+      "A. Hate Crime Protections": [
+        "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://goldenharbors.com/articles/uruguay-independent-means-visa",
+        "https://www.imidaily.com/uruguay-independent-means-visa/",
+        "https://nomadcapitalist.com/global-citizen/uruguay-residency-requirements/",
+        "https://www.globalcitizensolutions.com/independent-means-visa-uruguay/"
+      ],
+      "B1. Processing Time": [
+        "https://goldenharbors.com/articles/uruguay-independent-means-visa"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://goldenharbors.com/articles/uruguay-independent-means-visa",
+        "https://nomadcapitalist.com/global-citizen/uruguay-residency-requirements/"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd"
+      ]
+    }
+  },
+  {
+    "name": "Thailand",
+    "lgbtq_rights_index": 3.5,
+    "abortion_access_status": "Legal with restrictions (health/economic/rape up to 22 weeks)",
+    "hate_crime_protections": "Limited hate crime protections; Gender Equality Act 2015 covers some discrimination",
+    "remote_work_pathway": {
+      "name": "Elite Visa / Long-Term Resident Visa (varies)",
+      "min_monthly_income": "Varies by visa type ($25,000+ deposit for Elite)",
+      "processing_time": "4-12 weeks depending on type",
+      "path_to_pr_citizenship": "Various pathways depending on visa; typically after 3-10 years can apply for permanent residence"
+    },
+    "skilled_worker_pathway": {
+      "name": "BOI-sponsored work permit / Non-Immigrant B Visa",
+      "job_offer_required": "Yes",
+      "processing_time": "4-8 weeks"
+    },
+    "protection_or_special_status": {
+      "name": "Refugee Status Determination via Ministry of Interior with UNHCR support",
+      "entry_requirement": "Physical presence in Thailand",
+      "first_step": "Submit asylum claim to immigration bureau; UNHCR Bangkok provides RSD support"
+    },
+    "citations": {
+      "A. LGBTQ+ Rights Index (0-5)": [
+        "https://en.wikipedia.org/wiki/LGBTQ_rights_in_Thailand",
+        "https://www.kap.co.th/thought-leadership/a-new-era-for-lgbtq-rights-thailand-enforces-same-sex-marriage-registration/",
+        "https://www.loc.gov/item/global-legal-monitor/2025-03-18/thailand-law-recognizing-same-sex-marriage-takes-effect/?loclr=bloglaw"
+      ],
+      "A. Abortion Access Status": [
+        "https://en.wikipedia.org/wiki/Abortion_in_Japan",
+        "https://metropolisjapan.com/abortion-in-japan/"
+      ],
+      "A. Hate Crime Protections": [
+        "https://en.wikipedia.org/wiki/LGBTQ_rights_in_Thailand",
+        "https://www.kap.co.th/thought-leadership/a-new-era-for-lgbtq-rights-thailand-enforces-same-sex-marriage-registration/"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://www.thaianti-humantraffickingaction.org/Home/2025/01/13/thailands-marriage-equality-bill-to-take-effect-on-22-january-2025/"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.youtube.com/watch?v=ebBT40YYyM4"
+      ]
+    }
+  },
+  {
+    "name": "Japan",
+    "lgbtq_rights_index": 2.5,
+    "abortion_access_status": "Legal with restrictions (spousal consent often required; health/economic/rape up to 22 weeks)",
+    "hate_crime_protections": "Limited hate crime protections; no comprehensive LGBTQ+ hate crime laws",
+    "remote_work_pathway": {
+      "name": "Not applicable (no digital nomad visa; business manager visa requires incorporation)",
+      "min_monthly_income": "N/A",
+      "processing_time": "N/A",
+      "path_to_pr_citizenship": "N/A"
+    },
+    "skilled_worker_pathway": {
+      "name": "Highly Skilled Professional Visa (points-based)",
+      "job_offer_required": "No (points-based)",
+      "processing_time": "1-3 months"
+    },
+    "protection_or_special_status": {
+      "name": "Refugee Recognition via Immigration Services Agency",
+      "entry_requirement": "Physical presence in Japan or at port of entry",
+      "first_step": "Submit asylum application at regional immigration office; undergo RSD interview"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://en.wikipedia.org/wiki/Abortion_in_Japan",
+        "https://metropolisjapan.com/abortion-in-japan/",
+        "https://www.joicfp.or.jp/eng/our-work/overview/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12000631/"
+      ],
+      "A. Hate Crime Protections": [
+        "https://www.hrw.org/video-photos/interactive/2020/06/22/human-rights-watch-country-profiles-sexual-orientation-and"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+        "https://www.youtube.com/watch?v=ebBT40YYyM4"
+      ]
+    }
+  },
+  {
+    "name": "Argentina",
+    "lgbtq_rights_index": 4.5,
+    "abortion_access_status": "Legal on request (up to 14 weeks since 2020)",
+    "hate_crime_protections": "Federal hate crime protections include sexual orientation and gender identity",
+    "remote_work_pathway": {
+      "name": "Digital Nomad Visa (Transitory Residence)",
+      "min_monthly_income": "~$2,500 USD/month (unofficial requirement)",
+      "processing_time": "2-4 months",
+      "path_to_pr_citizenship": "6 months renewable once (total 1 year); does not lead to permanent residency directly"
+    },
+    "skilled_worker_pathway": {
+      "name": "Temporary Work Visa",
+      "job_offer_required": "Yes",
+      "processing_time": "2-4 months"
+    },
+    "protection_or_special_status": {
+      "name": "Refugee Status Determination via National Commission for Refugees (CONARE)",
+      "entry_requirement": "Physical presence in Argentina",
+      "first_step": "Submit asylum request to immigration office (Dirección Nacional de Migraciones) or CONARE"
+    },
+    "citations": {
+      "A. Abortion Access Status": [
+        "https://reproductiverights.org/resources/latin-america-green-wave/",
+        "https://www.as-coa.org/articles/explainer-abortion-rights-latin-america"
+      ],
+      "A. Hate Crime Protections": [
+        "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6836409/"
+      ],
+      "B1. Min Monthly Income (USD)": [
+        "https://evolvecoliving.io/argentina-digital-nomad-visa/"
+      ],
+      "B1. Path to PR/Citizenship": [
+        "https://evolvecoliving.io/argentina-digital-nomad-visa/"
+      ],
+      "D1. First Step": [
+        "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd"
+      ]
+    }
+  }
+]

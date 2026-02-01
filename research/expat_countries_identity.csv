@@ -1,0 +1,18 @@
+country_identity,name,iso2,region_key,subregion_key
+1,Portugal,PT,Europe,Southern Europe
+2,Spain,ES,Europe,Southern Europe
+3,Germany,DE,Europe,Western Europe
+4,Mexico,MX,Americas,Latin America and the Caribbean
+5,Costa Rica,CR,Americas,Latin America and the Caribbean
+6,Italy,IT,Europe,Southern Europe
+7,France,FR,Europe,Western Europe
+8,Canada,CA,Americas,Northern America
+9,Netherlands,NL,Europe,Western Europe
+10,Australia,AU,Oceania,Australia and New Zealand
+11,New Zealand,NZ,Oceania,Australia and New Zealand
+12,United Kingdom,GB,Europe,Northern Europe
+13,Ireland,IE,Europe,Northern Europe
+14,Uruguay,UY,Americas,Latin America and the Caribbean
+15,Thailand,TH,Asia,South-Eastern Asia
+16,Japan,JP,Asia,Eastern Asia
+17,Argentina,AR,Americas,Latin America and the Caribbean

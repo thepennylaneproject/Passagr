@@ -1,0 +1,324 @@
+ {
+  "country": {
+  "iso2": "PT",
+  "name": "Portugal",
+  "region": "europe",
+  "subregion": "southern_europe",
+  "policy_volatility": "medium",
+  "last_verified_at": "2026-01-31T00:00:00Z",
+  "verification_status": "proposed"
+  },
+  "rights_and_safety": {
+  "lgbtq_rights_score": 5,
+  "lgbtq_notes": "ILGA/ILGA-Europe rank Portugal among the top-tier countries with comprehensive
+  protections for sexual orientation, gender identity, and race.",
+  "abortion_status": "legal_protected",
+  "abortion_notes": "National law protects abortion through the first 12 weeks, giving statutory
+  support for access in Portugal.",
+  "hate_crime_protections": "strong",
+  "hate_crime_notes": "Hate crime laws explicitly cover sexual orientation, gender identity, and
+  race, backed by regular reporting on enforcement."
+  },
+  "healthcare": {
+  "system_type": "universal_after_residency",
+  "access_notes": "Portugal’s SNS plus private providers enroll expats after legal residency
+  registration; GP visits average €5–€20 and private premiums run €35–€120 per month.",
+  "quality_notes": "Cost comparisons keep Portugal ahead of Spain while the SNS maintains high
+  quality, keeping monthly budgets between €740 and €1,500 for single residents."
+  },
+  "taxation": {
+  "tax_system_type": "worldwide",
+  "special_regimes": [
+  {
+  "name": "NHR 2.0 (TISRI)",
+  "status": "active",
+  "notes": "NHR grants a 20% flat rate on qualifying Portuguese-source income, 10% on foreign
+  pensions, and a ten-year window for new residents; pair with the U.S. treaty to combine FEIE/FTC
+  strategies."
+  }
+  ]
+  },
+  "pathways": [
+  {
+  "pathway_type": "independent_means",
+  "name": "D7 Passive Income Visa",
+  "job_offer_required": false,
+  "remote_work_allowed": true,
+  "income_requirement": {
+  "amount": 920,
+  "currency": "EUR",
+  "period": "monthly",
+  "notes": "SEF requires at least €920/month of passive income plus proof of savings."
+  },
+  "processing_time_months": {
+  "min": 6,
+  "max": null,
+  "notes": "Processing typically takes six months or longer."
+  },
+  "leads_to_pr": true,
+  "years_to_pr": 5,
+  "years_to_citizenship": 10,
+  "notes": "Residency leads to PR after five years while the 2025 reform extends citizenship to ten
+  years; maintain income and integration evidence."
+  },
+  {
+  "pathway_type": "skilled_worker",
+  "name": "EU Blue Card / Skilled Worker Visa",
+  "job_offer_required": true,
+  "remote_work_allowed": false,
+  "income_requirement": {
+  "amount": null,
+  "currency": null,
+  "period": "annual",
+  "notes": "Salary must meet the Portuguese EU Blue Card threshold (confirm with SEF)."
+  },
+  "processing_time_months": {
+  "min": null,
+  "max": null,
+  "notes": "Portugal does not publish a fixed timeline; applicants should consult SEF for current
+  cadences."
+  },
+  "leads_to_pr": true,
+  "years_to_pr": 5,
+  "years_to_citizenship": 10,
+  "notes": "Time spent on the permit counts toward the standard five-year PR and ten-year
+  citizenship clocks."
+  },
+  {
+  "pathway_type": "humanitarian",
+  "name": "EU Asylum Procedure (SEF)",
+  "job_offer_required": false,
+  "remote_work_allowed": false,
+  "income_requirement": {
+  "amount": null,
+  "currency": null,
+  "period": "unknown",
+  "notes": "No income requirement; claims rest on protection grounds."
+  },
+  "processing_time_months": {
+  "min": null,
+  "max": null,
+  "notes": "Border procedures target 12-week decisions for safe-country/low-recognition cases while
+  regular procedures aim for six months."
+  },
+  "leads_to_pr": null,
+  "years_to_pr": null,
+  "years_to_citizenship": null,
+  "notes": "Applicants must be physically present to lodge with SEF and follow the EU Migration and
+  Asylum Pact flow."
+  },
+  {
+  "pathway_type": "ancestry",
+  "name": "Grandparent Citizenship",
+  "job_offer_required": false,
+  "remote_work_allowed": false,
+  "income_requirement": {
+  "amount": null,
+  "currency": null,
+  "period": "unknown",
+  "notes": "No income threshold; documentation must prove a Portuguese grandparent."
+  },
+  "processing_time_months": {
+  "min": null,
+  "max": null,
+  "notes": "Timing depends on consular processing of identity and lineage documents."
+  },
+  "leads_to_pr": null,
+  "years_to_pr": null,
+  "years_to_citizenship": null,
+  "notes": "Submit grandparental proof to a consulate or SEF to secure the citizenship pathway."
+  }
+  ],
+  "sources": [
+  {
+  "url": "https://ilga.org/news/pride-month-2025-lgbti-data-maps/",
+  "source_type": "ngo",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "high",
+  "notes": "ILGA rights summary noting Portugal’s top-tier protections."
+  },
+  {
+  "url": "https://www.ilga-europe.org/report/rainbow-map-2025/",
+  "source_type": "ngo",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "high",
+  "notes": "Rainbow Map for hate crime coverage and equality rankings."
+  },
+  {
+  "url": "https://rainbowmap.ilga-europe.org",
+  "source_type": "ngo",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Data portal backing ILGA’s country scores."
+  },
+  {
+  "url": "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+  "source_type": "media",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Time overview of Portugal’s abortion protections."
+  },
+  {
+  "url": "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-
+  comparative-review.pdf",
+  "source_type": "ngo",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "high",
+  "notes": "Comparative report documenting the legal status."
+  },
+  {
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "high",
+  "notes": "Academic summary of European hate crime statutes."
+  },
+  {
+  "url": "https://getgoldenvisa.com/portugal-golden-visa-program",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Describes the citizenship timeline change enacted in 2025."
+  },
+  {
+  "url": "https://immigrantinvest.com/blog/portugal-d7-visa-income-requirements/",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "D7 income and residency maintenance guidance."
+  },
+  {
+  "url": "https://www.globalcitizensolutions.com/portugal-d7-visa/",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Further D7 application overview."
+  },
+  {
+  "url": "https://www.portugalist.com/d7-changes-2026/",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Updates to the D7 process for 2026."
+  },
+  {
+  "url": "https://www.imidaily.com/eu-citizenship-by-descent/",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Explains ancestry requirements, including Portuguese grandparent claims."
+  },
+  {
+  "url": "https://www.italiandualcitizenship.net/italian-citizenship-through-parents-grandparents-
+  great-grandparents/",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Supports documentation expectations for grandparent citizenship routes."
+  },
+  {
+  "url": "https://emergency.unhcr.org/protection/legal-framework/refugee-status-determination-rsd",
+  "source_type": "ngo",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "high",
+  "notes": "UNHCR framework summarizing asylum submission requirements."
+  },
+  {
+  "url": "https://asylumineurope.org/reports/country/netherlands/asylum-procedure/general/short-
+  overview-asylum-procedure/",
+  "source_type": "ngo",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "high",
+  "notes": "EU-level asylum process summary cited for processing expectations."
+  },
+  {
+  "url": "research/healthcare.csv",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Repository summary of healthcare access and costs for Portugal."
+  },
+  {
+  "url": "research/taxes.csv",
+  "source_type": "other",
+  "retrieved_at": "2026-01-31T00:00:00Z",
+  "reliability": "medium",
+  "notes": "Repository summary of Portugal’s tax regime and incentives."
+  }
+  ],
+  "field_provenance": {
+  "country.policy_volatility": {
+  "sources": [
+  "https://getgoldenvisa.com/portugal-golden-visa-program"
+  ],
+  "confidence": "medium",
+  "change_type": "updated"
+  },
+  "rights_and_safety.lgbtq_rights_score": {
+  "sources": [
+  "https://ilga.org/news/pride-month-2025-lgbti-data-maps/",
+  "https://www.ilga-europe.org/report/rainbow-map-2025/",
+  "https://rainbowmap.ilga-europe.org"
+  ],
+  "confidence": "high",
+  "change_type": "unchanged"
+  },
+  "rights_and_safety.abortion_status": {
+  "sources": [
+  "https://time.com/6173229/countries-abortion-illegal-restrictions/",
+  "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-comparative-
+  review.pdf"
+  ],
+  "confidence": "medium",
+  "change_type": "updated"
+  },
+  "rights_and_safety.hate_crime_protections": {
+  "sources": [
+  "https://ilga.org/news/pride-month-2025-lgbti-data-maps/",
+  "https://www.ilga-europe.org/report/rainbow-map-2025/",
+  "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/"
+  ],
+  "confidence": "high",
+  "change_type": "updated"
+  },
+  "healthcare.system_type": {
+  "sources": [
+  "research/healthcare.csv"
+  ],
+  "confidence": "medium",
+  "change_type": "updated"
+  },
+  "taxation.special_regimes": {
+  "sources": [
+  "research/taxes.csv"
+  ],
+  "confidence": "medium",
+  "change_type": "updated"
+  }
+  },
+  "diff_summary": {
+  "has_changes": true,
+  "changed_fields": [
+  "country.policy_volatility",
+  "rights_and_safety.abortion_status",
+  "rights_and_safety.hate_crime_protections",
+  "healthcare.system_type",
+  "taxation.special_regimes",
+  "pathways"
+  ],
+  "notes": "Documented the structured safety indicators, captured D7/Blue Card/asylum/ancestry
+  pathways, added healthcare/tax summaries, and flagged medium volatility tied to the 2025
+  citizenship reform."
+  },
+  "issues": [
+  {
+  "severity": "info",
+  "code": "OTHER",
+  "message": "Portugal’s 2025 reform extended the citizenship residency requirement to ten years, so
+  policy volatility stays medium until the new timeline stabilizes.",
+  "related_fields": [
+  "country.policy_volatility"
+  ]
+  }
+  ]
+  }

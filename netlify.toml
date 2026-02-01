@@ -5,17 +5,16 @@
 [build.environment]
   SECRETS_SCAN_ENABLED = "false"
 
-# Proxy API requests to the live backend
-# REPLACE 'https://passagr-backend.up.railway.app' with your actual backend URL
 [[redirects]]
   from = "/api/*"
   to = "https://passagr-backend.up.railway.app/api/:splat"
   status = 200
   force = true
 
+# Netlify Function for countries data required by the map overlay
 [[redirects]]
-  from = "/public/*"
-  to = "https://passagr-backend.up.railway.app/public/:splat"
+  from = "/public/countries"
+  to = "/.netlify/functions/public-countries"
   status = 200
   force = true
 

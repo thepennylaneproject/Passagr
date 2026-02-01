@@ -1,0 +1,79 @@
+/* ============================================================================
+   Passagr Asset Registry (single import)
+   ========================================================================== */
+
+:root {
+    /* Grid: thinking surface */
+    --asset-texture-grid-thinking-01: url("https://res.cloudinary.com/sarah-sahl/image/upload/v1767902719/codra/minimal_grid_texture_with_faint_noise_soft_ink_on_sand_unobtr_d14df4b0-78dd-4fbe-8510-74381641f515_1_sui2pc.png");
+    --asset-texture-grid-thinking-02: url("https://res.cloudinary.com/sarah-sahl/image/upload/v1767902720/codra/minimal_grid_texture_with_faint_noise_soft_ink_on_sand_unobtr_d14df4b0-78dd-4fbe-8510-74381641f515_2_has0df.png");
+    --asset-texture-grid-thinking-03: url("https://res.cloudinary.com/sarah-sahl/image/upload/v1767902724/codra/minimal_grid_texture_with_faint_noise_soft_ink_on_sand_unobtr_d14df4b0-78dd-4fbe-8510-74381641f515_3_ry0ck7.png");
+
+    /* Paper: document surface */
+    --asset-texture-paper-archival-01: url("https://res.cloudinary.com/sarah-sahl/image/upload/v1767750916/Firefly_soft_off-white_archival_paper_texture_with_faint_natural_fibers_and_light_shadow_vari_279282_ip29dp.jpg");
+    --asset-texture-paper-archival-02: url("https://res.cloudinary.com/sarah-sahl/image/upload/v1767750905/Firefly_soft_off-white_archival_paper_texture_with_faint_natural_fibers_and_light_shadow_vari_305580_uigcsz.jpg");
+}
+
+/* ============================================================================
+   Texture helpers (opt-in)
+   Usage: class="has-texture texture-grid-01 texture-whisper"
+   ========================================================================== */
+
+.has-texture {
+    position: relative;
+    isolation: isolate;
+}
+
+.has-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background-image: var(--texture-image, none);
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-size: auto;
+
+    opacity: var(--texture-opacity, 0.04);
+    mix-blend-mode: multiply;
+}
+
+.has-texture>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Presets */
+.texture-grid-01 {
+    --texture-image: var(--asset-texture-grid-thinking-01);
+}
+
+.texture-grid-02 {
+    --texture-image: var(--asset-texture-grid-thinking-02);
+}
+
+.texture-grid-03 {
+    --texture-image: var(--asset-texture-grid-thinking-03);
+}
+
+.texture-paper-01 {
+    --texture-image: var(--asset-texture-paper-archival-01);
+}
+
+.texture-paper-02 {
+    --texture-image: var(--asset-texture-paper-archival-02);
+}
+
+/* Opacity presets */
+.texture-whisper {
+    --texture-opacity: 0.03;
+}
+
+.texture-soft {
+    --texture-opacity: 0.045;
+}
+
+.texture-present {
+    --texture-opacity: 0.06;
+}
