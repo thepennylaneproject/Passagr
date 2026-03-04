@@ -6,7 +6,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 const MAP_STYLE_URL = 'https://demotiles.maplibre.org/style.json';
 const TOOLTIP_DELAY_MS = 150;
 const MAP_DEBUG = import.meta.env.VITE_MAP_DEBUG === 'true';
-const COUNTRY_API_ENDPOINT = '/public/countries';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+const COUNTRY_API_ENDPOINT = `${API_BASE.replace(/\/$/, '')}/public/countries`;
 
 const FAILURE_MESSAGES = {
     network: 'Map unavailable, cannot reach the data service.',
@@ -29,6 +30,88 @@ const safeStringify = (value) => {
     }
 };
 
+const ensureArray = (value) => {
+    if (Array.isArray(value)) return value;
+    if (typeof value === 'string') return value ? [value] : [];
+    if (value && typeof value[Symbol.iterator] === 'function') {
+        return Array.from(value).filter(Boolean);
+    }
+    return [];
+};
+
+const expandPathwayTypes = (value) => {
+    return ensureArray(value)
+        .flatMap((entry) => {
+            if (typeof entry === 'string') {
+                const trimmed = entry.trim();
+                if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+                    try {
+                        return ensureArray(JSON.parse(trimmed));
+                    } catch {
+                        return [entry];
+                    }
+                }
+                return [entry];
+            }
+            return [entry];
+        })
+        .filter(Boolean);
+};
+
+const isoToFlag = (iso2) => {
+    if (!iso2 || iso2.length !== 2) return '';
+    const codePoints = iso2
+        .toUpperCase()
+        .split('')
+        .map((char) => 127397 + char.charCodeAt(0));
+    return String.fromCodePoint(...codePoints);
+};
+
+const formatPathwayLabel = (value) => {
+    if (!value) return '';
+    const cleaned = value
+        .toString()
+        .replace(/[_-]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    return cleaned.replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
+const getTierFromScore = (score) => {
+    if (typeof score !== 'number') return null;
+    if (score >= 5) return 'Strong';
+    if (score >= 4) return 'Good';
+    if (score >= 3) return 'Mixed';
+    if (score >= 2) return 'Limited';
+    return 'Restricted';
+};
+
+const pickProp = (props, keys) => {
+    for (const key of keys) {
+        const value = props?.[key];
+        if (value !== null && value !== undefined && value !== '') return value;
+    }
+    return null;
+};
+
+const getTierDisplay = (value) => {
+    if (typeof value === 'number') {
+        const tier = getTierFromScore(value);
+        return tier ? { label: tier, meta: `${value}/5` } : { label: `${value}` };
+    }
+    if (typeof value === 'string' && value.trim()) {
+        return { label: formatPathwayLabel(value.trim()) };
+    }
+    return null;
+};
+
+const formatDateShort = (value) => {
+    if (!value) return null;
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return null;
+    return date.toLocaleDateString();
+};
+
 const logMapDebug = (label, payload) => {
     if (!MAP_DEBUG) return;
     console.groupCollapsed(`[ImmigrationMap] ${label}`);
@@ -45,6 +128,59 @@ const extractFeatureCollection = (payload) => {
     if (payload?.data && isFeatureCollection(payload.data)) return payload.data;
     if (payload?.document && isFeatureCollection(payload.document)) return payload.document;
     return null;
+};
+
+// FE-8: Hoisted to module scope so both the useEffect (mouse) and handleAccessibleFocus (keyboard)
+// can call it without scoping issues that caused a TypeError for keyboard users.
+const renderTooltip = (tooltipEl, feature, hintText) => {
+    if (!tooltipEl || !feature) return;
+    const props = feature.properties || {};
+    const pathwayCount = Number.isFinite(props.pathwayCount) ? props.pathwayCount : 0;
+    const pathwayTypes = expandPathwayTypes(props.pathwayTypes).map(formatPathwayLabel);
+
+    tooltipEl.innerHTML = '';
+
+    const title = document.createElement('div');
+    title.className = 'map-tooltip__title';
+    title.textContent = props.countryName || 'Unknown';
+    tooltipEl.appendChild(title);
+
+    const countLine = document.createElement('div');
+    countLine.className = 'map-tooltip__meta';
+    countLine.textContent = `${pathwayCount} verified pathway${pathwayCount === 1 ? '' : 's'}`;
+    tooltipEl.appendChild(countLine);
+
+    const chips = [];
+    const rightsScore = pickProp(props, ['lgbtq_rights_index', 'lgbtq_index']);
+    const rightsTier = getTierDisplay(rightsScore);
+    if (rightsTier?.label) chips.push(`Rights: ${rightsTier.label}`);
+
+    const healthcareTier = getTierDisplay(pickProp(props, ['healthcare_tier', 'healthcare_level', 'healthcare_score']));
+    const healthcareSystem = getTierDisplay(pickProp(props, ['healthcare_system', 'healthcare_model', 'healthcare_access']));
+    const healthcareChip = healthcareTier?.label || healthcareSystem?.label;
+    if (healthcareChip) chips.push(`Healthcare: ${healthcareChip}`);
+
+    const remoteFriendly = pathwayTypes.some((type) =>
+        /remote|digital nomad/i.test(type)
+    );
+    if (remoteFriendly) chips.push('Remote-work friendly');
+
+    if (chips.length) {
+        const chipWrap = document.createElement('div');
+        chipWrap.className = 'map-tooltip__chips';
+        chips.slice(0, 3).forEach((label) => {
+            const chip = document.createElement('span');
+            chip.className = 'map-tooltip__chip';
+            chip.textContent = label;
+            chipWrap.appendChild(chip);
+        });
+        tooltipEl.appendChild(chipWrap);
+    }
+
+    const hint = document.createElement('div');
+    hint.className = 'map-tooltip__hint';
+    hint.textContent = hintText;
+    tooltipEl.appendChild(hint);
 };
 
 // MapLibre expressions are immutable once added, so we pre-build the single-hue stops (0–3+ options).
@@ -102,7 +238,7 @@ const normalizeFeatures = (rawGeoJson) => {
         const pathwayTypes = Array.from(
             new Set(
                 pathwayDetails
-                    .map((entry) => entry.name || entry.type)
+                    .map((entry) => entry.type || entry.name)
                     .filter(Boolean)
             )
         );
@@ -146,7 +282,7 @@ const useIsMobile = () => {
     return isMobile;
 };
 
-const ImmigrationMap = () => {
+const ImmigrationMap = ({ onSelectCountry }) => {
     const mapContainer = useRef(null);
     const mapInstance = useRef(null);
     const tooltipRef = useRef(null);
@@ -158,6 +294,7 @@ const ImmigrationMap = () => {
     const [error, setError] = useState(null);
     const [mapReady, setMapReady] = useState(false);
     const [activeFeature, setActiveFeature] = useState(null);
+    const [reloadToken, setReloadToken] = useState(0);
 
     const isMobile = useIsMobile();
 
@@ -288,34 +425,20 @@ const ImmigrationMap = () => {
             }
         };
 
+        const renderTooltipInPlace = (feature, hintText) => {
+            renderTooltip(tooltipRef.current, feature, hintText);
+        };
+
         const scheduleTooltip = (feature, point) => {
             if (!feature || !tooltipRef.current) return;
             if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
 
             // A small delay mitigates flicker during fast mouse moves and respects the requirement.
             tooltipTimer.current = window.setTimeout(() => {
-                const props = feature.properties || {};
                 tooltipRef.current.dataset.visible = 'true';
                 tooltipRef.current.style.left = `${point.x + 12}px`;
                 tooltipRef.current.style.top = `${point.y + 12}px`;
-                tooltipRef.current.innerHTML = '';
-
-                const title = document.createElement('strong');
-                title.textContent = props.countryName;
-                tooltipRef.current.appendChild(title);
-
-                const countLine = document.createElement('div');
-                countLine.textContent = `Pathway count: ${props.pathwayCount}`;
-                tooltipRef.current.appendChild(countLine);
-
-                const typesLine = document.createElement('div');
-                const typesText = (props.pathwayTypes || []).join(', ');
-                typesLine.textContent = typesText ? `Types: ${typesText}` : 'Types: None recorded';
-                tooltipRef.current.appendChild(typesLine);
-
-                const hint = document.createElement('div');
-                hint.textContent = 'Click to view details';
-                tooltipRef.current.appendChild(hint);
+                renderTooltipInPlace(feature, 'Click for details');
             }, TOOLTIP_DELAY_MS);
         };
 
@@ -448,7 +571,7 @@ const handleMapError = useCallback((failureType, details = {}) => {
         };
 
         fetchGeo();
-    }, [handleMapError]);
+    }, [handleMapError, reloadToken]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -471,24 +594,7 @@ const handleMapError = useCallback((failureType, details = {}) => {
             tooltipRef.current.dataset.visible = 'true';
             tooltipRef.current.style.left = `${point.x}px`;
             tooltipRef.current.style.top = `${point.y}px`;
-            tooltipRef.current.innerHTML = '';
-
-            const title = document.createElement('strong');
-            title.textContent = feature.properties.countryName;
-            tooltipRef.current.appendChild(title);
-
-            const countLine = document.createElement('div');
-            countLine.textContent = `Pathway count: ${feature.properties.pathwayCount}`;
-            tooltipRef.current.appendChild(countLine);
-
-            const typesLine = document.createElement('div');
-            const typesText = (feature.properties.pathwayTypes || []).join(', ');
-            typesLine.textContent = typesText ? `Types: ${typesText}` : 'Types: None recorded';
-            tooltipRef.current.appendChild(typesLine);
-
-            const hint = document.createElement('div');
-            hint.textContent = 'Press Enter to view details';
-            tooltipRef.current.appendChild(hint);
+            renderTooltip(tooltipRef.current, feature, 'Press Enter for details');
         }
     }, []);
 
@@ -510,8 +616,6 @@ const handleMapError = useCallback((failureType, details = {}) => {
     }, [handleAccessibleSelection]);
 
     const handleCloseDrawer = () => setActiveFeature(null);
-
-    const drawerLink = `/countries/${(activeFeature?.properties?.iso2 || '').toLowerCase()}`;
 
     return (
         <div className="map-panel">
@@ -536,6 +640,14 @@ const handleMapError = useCallback((failureType, details = {}) => {
                     <div className="map-viewer__state">
                         <p>Unable to show the map right now.</p>
                         <p className="text-xs opacity-70">{error}</p>
+                        <button
+                            type="button"
+                            onClick={() => setReloadToken((value) => value + 1)}
+                            className="mt-3 inline-flex items-center text-xs font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-800 transition-colors"
+                        >
+                            Retry map
+                        </button>
+                        <p className="text-xs opacity-70 mt-2">You can still browse destinations below.</p>
                     </div>
                 )}
 
@@ -555,60 +667,156 @@ const handleMapError = useCallback((failureType, details = {}) => {
                         </button>
                     ))}
                 </div>
-            </div>
 
-            <div
-                className={`country-drawer${activeFeature ? ' country-drawer--open' : ''}${isMobile ? ' country-drawer--mobile' : ''}`}
-                role="dialog"
-                aria-modal={isMobile}
-                aria-labelledby={activeFeature ? 'country-drawer-title' : undefined}
-            >
-                <div className="country-drawer__header">
-                    <h4 id="country-drawer-title">{activeFeature?.properties?.countryName || 'Select a country'}</h4>
-                    <button type="button" onClick={handleCloseDrawer} className="country-drawer__close" aria-label="Close country details">
-                        <X className="w-4 h-4" />
-                    </button>
-                </div>
-                {activeFeature ? (
-                    <div className="country-drawer__body">
-                        <p className="text-xs uppercase tracking-wide text-surface-500">
-                            ISO: {activeFeature.properties.iso2 || 'N/A'}
-                        </p>
-                        <p className="text-sm text-surface-600 mb-4">
-                            Pathway count: {activeFeature.properties.pathwayCount}
-                        </p>
-                        <div className="country-drawer__list">
-                            {(activeFeature.properties.pathwayDetails || []).map((pathway, index) => (
-                                <article className="country-drawer__row" key={`${activeFeature.id}-${index}`}>
-                                    <div>
-                                        <p className="country-drawer__row-title">{pathway.name || pathway.type}</p>
-                                        <p className="country-drawer__row-subtitle">{pathway.type || 'Pathway'}</p>
+                <div
+                    className={`country-drawer${activeFeature ? ' country-drawer--open' : ' country-drawer--idle'}${isMobile ? ' country-drawer--mobile' : ''}`}
+                    role="dialog"
+                    aria-modal={isMobile}
+                    aria-labelledby={activeFeature ? 'country-drawer-title' : undefined}
+                >
+                    <div className="country-drawer__header">
+                        <div className="country-drawer__identity">
+                            <span className="country-drawer__flag" aria-hidden="true">
+                                {isoToFlag(activeFeature?.properties?.iso2)}
+                            </span>
+                            <div>
+                                <h4 id="country-drawer-title">{activeFeature?.properties?.countryName || 'Select a country'}</h4>
+                                <p className="country-drawer__meta">
+                                    ISO {activeFeature?.properties?.iso2 || 'N/A'}
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" onClick={handleCloseDrawer} className="country-drawer__close" aria-label="Close country details">
+                            <X className="w-4 h-4" />
+                        </button>
+                    </div>
+                    {activeFeature ? (
+                        <div className="country-drawer__body">
+                            <div className="country-drawer__status">
+                                {activeFeature.properties.pathwayCount > 0 ? 'Verified pathways available' : 'No verified pathways yet'}
+                            </div>
+                            <p className="country-drawer__microcopy">
+                                Explore verified options prioritized for rights, safety, and access to care.
+                            </p>
+
+                            <div className="country-drawer__actions">
+                                <button
+                                    type="button"
+                                    className="country-drawer__button"
+                                    onClick={() => {
+                                        const iso2 = activeFeature?.properties?.iso2;
+                                        if (!iso2 || !onSelectCountry) return;
+                                        onSelectCountry(iso2, 'pathways');
+                                    }}
+                                    disabled={!activeFeature.properties?.iso2 || activeFeature.properties.pathwayCount === 0}
+                                >
+                                    View pathways
+                                </button>
+                                <button
+                                    type="button"
+                                    className="country-drawer__link"
+                                    onClick={() => {
+                                        const iso2 = activeFeature?.properties?.iso2;
+                                        if (!iso2 || !onSelectCountry) return;
+                                        onSelectCountry(iso2, 'profile');
+                                    }}
+                                    disabled={!activeFeature.properties?.iso2}
+                                >
+                                    Open country profile
+                                </button>
+                            </div>
+
+                            <div className="country-drawer__stats">
+                                <div className="country-drawer__stat">
+                                    <p className="country-drawer__stat-label">Verified pathways</p>
+                                    <p className="country-drawer__stat-value">{activeFeature.properties.pathwayCount}</p>
+                                </div>
+                                <div className="country-drawer__stat">
+                                    <p className="country-drawer__stat-label">Rights</p>
+                                    {(() => {
+                                        const rightsValue = pickProp(activeFeature.properties, ['lgbtq_rights_index', 'lgbtq_index']);
+                                        const rightsTier = getTierDisplay(rightsValue);
+                                        return (
+                                            <p className="country-drawer__stat-value">
+                                                {rightsTier ? rightsTier.label : 'Data coming soon'}
+                                                {rightsTier?.meta ? <span className="country-drawer__stat-meta">{rightsTier.meta}</span> : null}
+                                            </p>
+                                        );
+                                    })()}
+                                </div>
+                                <div className="country-drawer__stat">
+                                    <p className="country-drawer__stat-label">Healthcare</p>
+                                    {(() => {
+                                        const tier = getTierDisplay(pickProp(activeFeature.properties, ['healthcare_tier', 'healthcare_level', 'healthcare_score']));
+                                        const note = getTierDisplay(pickProp(activeFeature.properties, ['healthcare_system', 'healthcare_model', 'healthcare_access']));
+                                        const noteLabel = note?.label;
+                                        const tierLabel = tier?.label;
+                                        return (
+                                            <p className="country-drawer__stat-value">
+                                                {tierLabel || noteLabel || 'Data coming soon'}
+                                                {noteLabel && tierLabel && noteLabel !== tierLabel ? (
+                                                    <span className="country-drawer__stat-meta">{noteLabel}</span>
+                                                ) : null}
+                                            </p>
+                                        );
+                                    })()}
+                                </div>
+                                <div className="country-drawer__stat">
+                                    <p className="country-drawer__stat-label">Safety</p>
+                                    {(() => {
+                                        const safetyValue = pickProp(activeFeature.properties, ['safety_label', 'safety_tier', 'safety_index', 'safety_score']);
+                                        const safetyTier = getTierDisplay(safetyValue);
+                                        return (
+                                            <p className="country-drawer__stat-value">
+                                                {safetyTier ? safetyTier.label : 'Data coming soon'}
+                                                {safetyTier?.meta ? <span className="country-drawer__stat-meta">{safetyTier.meta}</span> : null}
+                                            </p>
+                                        );
+                                    })()}
+                                </div>
+                            </div>
+
+                            {expandPathwayTypes(activeFeature.properties.pathwayTypes).length > 0 && (
+                                <div className="country-drawer__known">
+                                    <p className="country-drawer__stat-label">Pathway types</p>
+                                    <div className="country-drawer__chips">
+                                        {Array.from(new Set(expandPathwayTypes(activeFeature.properties.pathwayTypes).map(formatPathwayLabel)))
+                                            .map((type) => (
+                                                <span className="country-drawer__chip" key={type}>{type}</span>
+                                            ))}
                                     </div>
-                                    {pathway.description && (
-                                        <p className="country-drawer__row-copy">{pathway.description}</p>
-                                    )}
-                                </article>
-                            ))}
-                            {(activeFeature.properties.pathwayDetails || []).length === 0 && (
-                                <p className="text-xs text-surface-500">Pathway details are not available in this snapshot.</p>
+                                </div>
+                            )}
+
+                            {ensureArray(pickProp(activeFeature.properties, ['known_for', 'known_for_tags', 'highlights'])).length > 0 && (
+                                <div className="country-drawer__known">
+                                    <p className="country-drawer__stat-label">Known for</p>
+                                    <ul className="country-drawer__known-list">
+                                        {ensureArray(pickProp(activeFeature.properties, ['known_for', 'known_for_tags', 'highlights']))
+                                            .slice(0, 3)
+                                            .map((item, index) => (
+                                                <li key={`${activeFeature.id}-known-${index}`}>{item}</li>
+                                            ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {formatDateShort(activeFeature.properties.last_verified_at) && (
+                                <p className="country-drawer__verified">
+                                    Last verified {formatDateShort(activeFeature.properties.last_verified_at)}
+                                </p>
+                            )}
+                            {!activeFeature.properties?.iso2 && (
+                                <p className="text-xs text-surface-500 mt-2">
+                                    This country does not have a verified profile in the current snapshot.
+                                </p>
                             )}
                         </div>
-                    </div>
-                ) : (
-                    <div className="country-drawer__body">
-                        <p className="text-sm text-surface-600">Select a country on the map to see the available pathways.</p>
-                    </div>
-                )}
-                <div className="country-drawer__footer">
-                    <a
-                        href={activeFeature ? drawerLink : '#'}
-                        className="country-drawer__button"
-                        onClick={(event) => {
-                            if (!activeFeature) event.preventDefault();
-                        }}
-                    >
-                        View full country profile
-                    </a>
+                    ) : (
+                        <div className="country-drawer__body">
+                            <p className="text-sm text-surface-600">Select a country on the map to see the available pathways.</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

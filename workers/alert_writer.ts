@@ -1,4 +1,6 @@
 // workers/alert_writer.ts
+import { supabase } from './supabase_client.ts';
+
 interface AlertTask {
     entity: any;
     differOutput: any;
@@ -9,7 +11,6 @@ export const handler = async (task: AlertTask) => {
     const { entity, differOutput, impact } = task;
 
     if (impact !== 'high' && impact !== 'medium') {
-        console.log("No high or medium impact changes to alert on.");
         return;
     }
 
@@ -18,14 +19,32 @@ export const handler = async (task: AlertTask) => {
     const entityName = entity.name || entity.iso2;
 
     const notificationText = `A change has been published for ${entityName} ${entityType}: ${diff_summary}`;
-    const emailSummaryText = `A new update for the ${entityName} ${entityType} has been published. The changes affect key fields like ${diff_fields.slice(0, 3).map(d => d.field).join(', ')} and have been automatically approved.`;
+    const emailSummaryText = `A new update for the ${entityName} ${entityType} has been published. The changes affect key fields like ${diff_fields.slice(0, 3).map((d: any) => d.field).join(', ')} and have been automatically approved.`;
 
-    const alertOutput = {
-        notification: notificationText.slice(0, 200),
-        email_summary: emailSummaryText.slice(0, 200) // Ensure it fits the 1-2 sentence rule
-    };
+    // P-7.1: Persist alert to DB instead of just logging
+    const { error } = await supabase
+        .from('pipeline_alerts')
+        .insert({
+            entity_type: entityType,
+            entity_id: entity.entity_id || entity.id || null,
+            alert_type: impact,
+            notification: truncateWithEllipsis(notificationText, 2000),
+            email_summary: truncateWithEllipsis(emailSummaryText, 4000),
+        });
 
-    console.log("Alerts generated:", alertOutput);
-    // In a real system, this would trigger email, Slack, or other notification services.
-    // e.g., `sendEmail({ to: 'editors@passagr.com', subject: alertOutput.notification, body: alertOutput.email_summary });`
+    if (error) {
+        console.error('[alert_writer] Failed to persist alert:', error);
+    } else {
+        console.log(`[alert_writer] Alert created for ${entityType}:${entityName}`);
+    }
 };
+
+function truncateWithEllipsis(value: string, maxChars: number): string {
+    if (value.length <= maxChars) {
+        return value;
+    }
+    if (maxChars <= 3) {
+        return value.slice(0, maxChars);
+    }
+    return `${value.slice(0, maxChars - 3)}...`;
+}

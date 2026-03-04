@@ -1,137 +1,202 @@
 // search/sync_worker.ts
-import { SupabaseClient, createClient } from '@supabase/supabase-js';
-// Using Typesense client as a concrete example
-import { Client as TypesenseClient } from 'typesense'; 
-import { v4 as uuidv4 } from 'uuid';
+import { supabase } from '../workers/supabase_client.ts'
+import { Client as TypesenseClient } from 'typesense'
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-// ⚠️ IMPORTANT: Configure your Typesense/Algolia connection details
 const typesenseClient = new TypesenseClient({
-    nodes: [{ 
-        host: process.env.TYPESENSE_HOST || 'localhost', 
-        port: parseInt(process.env.TYPESENSE_PORT || '8108'), 
-        protocol: process.env.TYPESENSE_PROTOCOL || 'http' 
-    }],
-    apiKey: process.env.TYPESENSE_API_KEY || 'xyz'
-});
+  nodes: [
+    {
+      host: process.env.TYPESENSE_HOST || 'localhost',
+      port: parseInt(process.env.TYPESENSE_PORT || '8108', 10),
+      protocol: process.env.TYPESENSE_PROTOCOL || 'http',
+    },
+  ],
+  apiKey: process.env.TYPESENSE_API_KEY || 'xyz',
+})
 
 interface SyncTask {
-    entityType: 'countries' | 'visa_paths';
-    entityId: string;
+  entityType: 'countries' | 'visa_paths'
+  entityId: string
 }
 
-/**
- * Transforms the database row into a flat, indexable document for the search engine.
- */
-const transformDocument = async (data: any, entityType: 'countries' | 'visa_paths'): Promise<any> => {
-    const document = {
-        // Required for search index primary key
-        id: data.id, 
-        // Convert ISO date string to a numeric timestamp for proper sorting
-        last_verified_at: new Date(data.last_verified_at).getTime(), 
-        // Index all general string/text fields
-        name: data.name,
-        // Add dynamic tags for faceting
-        tags: [],
-    };
+const TYPESENSE_MAX_DOC_BYTES = 2 * 1024 * 1024
+const SAFE_DOC_BYTES = Math.floor(TYPESENSE_MAX_DOC_BYTES * 0.95)
+const MAX_CONTENT_BYTES = 180_000
 
-    if (entityType === 'countries') {
-        return {
-            ...document,
-            iso2: data.iso2,
-            regions: data.regions,
-            languages: data.languages,
-            currency: data.currency,
-            climate_tags: data.climate_tags,
-            // Concatenate large text fields for searchable content
-            content: `${data.healthcare_overview || ''} ${data.rights_snapshot || ''} ${data.tax_snapshot || ''}`
-        };
+const toTimestamp = (value?: string | null): number =>
+  value ? new Date(value).getTime() : 0
+
+const transformDocument = (
+  data: any,
+  entityType: 'countries' | 'visa_paths'
+): Record<string, any> | null => {
+  const base = {
+    id: data.id,
+    name: data.name,
+    last_verified_at: toTimestamp(data.last_verified_at),
+    search_version: 1,
+    tags: [] as string[],
+  }
+
+  if (entityType === 'countries') {
+    return {
+      ...base,
+      iso2: data.iso2,
+      regions: data.regions ?? [],
+      languages: data.languages ?? [],
+      currency: data.currency ?? null,
+      climate_tags: data.climate_tags ?? [],
+      timezones: data.timezones ?? [],
+      lgbtq_rights_index: data.lgbtq_rights_index ?? null,
+      abortion_access_status: data.abortion_access_status ?? null,
+      abortion_access_tier: data.abortion_access_tier ?? null,
+      content: [
+        data.healthcare_overview,
+        data.rights_snapshot,
+        data.tax_snapshot,
+      ]
+        .filter(Boolean)
+        .join(' '),
+      tags: [...(data.regions ?? []), ...(data.climate_tags ?? [])],
     }
+  }
 
-    if (entityType === 'visa_paths') {
-        // Fetch and embed Country Name for better search results and faceting
-        const { data: countryData, error: countryError } = await supabase
-            .from('countries')
-            .select('name')
-            .eq('id', data.country_id)
-            .single();
+  if (entityType === 'visa_paths') {
+    const eligibilityArr = Array.isArray(data.eligibility)
+      ? data.eligibility
+      : []
 
-        const countryName = countryData?.name || 'Unknown';
-        
-        // Flatten nested JSONB arrays for indexing (e.g., eligibility list)
-        const eligibilityText = Array.isArray(data.eligibility) ? data.eligibility.join('; ') : '';
-        const feesSummary = Array.isArray(data.fees) ? data.fees.map((f: any) => `${f.amount} ${f.currency}`).join(', ') : '';
+    const feesArr = Array.isArray(data.fees) ? data.fees : []
 
-        return {
-            ...document,
-            country_id: data.country_id,
-            country_name: countryName,
-            type: data.type,
-            description: data.description,
-            work_rights: data.work_rights,
-            dependents_rules: data.dependents_rules,
-            renewal_rules: data.renewal_rules,
-            to_pr_citizenship_timeline: data.to_pr_citizenship_timeline,
-            // Financials for numeric filtering
-            min_income_amount: data.min_income_amount,
-            min_income_currency: data.min_income_currency,
-            
-            // Searchable text content
-            content: `${data.description} ${eligibilityText} ${data.work_rights} ${data.dependents_rules} ${feesSummary}`,
-            
-            // Faceting fields
-            eligibility_terms: data.eligibility,
-            tags: [data.type, countryName].filter(Boolean),
-        };
+    const feesText = feesArr
+      .map((f: any) =>
+        f?.amount && f?.currency ? `${f.amount} ${f.currency}` : null
+      )
+      .filter(Boolean)
+      .join(', ')
+
+    return {
+      ...base,
+      country_id: data.country_id,
+      country_name: data.country?.name ?? 'Unknown',
+      type: data.type,
+      description: data.description ?? null,
+      work_rights: data.work_rights ?? null,
+      in_country_conversion_path: data.in_country_conversion_path ?? null,
+      dependents_rules: data.dependents_rules ?? null,
+      renewal_rules: data.renewal_rules ?? null,
+      to_pr_citizenship_timeline: data.to_pr_citizenship_timeline ?? null,
+      min_income_amount: data.min_income_amount ?? null,
+      min_income_currency: data.min_income_currency ?? null,
+      min_savings_amount: data.min_savings_amount ?? null,
+      min_savings_currency: data.min_savings_currency ?? null,
+      eligibility_terms: eligibilityArr,
+      content: [
+        data.description,
+        eligibilityArr.join('; '),
+        data.work_rights,
+        data.dependents_rules,
+        feesText,
+      ]
+        .filter(Boolean)
+        .join(' '),
+      tags: [data.type, data.country?.name].filter(Boolean),
     }
-    return null;
-};
+  }
 
+  return null
+}
 
 export const handler = async (task: SyncTask) => {
-    const { entityType, entityId } = task;
-    const collectionName = entityType; // e.g., 'countries' or 'visa_paths'
+  const { entityType, entityId } = task
+  const collectionName = entityType
 
-    console.log(`Starting search index sync for ${entityType} entity ${entityId}`);
+  const source =
+    entityType === 'countries'
+      ? 'country_profile_compact'
+      : 'visa_paths'
 
-    // 1. Fetch the published entity data
-    const { data: entityData, error } = await supabase
-        .from(entityType)
-        .select('*')
-        .eq('id', entityId)
-        .eq('status', 'published') // Only index published data
-        .single();
+  const select =
+    entityType === 'visa_paths'
+      ? '*, country:countries(name)'
+      : '*'
 
-    if (error || !entityData) {
-        console.warn(`Entity ${entityId} not found or not published. Attempting deletion from index.`);
-        // If data is missing or not published, ensure it's removed from the index.
-        try {
-            await typesenseClient.collections(collectionName).documents(entityId).delete();
-            console.log(`Successfully deleted entity ${entityId} from ${collectionName} index.`);
-        } catch (e) {
-            // Ignore if the document was already missing
-            // console.error(`Failed to delete entity ${entityId}:`, e);
-        }
-        return;
-    }
+  const { data, error } = await supabase
+    .from(source)
+    .select(select)
+    .eq('id', entityId)
+    .eq('status', 'published')
+    .single()
 
-    // 2. Transform the data into the search document format
-    const document = await transformDocument(entityData, entityType);
-    
-    if (!document) {
-        console.error(`Transformation failed for entity ${entityId}. Skipping index update.`);
-        return;
-    }
-
-    // 3. Upsert the document into the search index
+  if (error || !data) {
     try {
-        // Typesense documents().upsert() method is idempotent
-        await typesenseClient.collections(collectionName).documents().upsert(document);
-        console.log(`✅ Successfully indexed entity ${entityId} in ${collectionName} collection.`);
-    } catch (e) {
-        console.error(`❌ Failed to index entity ${entityId} into Typesense:`, e);
+      await typesenseClient
+        .collections(collectionName)
+        .documents(entityId)
+        .delete()
+    } catch (err) {
+      console.error(`[search-sync] Failed to delete ${collectionName}:${entityId}`, err)
     }
-};
+    return
+  }
+
+  const document = transformDocument(data, entityType)
+  if (!document) return
+  try {
+    constrainDocumentSize(document, `${collectionName}:${entityId}`)
+  } catch (err) {
+    console.error(String(err))
+    return
+  }
+
+  try {
+    await typesenseClient
+      .collections(collectionName)
+      .documents()
+      .upsert(document)
+  } catch (err) {
+    console.error(`[search-sync] Failed to upsert ${collectionName}:${entityId}`, err)
+  }
+}
+
+function constrainDocumentSize(document: Record<string, any>, documentId: string): void {
+  if (getDocBytes(document) <= SAFE_DOC_BYTES) {
+    return
+  }
+
+  if (typeof document.content === 'string' && document.content.length > 0) {
+    document.content = truncateToBytes(document.content, MAX_CONTENT_BYTES)
+  }
+
+  if (typeof document.description === 'string' && document.description.length > 0) {
+    document.description = truncateToBytes(document.description, Math.floor(MAX_CONTENT_BYTES / 2))
+  }
+
+  if (Array.isArray(document.eligibility_terms)) {
+    document.eligibility_terms = document.eligibility_terms
+      .map((value: unknown) => (typeof value === 'string' ? truncateToBytes(value, 2_000) : value))
+      .slice(0, 200)
+  }
+
+  const finalSize = getDocBytes(document)
+  if (finalSize > TYPESENSE_MAX_DOC_BYTES) {
+    throw new Error(
+      `[search-sync] Document exceeds Typesense 2MB limit after truncation for ${documentId}: ${finalSize} bytes`
+    )
+  }
+}
+
+function getDocBytes(document: Record<string, unknown>): number {
+  return Buffer.byteLength(JSON.stringify(document), 'utf8')
+}
+
+function truncateToBytes(value: string, maxBytes: number): string {
+  if (Buffer.byteLength(value, 'utf8') <= maxBytes) {
+    return value
+  }
+
+  let truncated = value
+  while (truncated.length > 0 && Buffer.byteLength(truncated, 'utf8') > maxBytes) {
+    truncated = truncated.slice(0, Math.floor(truncated.length * 0.8))
+  }
+  return truncated
+}

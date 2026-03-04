@@ -1,13 +1,18 @@
 // api/jobs.ts - Cron Job Endpoints
-import { Request, Response } from 'express';
-import { scanForStaleEntities, enqueueFetcherTasks } from '../workers/freshness_scanner';
-import { checkAllLinks } from '../workers/link_checker';
-import { pgPool as pool } from './server';
+import type { Request, Response } from 'express';
+import { scanForStaleEntities, enqueueFetcherTasks } from '../workers/freshness_scanner.ts';
+import { checkAllLinks } from '../workers/link_checker.ts';
+import { handler as searchSyncHandler } from '../search/sync_worker.ts';
+import { pgPool as pool } from './db.ts';
 
 // Middleware to verify cron job authentication
 export function verifyCronAuth(req: Request, res: Response, next: Function) {
     const cronSecret = req.headers['x-cron-secret'];
-    const expectedSecret = process.env.CRON_SECRET || 'dev-secret';
+    const expectedSecret = process.env.CRON_SECRET;
+
+    if (!expectedSecret) {
+        return res.status(503).json({ error: 'Service unavailable' });
+    }
 
     if (cronSecret !== expectedSecret) {
         return res.status(401).json({ error: 'Unauthorized' });
@@ -43,7 +48,7 @@ export async function handleFreshnessScan(req: Request, res: Response) {
         res.status(500).json({
             success: false,
             job: 'freshness-scan',
-            error: error.message,
+            error: 'Internal job error',
             timestamp: new Date().toISOString()
         });
     }
@@ -80,7 +85,7 @@ export async function handleLinkCheck(req: Request, res: Response) {
         res.status(500).json({
             success: false,
             job: 'link-check',
-            error: error.message,
+            error: 'Internal job error',
             timestamp: new Date().toISOString()
         });
     }
@@ -109,8 +114,24 @@ export async function handleIndexRefresh(req: Request, res: Response) {
         const visaPathsCount = visaPathsResult.rows.length;
         const totalUpdated = countriesCount + visaPathsCount;
 
-        // In production, this would trigger the search sync worker
-        console.log(`Would sync ${totalUpdated} entities to search index`);
+        // R1: Actually sync updated entities to search index
+        let syncedCount = 0;
+        for (const row of countriesResult.rows) {
+            try {
+                await searchSyncHandler({ entityType: 'countries', entityId: row.id });
+                syncedCount++;
+            } catch (err) {
+                console.error(`[index-refresh] Sync failed for country ${row.id}:`, err);
+            }
+        }
+        for (const row of visaPathsResult.rows) {
+            try {
+                await searchSyncHandler({ entityType: 'visa_paths', entityId: row.id });
+                syncedCount++;
+            } catch (err) {
+                console.error(`[index-refresh] Sync failed for visa_path ${row.id}:`, err);
+            }
+        }
 
         const duration = Date.now() - startTime;
 
@@ -131,7 +152,7 @@ export async function handleIndexRefresh(req: Request, res: Response) {
         res.status(500).json({
             success: false,
             job: 'index-refresh',
-            error: error.message,
+            error: 'Internal job error',
             timestamp: new Date().toISOString()
         });
     }

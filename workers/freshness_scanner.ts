@@ -1,12 +1,7 @@
 // workers/freshness_scanner.ts
-import { Pool } from 'pg';
+import { createPgPool } from './db.ts';
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+const pool = createPgPool();
 
 interface StaleEntity {
     entity_type: 'country' | 'visa_path';

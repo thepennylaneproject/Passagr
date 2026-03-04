@@ -219,6 +219,61 @@ This is a learning project! Areas you could improve:
 5. Add progressive web app (PWA) capabilities
 6. Implement internationalization (i18n)
 
+## 🔐 Environment Notes (Server Workers)
+
+Server-side workers now require `SUPABASE_SERVICE_ROLE_KEY` for writes when RLS is enabled. Do not expose this key to the client. Use the anon key only for client-side Supabase access.
+
+See `.env.example` for the full variable list.
+
+## Encryption Safety Warning
+
+Application-layer encryption must run on the server only. Do not run `encryptForUser` or `decryptForUser` in client/browser code, and never expose KEK material (`ENVELOPE_MASTER_KEY` or KMS credentials) to the client.
+
+## Privacy Export JSON Schema (v1)
+
+Schema ID: `passagr.export.v1`
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "passagr.export.v1",
+  "title": "Passagr Privacy Export v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "exported_at", "job_id", "user_id", "tables"],
+  "properties": {
+    "schema_id": { "const": "passagr.export.v1" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "job_id": { "type": "string", "format": "uuid" },
+    "user_id": { "type": "string", "format": "uuid" },
+    "tables": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "user_save_contexts",
+        "user_saved_paths",
+        "user_saved_path_notes",
+        "user_path_comparisons",
+        "user_path_comparison_items",
+        "user_path_checklists",
+        "user_checklist_item_states",
+        "user_checklist_timeline_events"
+      ],
+      "properties": {
+        "user_save_contexts": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "user_saved_paths": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "user_saved_path_notes": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "user_path_comparisons": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "user_path_comparison_items": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "user_path_checklists": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "user_checklist_item_states": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "user_checklist_timeline_events": { "type": "array", "items": { "type": "object", "additionalProperties": true } }
+      }
+    }
+  }
+}
+```
+
 ## 📄 License
 
 MIT License - Feel free to use this as a learning resource or template!

@@ -1,14 +1,14 @@
+require('dotenv').config({ path: '.env.local' });
 const { Client } = require('pg');
 
-const connectionString = 'postgresql://postgres:EXoAjLVZVjjhIJMraECLtkIxNigNadIe@gondola.proxy.rlwy.net:13974/railway';
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) {
+    console.error('DATABASE_URL is not set. Check your .env.local file.');
+    process.exit(1);
+}
 
 async function seedData() {
-    const client = new Client({
-        connectionString,
-        ssl: {
-            rejectUnauthorized: false
-        }
-    });
+    const client = new Client({ connectionString });
 
     try {
         await client.connect();

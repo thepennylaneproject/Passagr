@@ -1,11 +1,15 @@
 // api/admin.ts - Admin endpoints for editorial review
-import { pgPool as pool } from './server';
-import { Request, Response } from 'express';
+import { pgPool as pool } from './db.ts';
+import type { Request, Response } from 'express';
 
 // Middleware for admin authentication
 export function verifyAdminAuth(req: Request, res: Response, next: Function) {
     const adminKey = req.headers['x-admin-key'];
-    const expectedKey = process.env.ADMIN_API_KEY || 'dev-admin-key';
+    const expectedKey = process.env.ADMIN_API_KEY;
+
+    if (!expectedKey) {
+        return res.status(503).json({ error: 'Service unavailable' });
+    }
 
     if (adminKey !== expectedKey) {
         return res.status(401).json({ error: 'Unauthorized' });
@@ -112,7 +116,8 @@ export const getReviewDetails = async (req: Request, res: Response) => {
 // POST /admin/reviews/:id/approve - Approve review
 export const approveReview = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { reviewer_uid, notes } = req.body;
+    const { notes } = req.body;
+    const reviewer_uid = 'admin'; // A-3: derived server-side, not from request body
 
     try {
         const result = await pool.query(
@@ -123,7 +128,7 @@ export const approveReview = async (req: Request, res: Response) => {
            resolved_at = NOW()
        WHERE id = $3
        RETURNING *`,
-            [reviewer_uid || 'admin', notes || 'Approved', id]
+            [reviewer_uid, notes || 'Approved', id]
         );
 
         if (result.rows.length === 0) {
@@ -147,7 +152,8 @@ export const approveReview = async (req: Request, res: Response) => {
 // POST /admin/reviews/:id/reject - Reject review
 export const rejectReview = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { reviewer_uid, notes } = req.body;
+    const { notes } = req.body;
+    const reviewer_uid = 'admin'; // A-3: derived server-side, not from request body
 
     try {
         const result = await pool.query(
@@ -158,7 +164,7 @@ export const rejectReview = async (req: Request, res: Response) => {
            resolved_at = NOW()
        WHERE id = $3
        RETURNING *`,
-            [reviewer_uid || 'admin', notes || 'Rejected', id]
+            [reviewer_uid, notes || 'Rejected', id]
         );
 
         if (result.rows.length === 0) {

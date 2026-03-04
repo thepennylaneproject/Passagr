@@ -1,20 +1,72 @@
+[dev]
+  command = "npx vite"
+  targetPort = 5173
+  port = 8888
+  autoLaunch = false
+
 [build]
   command = "npm run build"
   publish = "dist"
 
 [build.environment]
-  SECRETS_SCAN_ENABLED = "false"
+  SECRETS_SCAN_ENABLED = "true"
 
-[[redirects]]
-  from = "/api/*"
-  to = "https://passagr-backend.up.railway.app/api/:splat"
-  status = 200
-  force = true
+# A-9: Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
 
 # Netlify Function for countries data required by the map overlay
 [[redirects]]
   from = "/public/countries"
   to = "/.netlify/functions/public-countries"
+  status = 200
+  force = true
+
+# Privacy API routes
+[[redirects]]
+  from = "/v1/privacy/exports"
+  to = "/.netlify/functions/v1-privacy-exports-create"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/v1/privacy/exports/:job_id"
+  to = "/.netlify/functions/v1-privacy-exports-get/:job_id"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/v1/privacy/deletion-requests"
+  to = "/.netlify/functions/v1-privacy-deletion-requests-create"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/v1/privacy/deletion-requests/:id"
+  to = "/.netlify/functions/v1-privacy-deletion-requests-get/:id"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/v1/privacy/deletion-requests/:id/cancel"
+  to = "/.netlify/functions/v1-privacy-deletion-requests-cancel/:id/cancel"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/v1/saved-path-notes"
+  to = "/.netlify/functions/v1-saved-path-notes"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/v1/saved-path-notes/:id"
+  to = "/.netlify/functions/v1-saved-path-notes/:id"
   status = 200
   force = true
 

@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 // Test setup file
 // This runs before each test file
 

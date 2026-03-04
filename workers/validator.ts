@@ -64,6 +64,8 @@ const visaPathSchema = {
                 max_days: { type: ["number", "null"] }
             }
         },
+        processing_min_days: { type: ["number", "null"] },
+        processing_max_days: { type: ["number", "null"] },
         last_verified_at: { type: "string", format: "date-time" }
     },
     required: ["name", "country_id", "type", "last_verified_at"],
@@ -100,9 +102,11 @@ export const handler = async (extractedEntity: any) => {
 
     // 2. Business logic checks
     if (entity_type === 'visa_path') {
-        const { processing_time_range } = extractedEntity;
-        if (processing_time_range && processing_time_range.min_days !== null && processing_time_range.max_days !== null) {
-            if (processing_time_range.min_days > processing_time_range.max_days) {
+        const { processing_time_range, processing_min_days, processing_max_days } = extractedEntity;
+        const minDays = processing_time_range?.min_days ?? processing_min_days ?? null;
+        const maxDays = processing_time_range?.max_days ?? processing_max_days ?? null;
+        if (minDays !== null && maxDays !== null) {
+            if (minDays > maxDays) {
                 errors.push("`min_days` cannot be greater than `max_days`.");
                 impact = 'high';
             }
@@ -162,7 +166,6 @@ export const handler = async (extractedEntity: any) => {
         impact
     };
 
-    console.log("Validation complete. Enqueuing for Differ.");
-    // `await differAgent.enqueue({ proposedEntity: extractedEntity, validationResult });`
+    // Chaining to differ is handled by the caller (extractor.ts)
     return validationResult;
 };

@@ -1,0 +1,2924 @@
+[
+  {
+    "country_identity": 1,
+    "name": "Portugal",
+    "iso2": "PT",
+    "iso3": "PRT",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "pathways": [
+      {
+        "type": "remote_work",
+        "name": "D7 Passive Income Visa",
+        "min_income_usd": 950,
+        "processing_days_min": 180,
+        "processing_days_max": 270,
+        "source": "SEF Portugal",
+        "source_url": "https://..."
+      },
+      {
+        "type": "skilled_worker",
+        "name": "EU Blue Card",
+        "job_offer_required": true,
+        "processing_days_min": 28,
+        "processing_days_max": 56,
+        "source": "SEF Portugal"
+      },
+      {
+        "type": "ancestry",
+        "name": "Grandparent Citizenship",
+        "requirement": "Proof of Portuguese grandparent",
+        "source": "Portuguese Nationality Law"
+      }
+    ],
+    "rights": {
+      "lgbtq_index": 5,
+      "lgbtq_source": "ILGA-Europe Rainbow Map 2025",
+      "abortion_status": "Legal on request (up to 12 weeks)",
+      "abortion_source": "Center for Reproductive Rights",
+      "hate_crime_protections": true
+    },
+    "taxation": {
+      "regime": "worldwide_with_treaty",
+      "expat_incentive": "NHR 2.0 (TISRI)",
+      "incentive_description": "20% flat tax on Portuguese income for qualified professions, 10-year benefit"
+    },
+    "language_requirement": {
+      "level": "A2",
+      "exam": "CIPLE",
+      "required_for": "citizenship_after_10_years"
+    },
+    "family_reunification": {
+      "wait_months": 24,
+      "exceptions": "Immediate for couples with minor children, 15 months for 18+ months cohabitation",
+      "source": "Lei n.º 61/2025"
+    },
+    "recent_changes": [
+      {
+        "date": "2025-10-23",
+        "description": "Citizenship residency requirement extended from 5 to 10 years",
+        "impact": "major"
+      },
+      {
+        "date": "2025-10-23",
+        "description": "Family reunification wait period instituted (2 years)",
+        "impact": "major"
+      }
+    ],
+    "data_last_updated": "2026-01-31"
+  },
+  {
+    "country_identity": 2,
+    "country": {
+      "iso2": "ES",
+      "name": "Spain",
+      "region": "europe",
+      "subregion": "southern_europe",
+      "policy_volatility": "low",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 5,
+      "lgbtq_notes": "ILGA-Europe ranks Spain among the highest-protection countries, with constitutional and statutory guarantees for sexual orientation and gender identity alongside strong EU anti-discrimination rules.",
+      "abortion_status": "legal_protected",
+      "abortion_notes": "Abortion is protected by law on request up to 14 weeks, with later access on health and other specified grounds under national legislation.",
+      "hate_crime_protections": "strong",
+      "hate_crime_notes": "Spain implements the EU Framework Decision on racism and xenophobia and criminalizes hate crimes explicitly covering race, sexual orientation, and gender identity."
+    },
+    "healthcare": {
+      "system_type": "universal_after_residency",
+      "access_notes": "Spains SNS provides universal public coverage after roughly 90+ days of legal residence and municipal registration (empadronamiento); GP visits are free with a health card, while private plans typically range from 50200 per month.",
+      "quality_notes": "Barcelonas cost of living index is around 59 on Numbeo, with central one-bedroom rents near 1,295 and typical monthly single-person budgets from about 1,000 upward in major cities."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide",
+      "tax_notes": "Spain taxes residents on worldwide income under a progressive system combining state and regional brackets, generally around 1947 percent for most bands.",
+      "special_regimes": [
+        {
+          "name": "Beckham Law (special expat regime)",
+          "status": "active",
+          "notes": "Eligible inbound workers can elect a fixed-rate regime on Spanish-source employment income for several years, though U.S. citizens must still coordinate this with FEIE or foreign tax credits under the U.S.Spain tax treaty."
+        }
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "Digital Nomad Visa (Law 28/2022)",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": 2762,
+          "currency": "EUR",
+          "period": "monthly",
+          "notes": "Applicants typically must show at least 2,762 net per month (about $3,000) in stable remote work or business income."
+        },
+        "processing_time_months": {
+          "min": 0.7,
+          "max": 1.5,
+          "notes": "Official estimates indicate about 20 business days to two months from submission to decision, depending on consular and in-country queues."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": 10,
+        "notes": "Residence on the digital nomad route can count toward Spains five-year permanent residence and ten-year standard citizenship timelines when maintained continuously."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "EU Blue Card / Highly Qualified Professional Visa",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "annual",
+          "notes": "Salary must meet updated thresholds for highly qualified workers or EU Blue Card; exact minimums are indexed annually and vary by occupation."
+        },
+        "processing_time_months": {
+          "min": 0.7,
+          "max": 2,
+          "notes": "Processing often runs from roughly 20 business days to two months once a complete application is lodged."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": 10,
+        "notes": "Time in highly qualified or EU Blue Card status generally counts toward the standard five-year long-term residence and ten-year citizenship clocks."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "EU Asylum Procedure (Spain)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "No income threshold applies; eligibility hinges on a well-founded fear of persecution or serious harm under EU and Spanish asylum rules."
+        },
+        "processing_time_months": {
+          "min": 3,
+          "max": 6,
+          "notes": "EU border procedures target decisions within roughly 12 weeks for certain cases, while regular procedures are usually assessed within about six months under the Migration and Asylum Pact framework."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Applicants must be physically present in Spain or at its border to register an asylum claim, which is then processed under harmonized EU procedures."
+      },
+      {
+        "pathway_type": "ancestry",
+        "name": "Law of Grandchildren (Spanish ancestry)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "No income requirement; applicants must prove descent from a Spanish grandparent or certain exile-descendant categories under the temporary law."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing times depend on consular volume and document complexity during the laws extended window through late 2025."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 0,
+        "notes": "Successful applicants typically obtain nationality directly rather than passing through a separate long-term residence stage."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ilga.org/news/pride-month-2025-lgbti-data-maps/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "ILGA global mapping of LGBTQ+ protections, including Spains high protection score."
+      },
+      {
+        "url": "https://www.ilga-europe.org/report/rainbow-map-2025/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Rainbow Map rankings for Spains equality and hate-crime frameworks."
+      },
+      {
+        "url": "https://reproductiverights.org/maps/world-abortion-laws/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Center for Reproductive Rights summary of Spains abortion law up to 14 weeks on request."
+      },
+      {
+        "url": "https://prospainconsulting.com/2025/10/07/spain-digital-nomad-visa-requirements-application-process-and-key-advantages/",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Explains Law 28/2022 digital nomad income and processing expectations."
+      },
+      {
+        "url": "https://getgoldenvisa.com/spain-digital-nomad-visa",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Additional digital nomad timelines and residency-to-PR conversion notes."
+      },
+      {
+        "url": "https://immigrantinvest.com/spain-digital-nomad-residence/",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Discussion of how Spains digital nomad residence counts toward long-term residence and citizenship."
+      },
+      {
+        "url": "https://reproductiverights.org/resources/latin-america-green-wave/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Regional context for abortion liberalization in Iberia and Latin America."
+      },
+      {
+        "url": "research/healthcare.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Tabular summary of Spains healthcare access, costs, and cost-of-living metrics."
+      },
+      {
+        "url": "research/taxes.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Spains local income tax ranges and expat tax regimes including Beckham Law."
+      }
+    ],
+    "field_provenance": {
+      "country.policy_volatility": {
+        "sources": [
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.lgbtq_rights_score": {
+        "sources": [
+          "https://ilga.org/news/pride-month-2025-lgbti-data-maps/",
+          "https://www.ilga-europe.org/report/rainbow-map-2025/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.abortion_status": {
+        "sources": [
+          "https://reproductiverights.org/maps/world-abortion-laws/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.hate_crime_protections": {
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "healthcare.system_type": {
+        "sources": [
+          "research/healthcare.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "taxation.special_regimes": {
+        "sources": [
+          "research/taxes.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "pathways": {
+        "sources": [
+          "research/passagr_research.md",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "updated"
+      }
+    },
+    "diff_summary": {
+      "has_changes": true,
+      "changed_fields": [
+        "rights_and_safety",
+        "healthcare",
+        "taxation",
+        "pathways"
+      ],
+      "notes": "Expanded Spain with structured safety indicators, digital nomad and skilled pathways, brief asylum and ancestry options, plus healthcare and tax summaries aligned with existing research tables."
+    },
+    "issues": [
+      {
+        "severity": "info",
+        "code": "OTHER",
+        "message": "Digital nomad income thresholds and Beckham Law parameters adjust periodically; applicants should confirm current figures with official Spanish government guidance before filing.",
+        "related_fields": [
+          "pathways[0].income_requirement",
+          "taxation.special_regimes"
+        ]
+      }
+    ]
+  },
+  {
+    "country_identity": 6,
+    "country": {
+      "iso2": "IT",
+      "name": "Italy",
+      "region": "europe",
+      "subregion": "southern_europe",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 4,
+      "lgbtq_notes": "Italy provides national anti-discrimination and hate-speech protections that explicitly include sexual orientation and, in practice, gender identity, but falls slightly behind top EU performers on comprehensive LGBTQ+ reforms.",
+      "abortion_status": "legal_protected",
+      "abortion_notes": "Abortion is legal on request up to 90 days of pregnancy under national law, with later access permitted on health and limited grounds.",
+      "hate_crime_protections": "strong",
+      "hate_crime_notes": "National hate-crime legislation punishes aggravated offenses motivated by race and sexual orientation and has been interpreted to protect gender identity, aligning with EU standards."
+    },
+    "healthcare": {
+      "system_type": "universal_after_residency",
+      "access_notes": "Italys SSN guarantees universal public care after residence registration; with an SSN card, most GP and specialist services carry low co-pays, while fully private visits often range from about 50150.",
+      "quality_notes": "Major cities such as Rome and Florence show Numbeo cost-of-living indices in the mid‑60s, with city-center one‑bedroom rents typically between 600 and 1,200 and single-person budgets around 1,2002,000 per month."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide",
+      "tax_notes": "Tax-resident individuals are taxed on worldwide income at progressive national rates of roughly 2343 percent plus regional and municipal surcharges.",
+      "special_regimes": [
+        {
+          "name": "Flat tax regime for new residents",
+          "status": "active",
+          "notes": "Qualifying high-net-worth new residents may elect a flat annual charge of about 100,000200,000 on foreign-source income instead of standard progressive rates, while still owing tax on Italian-source income."
+        }
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "Digital Nomad Visa (Decreto Flussi 2024)",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": 24789,
+          "currency": "EUR",
+          "period": "annual",
+          "notes": "Guidance for the 2024 digital nomad route cites a minimum of about 24,789 per year, roughly 2,065 per month, in stable remote work or self-employment income."
+        },
+        "processing_time_months": {
+          "min": 1,
+          "max": 2,
+          "notes": "Consular and prefecture timelines typically fall in the 48 week range once a complete application is filed."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": 10,
+        "notes": "Residence on qualifying work or self-employment permits can count toward Italys five-year EU long‑term residence and ten‑year ordinary citizenship thresholds."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "EU Blue Card / Nulla Osta Work Visa",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "annual",
+          "notes": "Applicants must hold a job offer meeting updated Italian salary thresholds for highly qualified or EU Blue Card roles, which are indexed periodically."
+        },
+        "processing_time_months": {
+          "min": 1,
+          "max": 3,
+          "notes": "Nulla osta authorization and visa issuance usually require roughly 3090 days depending on quota windows and local offices."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": 10,
+        "notes": "Continuous legal residence on work permits generally qualifies for permanent EU long‑term residence after five years and standard citizenship after ten."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "EU Asylum Procedure (Italy)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "Italy does not impose income thresholds for refugee or subsidiary protection; eligibility turns on persecution, serious harm, or comparable grounds."
+        },
+        "processing_time_months": {
+          "min": 3,
+          "max": 6,
+          "notes": "Under the EU Migration and Asylum Pact, certain border procedures target decisions within roughly 12 weeks, while regular procedures are expected near six months."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Applicants must be on Italian territory or at the border and submit claims to police or the territorial commission, then follow the harmonized EU procedure."
+      },
+      {
+        "pathway_type": "ancestry",
+        "name": "Citizenship by Descent (restricted 2025)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "No income requirement; applicants must prove an unbroken line to an Italian parent or grandparent after reforms curtailed great‑grandparent claims in March 2025."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing times vary widely by consulate and municipal office, with 2025 reforms prompting heavier scrutiny of lineage documentation."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 0,
+        "notes": "Successful descent applicants typically acquire Italian nationality directly rather than first receiving a separate permanent residence status."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ilga-europe.org/report/rainbow-map-2025/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Rainbow Map 2025 data on Italys LGBTQ+ protections and hate‑crime framework."
+      },
+      {
+        "url": "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-comparative-review.pdf",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Comparative review describing Italys abortion-on-request framework up to 90 days."
+      },
+      {
+        "url": "https://www.rippling.com/blog/italy-digital-nomad-visa",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Overview of the Italy digital nomad visa, including income benchmarks and processing times."
+      },
+      {
+        "url": "https://www.localyze.com/blog/italy-digital-nomad-visa-guide",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Further detail on documentation and residence conversion for the digital nomad pathway."
+      },
+      {
+        "url": "https://consnewyork.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visas-to-enter-italy/digital-nomad-remote-worker-visa/",
+        "source_type": "government",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Italian consular explanation of requirements and procedure for the digital nomad visa."
+      },
+      {
+        "url": "https://etias.com/articles/italy-curtails-ancestry-based-citizenship-rights",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Summary of the 2025 reform limiting citizenship by descent to parent or grandparent lines."
+      },
+      {
+        "url": "research/healthcare.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Healthcare access, cost, and cost-of-living data for Italy."
+      },
+      {
+        "url": "research/taxes.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Italian income tax bands and flat tax regime description for new residents."
+      }
+    ],
+    "field_provenance": {
+      "country.policy_volatility": {
+        "sources": [
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.lgbtq_rights_score": {
+        "sources": [
+          "https://www.ilga-europe.org/report/rainbow-map-2025/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.abortion_status": {
+        "sources": [
+          "https://reproductiverights.org/wp-content/uploads/2020/12/European-abortion-law-a-comparative-review.pdf"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.hate_crime_protections": {
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9086657/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "healthcare.system_type": {
+        "sources": [
+          "research/healthcare.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "taxation.special_regimes": {
+        "sources": [
+          "research/taxes.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "pathways": {
+        "sources": [
+          "research/passagr_research.md",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "updated"
+      }
+    },
+    "diff_summary": {
+      "has_changes": true,
+      "changed_fields": [
+        "rights_and_safety",
+        "healthcare",
+        "taxation",
+        "pathways"
+      ],
+      "notes": "Populated Italy with structured safety indicators, digital nomad and skilled pathways, asylum and restricted ancestry routes, plus healthcare and tax summaries aligned to research tables."
+    },
+    "issues": [
+      {
+        "severity": "info",
+        "code": "OTHER",
+        "message": "Digital nomad salary thresholds and flat-tax parameters are periodically updated; applicants should confirm current figures with Italian government sources before applying.",
+        "related_fields": [
+          "pathways[0].income_requirement",
+          "taxation.special_regimes"
+        ]
+      }
+    ]
+  },
+  {
+    "country_identity": 17,
+    "country": {
+      "iso2": "AR",
+      "name": "Argentina",
+      "region": "americas",
+      "subregion": "latin_america_and_the_caribbean",
+      "policy_volatility": "high",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 4.5,
+      "lgbtq_notes": "Argentina is recognized as a regional leader on LGBTQ+ rights, with marriage equality, gender identity self‑determination, and anti‑discrimination protections that include sexual orientation and gender identity.",
+      "abortion_status": "legal_protected",
+      "abortion_notes": "Abortion has been legal on request up to 14 weeks nationwide since 2020, with additional grounds thereafter, following the national reform sometimes called part of the Latin America 'green wave'.",
+      "hate_crime_protections": "strong",
+      "hate_crime_notes": "Federal hate‑crime and anti‑discrimination frameworks explicitly cover sexual orientation and gender identity, though enforcement quality can vary by province."
+    },
+    "healthcare": {
+      "system_type": "mixed_public_private",
+      "access_notes": "Argentina offers free public healthcare to residents and even many visitors, but middle‑class Argentines and expats often rely on low‑cost private clinics and insurance for faster access.",
+      "quality_notes": "Buenos Aires is considered affordable by global standards, with central one‑bedroom rents often in the $400$800 range and monthly single budgets around $1,000$2,000, trading some system strain and inflation risk for low headline costs."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_with_territorial_features",
+      "tax_notes": "Tax residents generally face progressive rates of about 535 percent on Argentine‑source income, while many forms of foreign‑source income remain lightly taxed or effectively exempt under territorial‑style rules.",
+      "special_regimes": [
+        {
+          "name": "Territorial treatment of foreign income",
+          "status": "active",
+          "notes": "Argentinas practice of primarily taxing Argentine‑source income can make it attractive for foreign earners, but U.S. citizens must still coordinate this with FEIE and foreign tax credits."
+        }
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "Digital Nomad Visa (Transitory Residence)",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": 2500,
+          "currency": "USD",
+          "period": "monthly",
+          "notes": "Guides suggest an unofficial minimum of roughly $2,500 per month in remote or freelance income for digital nomad applicants, though this is not codified as a fixed statutory floor."
+        },
+        "processing_time_months": {
+          "min": 2,
+          "max": 4,
+          "notes": "Consular and immigration sources describe typical processing in about two to four months from application to approval."
+        },
+        "leads_to_pr": false,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "The digital nomad status is granted for six months and can usually be renewed once for a total of one year, but does not itself convert directly into permanent residence."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Temporary Work Visa",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "monthly",
+          "notes": "Employers must offer at least the sectors prevailing wage and register with Argentine immigration; explicit nationally published minimums for expat workers vary and are periodically updated."
+        },
+        "processing_time_months": {
+          "min": 2,
+          "max": 4,
+          "notes": "Work visas are commonly processed in roughly two to four months, depending on employer readiness and office backlogs."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 3,
+        "years_to_citizenship": 2,
+        "notes": "After around three years of temporary residence, many foreign workers are eligible for permanent status; Argentine nationality can in practice be available after roughly two years of legal residence via the courts."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Refugee Status (CONARE)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "No income requirement; claims rest on persecution, generalized violence, or comparable grounds assessed by the National Commission for Refugees (CONARE)."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Timelines vary by case complexity and caseload; applicants receive documentation while their refugee status determination proceeds."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Applicants must be physically present in Argentina and lodge with immigration or CONARE; successful recognition can later support regularization and long‑term residence."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://reproductiverights.org/resources/latin-america-green-wave/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Explains Argentinas 2020 reform that legalized abortion on request up to 14 weeks."
+      },
+      {
+        "url": "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "World Bank‑linked review of SOGI protections and hate‑crime coverage in Latin America, including Argentina."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6836409/",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Academic overview of LGBTQ+ legal environments and hate‑crime enforcement in the region."
+      },
+      {
+        "url": "https://evolvecoliving.io/argentina-digital-nomad-visa/",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Details the Argentina digital nomad visa income expectations, duration, and lack of a direct PR track."
+      },
+      {
+        "url": "research/healthcare.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Healthcare access, rent, and monthly budget ranges for Buenos Aires and other cities."
+      },
+      {
+        "url": "research/taxes.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Tax-treaty, territoriality, and progressive rate information for Argentina."
+      },
+      {
+        "url": "research/passagr_research.md",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Compiled immigration, safety, and pathway data for Argentina used across this object."
+      }
+    ],
+    "field_provenance": {
+      "country.policy_volatility": {
+        "sources": [
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.lgbtq_rights_score": {
+        "sources": [
+          "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6836409/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.abortion_status": {
+        "sources": [
+          "https://reproductiverights.org/resources/latin-america-green-wave/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.hate_crime_protections": {
+        "sources": [
+          "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "healthcare.system_type": {
+        "sources": [
+          "research/healthcare.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "taxation.special_regimes": {
+        "sources": [
+          "research/taxes.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "pathways": {
+        "sources": [
+          "research/passagr_research.md",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "updated"
+      }
+    },
+    "diff_summary": {
+      "has_changes": true,
+      "changed_fields": [
+        "rights_and_safety",
+        "healthcare",
+        "taxation",
+        "pathways"
+      ],
+      "notes": "Added Argentinas high‑protection LGBTQ+/abortion profile, low‑cost mixed healthcare system, territorial‑style tax notes, digital nomad and work visas, and refugee procedures consistent with the research tables."
+    },
+    "issues": [
+      {
+        "severity": "info",
+        "code": "OTHER",
+        "message": "Digital nomad income amounts and the practical application of Argentinas territorial tax rules are partly based on practitioner consensus; applicants should verify current criteria and tax treatment before relying on them.",
+        "related_fields": [
+          "pathways[0].income_requirement",
+          "taxation.tax_notes"
+        ]
+      }
+    ]
+  },
+  {
+    "country_identity": 7,
+    "country": {
+      "iso2": "NL",
+      "name": "Netherlands",
+      "region": "europe",
+      "subregion": "western_europe",
+      "policy_volatility": "low",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 5,
+      "lgbtq_notes": "The Netherlands sits in the top tier of global LGBTQ+ protections, with marriage equality, broad anti‑discrimination law, and comprehensive hate‑crime provisions covering sexual orientation and gender identity.",
+      "abortion_status": "legal_protected",
+      "abortion_notes": "Abortion is legal on request up to 24 weeks, with care integrated into the national health system and regulated by dedicated legislation.",
+      "hate_crime_protections": "strong",
+      "hate_crime_notes": "National criminal law treats bias‑motivated crimes against LGBTQ+ people as aggravating circumstances and implements EU hate‑crime and hate‑speech directives."
+    },
+    "healthcare": {
+      "system_type": "mandatory_insurance",
+      "access_notes": "Residents must purchase a basic Dutch health‑insurance policy, which covers GP and most essential care; proof of compliant insurance is normally required for longer‑term residence permits.",
+      "quality_notes": "Amsterdam is relatively expensive, with typical basic premiums of about 120200 per month and city‑center one‑bedroom rents often 1,5002,200, implying single‑person monthly budgets in the 2,0003,500 range."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide",
+      "tax_notes": "Tax residents are generally taxed on worldwide income at progressive rates of roughly 36.9749.5 percent, with high overall burdens that make foreign tax credits more attractive than the FEIE for many U.S. citizens.",
+      "special_regimes": [
+        {
+          "name": "30% ruling for highly skilled migrants",
+          "status": "active",
+          "notes": "Qualifying employees recruited from abroad can receive about 30 percent of their gross salary tax‑free for up to five years, substantially reducing effective tax rates."
+        }
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated digital nomad visa",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "monthly",
+          "notes": "The Netherlands does not operate a stand‑alone digital nomad visa; remote workers typically rely on other residence bases (highly skilled migrant, intra‑company transfer, entrepreneurship, or EU status)."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing depends entirely on the underlying residence category rather than a specific nomad route."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Long‑term remote workers usually need an employer sponsor, self‑employment approval, or EU free‑movement rights to remain beyond short‑stay Schengen limits."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Highly Skilled Migrant Permit",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "EUR",
+          "period": "annual",
+          "notes": "Applicants must earn at least the INDs annually adjusted minimum salary for highly skilled migrants, which rose again in 2025 per official wage‑threshold updates."
+        },
+        "processing_time_months": {
+          "min": 1,
+          "max": 3,
+          "notes": "Digital IND processing can take around 510 weeks for recognized sponsors, with a 90‑day outer limit for standard cases."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": 5,
+        "notes": "Continuous legal residence for five years allows both permanent residence and naturalization, subject to language and integration requirements."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "EU Asylum Procedure (via IND)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "Asylum seekers are not assessed on income but on protection needs under EU and Dutch refugee law."
+        },
+        "processing_time_months": {
+          "min": 3,
+          "max": 6,
+          "notes": "Under the EU Migration and Asylum Pact, border procedures target decisions within roughly 12 weeks, while regular procedures aim for about six months."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Applicants must register at the Central Reception Centre in Ter Apel and undergo IND screening and interviews following harmonized EU rules."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://rainbowmap.ilga-europe.org",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Provides 2025 LGBTQ+ ranking and legal‑protection overview for the Netherlands."
+      },
+      {
+        "url": "https://reproductiverights.org/maps/world-abortion-laws/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Summarizes Dutch abortion‑on‑request law and gestational limits."
+      },
+      {
+        "url": "https://ind.nl/en/required-amounts-income-requirements",
+        "source_type": "government",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Lists current income thresholds for highly skilled migrants and other residence categories."
+      },
+      {
+        "url": "https://www.jobbatical.com/blog/netherlands-work-permit-reforms-2025-salary-increase-ind-restrictions",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Discusses 2025 salary‑criterion increases and practical processing times for Dutch work permits."
+      },
+      {
+        "url": "https://www.meijburg.com/news/annual-adjustment-salary-criterion-highly-skilled-migrants-2025",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Professional‑services summary of updated highly skilled migrant salary criteria."
+      },
+      {
+        "url": "research/healthcare.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Healthcare, rent, and budget estimates for Amsterdam and the Netherlands."
+      },
+      {
+        "url": "research/taxes.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Outlines Dutch progressive tax rates and the 30% ruling for expats."
+      }
+    ],
+    "field_provenance": {
+      "country.policy_volatility": {
+        "sources": [
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.lgbtq_rights_score": {
+        "sources": [
+          "https://rainbowmap.ilga-europe.org"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.abortion_status": {
+        "sources": [
+          "https://reproductiverights.org/maps/world-abortion-laws/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.hate_crime_protections": {
+        "sources": [
+          "https://www.equaldex.com/issue/hate-crime-protections"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "healthcare.system_type": {
+        "sources": [
+          "research/healthcare.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "taxation.special_regimes": {
+        "sources": [
+          "research/taxes.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "pathways": {
+        "sources": [
+          "research/passagr_research.md",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "updated"
+      }
+    },
+    "diff_summary": {
+      "has_changes": true,
+      "changed_fields": [
+        "rights_and_safety",
+        "healthcare",
+        "taxation",
+        "pathways"
+      ],
+      "notes": "Structured the Netherlands object with top‑tier LGBTQ and abortion protections, mandatory insurance healthcare, high‑tax plus 30% ruling regime, highly skilled migrant route, and EU asylum process consistent with research tables."
+    },
+    "issues": [
+      {
+        "severity": "info",
+        "code": "OTHER",
+        "message": "Exact salary thresholds for the highly skilled migrant permit change annually; users must confirm current IND amounts before applying.",
+        "related_fields": [
+          "pathways[1].income_requirement"
+        ]
+      }
+    ]
+  },
+  {
+    "country_identity": 3,
+    "country": {
+      "iso2": "MX",
+      "name": "Mexico",
+      "region": "americas",
+      "subregion": "latin_america_and_the_caribbean",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 3.5,
+      "lgbtq_notes": "Mexico has nationwide marriage equality and federal recognition of hate crimes based on sexual orientation, but protections and enforcement still vary significantly by state and locality.",
+      "abortion_status": "decriminalized_mixed",
+      "abortion_notes": "Abortion was decriminalized at the federal level in 2023, yet practical access and local criminal codes continue to differ across states, creating a patchwork of implementation.",
+      "hate_crime_protections": "partial",
+      "hate_crime_notes": "Federal law recognizes hate crimes based on sexual orientation, but state‑level statutes and consistent enforcement remain uneven."
+    },
+    "healthcare": {
+      "system_type": "public_plus_private",
+      "access_notes": "Residents can access the IMSS public system or private providers; expats typically qualify for IMSS or other public schemes with residency, while many choose low‑cost private clinics and insurance for faster service.",
+      "quality_notes": "Mexico Citys cost of living is about 21.6 percent lower than Barcelonas index, with central one‑bedroom rents around $900$1,000 and realistic single budgets in the $800$1,200 range in many areas."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_source_based",
+      "tax_notes": "Mexico has a U.S. tax treaty and generally taxes residents on Mexican‑source income at progressive rates of about 1.9235 percent, with temporary residents often taxed only on Mexican‑source income.",
+      "special_regimes": []
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "Temporary Resident Visa (Non‑Lucrative / Financial Independence)",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": 4356,
+          "currency": "USD",
+          "period": "monthly",
+          "notes": "Recent consular guidance for 2026 cites roughly $4,356 per month in verifiable income or about $73,389 in savings as typical minima, with figures varying slightly by consulate and exchange rate."
+        },
+        "processing_time_months": {
+          "min": 0.5,
+          "max": 2,
+          "notes": "Most consulates report about 28 weeks from appointment to visa issuance, depending on workload."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 4,
+        "years_to_citizenship": 9,
+        "notes": "After four years in temporary status, holders can apply for permanent residency; citizenship typically follows after about five additional years of permanent residence."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Temporary Resident Visa with Work Permit",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "MXN",
+          "period": "monthly",
+          "notes": "Employers must meet local prevailing‑wage and registration requirements; specific salary thresholds vary by sector and change over time."
+        },
+        "processing_time_months": {
+          "min": 1,
+          "max": 3,
+          "notes": "Processing typically falls between 412 weeks depending on the consulate and whether employer paperwork is already in place."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 4,
+        "years_to_citizenship": 9,
+        "notes": "Time on an employer‑sponsored temporary resident card also counts toward the four‑year requirement for permanent residency and the longer naturalization timeline."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Asylum / Refugee Status (COMAR)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "Eligibility turns on persecution or serious harm under refugee criteria, not on income or savings."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Case durations vary widely with COMAR caseload; applicants receive documentation while their claims are assessed."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Applicants must be physically present in Mexico and file with an immigration office or COMAR; recognized refugees can later regularize their stay and pursue long‑term residence."
+      },
+      {
+        "pathway_type": "ancestry",
+        "name": "Citizenship by Descent (Mexican Parent)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "No financial threshold applies; the key requirement is proof that at least one parent was born in Mexico, supported by civil documents."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Timelines depend on consulate and documentation quality; descent cases bypass the normal residency‑based naturalization track."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 0,
+        "notes": "Successful applicants obtain Mexican nationality directly rather than first holding a separate permanent resident status."
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://mexicorelocationguide.com/mexican-residency-income-requirements-updates-in-2026",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Details current income and savings thresholds for Mexico temporary residency categories used by U.S. expats."
+      },
+      {
+        "url": "https://www.mexperience.com/financial-criteria-for-residency-in-mexico",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Explains consular variation and example calculations for non‑lucrative residency qualification."
+      },
+      {
+        "url": "https://reproductiverights.org/resources/latin-america-green-wave/",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Summarizes abortion‑law reforms and decriminalization trends in Mexico."
+      },
+      {
+        "url": "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf",
+        "source_type": "ngo",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Reviews LGBTQ+ protections and hate‑crime frameworks across Latin America, including Mexico."
+      },
+      {
+        "url": "research/healthcare.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Provides Mexico City healthcare cost ranges and comparative cost‑of‑living indices."
+      },
+      {
+        "url": "research/taxes.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Outlines Mexicos U.S. tax treaty, rate bands, and interaction with FEIE/foreign tax credits."
+      }
+    ],
+    "field_provenance": {
+      "country.policy_volatility": {
+        "sources": [
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.lgbtq_rights_score": {
+        "sources": [
+          "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.abortion_status": {
+        "sources": [
+          "https://reproductiverights.org/resources/latin-america-green-wave/"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "rights_and_safety.hate_crime_protections": {
+        "sources": [
+          "https://thedocs.worldbank.org/en/doc/f03e36335f388347d086f66e2a3aaac4-0200022021/original/EQOSOGI-139-156.pdf"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "healthcare.system_type": {
+        "sources": [
+          "research/healthcare.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "taxation.tax_notes": {
+        "sources": [
+          "research/taxes.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "pathways": {
+        "sources": [
+          "research/passagr_research.md",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "updated"
+      }
+    },
+    "diff_summary": {
+      "has_changes": true,
+      "changed_fields": [
+        "rights_and_safety",
+        "healthcare",
+        "taxation",
+        "pathways"
+      ],
+      "notes": "Populated Mexico with LGBTQ/abortion status, IMSS plus private healthcare profile, treaty‑based tax description, financial‑independence temporary residency, work‑permit route, COMAR asylum, and parent‑based citizenship."
+    },
+    "issues": [
+      {
+        "severity": "info",
+        "code": "OTHER",
+        "message": "Exact income and savings thresholds for temporary residency vary by consulate and exchange rate; applicants should confirm current figures with their specific Mexican consulate.",
+        "related_fields": [
+          "pathways[0].income_requirement"
+        ]
+      }
+    ]
+  },
+  {
+    "country_identity": 4,
+    "country": {
+      "iso2": "UY",
+      "name": "Uruguay",
+      "region": "americas",
+      "subregion": "latin_america_and_the_caribbean",
+      "policy_volatility": "low",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 4.5,
+      "lgbtq_notes": "Uruguay offers strong protections for sexual orientation and gender identity in law, with comprehensive hate‑crime and anti‑discrimination provisions and recognition as a high‑protection jurisdiction in regional rights surveys.",
+      "abortion_status": "legal_on_request",
+      "abortion_notes": "Abortion is legal on request up to 12 weeks of pregnancy, with nationally implemented access frameworks.",
+      "hate_crime_protections": "comprehensive",
+      "hate_crime_notes": "National legislation explicitly includes sexual orientation and gender identity within hate‑crime and anti‑discrimination protections."
+    },
+    "healthcare": {
+      "system_type": "public_plus_private",
+      "access_notes": "Residents, including expats with legal residency, can access low‑cost public services or join private mutualista plans, with GP visits roughly 4080 USD in public and 100250 USD in private clinics.",
+      "quality_notes": "Overall healthcare and living costs are lower than in North America and Western Europe, with typical single‑person monthly budgets in Montevideo around 1,5002,500 USD and central one‑bedroom rents around 8001,500 USD."
+    },
+    "taxation": {
+      "tax_system_type": "territorial",
+      "tax_notes": "Uruguay has no U.S. tax treaty but operates a territorial system that, for at least the first five years of tax residency, generally does not tax most foreign‑source income while applying progressive rates of about 036 percent on Uruguay‑source income.",
+      "special_regimes": [
+        {
+          "name": "First‑five‑years foreign‑income exemption",
+          "description": "New tax residents may elect a regime under which foreign‑source income is exempt from Uruguay tax for their first five years of residency, making FEIE strategies particularly attractive for U.S. citizens."
+        }
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "Independent Means / Rentista Visa",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": 1500,
+          "currency": "USD",
+          "period": "monthly",
+          "notes": "Applicants must show at least 1,500 USD per month in stable passive income from abroad; exact documentation and indexing rules are set by immigration authorities."
+        },
+        "processing_time_months": {
+          "min": 0,
+          "max": 1,
+          "notes": "Independent‑means applicants receive immediate temporary residency upon approval, with administrative issuance typically within a few weeks."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 3,
+        "notes": "This route grants immediate permanent residency or converts from temporary to permanent within 612 months, and citizenship is generally available after 35 total years of residence depending on family status and physical‑presence criteria."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "General Work Visa / Employment‑Based Residency",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "UYU",
+          "period": "monthly",
+          "notes": "Employers must register and comply with local labor and social‑security rules; minimum salary depends on sector and current national wage standards."
+        },
+        "processing_time_months": {
+          "min": 0.5,
+          "max": 1,
+          "notes": "Employment‑based residence typically processes in about 24 months from filing to card issuance."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 3,
+        "notes": "Work‑based residents can move into or directly obtain permanent residency in roughly 612 months, counting toward the 35 year citizenship clock."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Refugee Status Determination (CONARE)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "Eligibility depends on persecution or serious harm under refugee definitions, not on income."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Durations vary by case; applicants receive documentation while CONARE evaluates their claim."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 3,
+        "notes": "Recognized refugees receive residence status and can later qualify for permanent residency and citizenship under standard time‑in‑country rules."
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "basic_spanish",
+      "difficulty": "easy",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "children",
+        "dependent_parents"
+      ],
+      "years_to_pr": 0,
+      "years_to_citizenship": {
+        "min": 3,
+        "max": 5
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "Spanish is not required for residency and only basic competency is needed for naturalization; family members can usually join immediately, permanent residency is effectively immediate, and dual citizenship is allowed."
+    },
+    "quality_of_life": {
+      "climate": "temperate_mild",
+      "english_proficiency": "low",
+      "major_expat_hubs": [
+        "Montevideo",
+        "Punta del Este"
+      ],
+      "time_zone_from_us_est": "-2",
+      "direct_flights_from_us": "limited_via_buenos_aires",
+      "notes": "Uruguay has a mild temperate climate with four seasons, concentrated expat communities in Montevideo and Punta del Este, lower general English proficiency, a roughly 2‑hour time difference from U.S. Eastern time, and most U.S. connections routed via Buenos Aires."
+    },
+    "sources": [
+      {
+        "url": "https://goldenharbors.com/articles/uruguay-independent-means-visa",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Explains Uruguays independent‑means visa income thresholds and residency consequences."
+      },
+      {
+        "url": "https://www.globalcitizensolutions.com/independent-means-visa-uruguay",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Provides additional detail on the rentista passive‑income requirement and permanent‑residency timeline."
+      },
+      {
+        "url": "research/healthcare.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Contains healthcare cost ranges, system type, and cost‑of‑living figures for Montevideo."
+      },
+      {
+        "url": "research/language.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Summarizes language, family‑reunification, PR, and citizenship timelines for Uruguay."
+      }
+    ],
+    "field_provenance": {
+      "rights_and_safety": {
+        "sources": [
+          "research/passagr_research_v2.md",
+          "research/passagr_research.md"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "healthcare": {
+        "sources": [
+          "research/healthcare.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "taxation": {
+        "sources": [
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "pathways": {
+        "sources": [
+          "research/passagr_research_v2.md",
+          "research/passagr_research.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "language_family_citizenship": {
+        "sources": [
+          "research/language.csv"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "quality_of_life": {
+        "sources": [
+          "research/liveability.csv",
+          "research/healthcare.csv"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      }
+    },
+    "diff_summary": {
+      "has_changes": true,
+      "changed_fields": [
+        "taxation",
+        "pathways",
+        "language_family_citizenship",
+        "quality_of_life"
+      ],
+      "notes": "Captured Uruguays independent‑means residency, territorial tax regime, fast PR and citizenship timing, and healthcare and cost‑of‑living profile for expats."
+    },
+    "issues": []
+  },
+  {
+    "country_identity": 5,
+    "country": {
+      "iso2": "CA",
+      "name": "Canada",
+      "region": "americas",
+      "subregion": "northern_america",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 5,
+      "lgbtq_notes": "Canada is consistently classified in the highest protection tier, with nationwide anti‑discrimination and hate‑crime protections explicitly covering sexual orientation and gender identity.",
+      "abortion_status": "legal_on_request",
+      "abortion_notes": "Abortion is legal on request at all stages of pregnancy, regulated primarily as a healthcare service rather than a criminal matter.",
+      "hate_crime_protections": "comprehensive",
+      "hate_crime_notes": "Federal hate‑crime legislation explicitly includes sexual orientation and gender identity, and these protections are enforced across all provinces and territories."
+    },
+    "healthcare": {
+      "system_type": "single_payer_provincial",
+      "access_notes": "Public healthcare is delivered via provincial systems; expats with permanent residence or eligible work/study status can obtain a provincial health card after any applicable waiting period, with most physician and hospital care free at point of use.",
+      "quality_notes": "Major cities have high‑quality care but elevated living costs: for example, typical single budgets run about CAD 2,5004,000 per month with city‑centre one‑bedroom rents around CAD 1,8002,900 in Toronto, plus 100300 CAD for supplemental private insurance if desired."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_residence_based",
+      "tax_notes": "Canada has a U.S. tax treaty and taxes residents on worldwide income at combined federal and provincial rates that typically range from about 1533 percent federally plus 521 percent provincially, making the foreign tax credit generally more effective than the FEIE for U.S. citizens living there.",
+      "special_regimes": [
+        {
+          "name": "U.S.Canada Totalization Agreement",
+          "description": "A bilateral Social Security agreement coordinates U.S. and Canadian contributions so workers typically avoid double payment of payroll taxes on the same earnings."
+        }
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated non‑work digital‑nomad visa",
+        "job_offer_required": null,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "CAD",
+          "period": "monthly",
+          "notes": "Canada does not offer a standalone digital‑nomad or non‑lucrative residency; remote workers generally must qualify under work, study, or family‑based categories."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Remote workers typically apply through regular work‑permit or PR streams whose timelines vary by program and backlog."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Long‑term remote workers commonly use employer‑sponsored work permits or later transition through Express Entry rather than a purpose‑built digital‑nomad route."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Express Entry (Federal Skilled Worker, Canadian Experience Class)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "CAD",
+          "period": "annual",
+          "notes": "There is no fixed salary minimum, but candidates must meet proof‑of‑funds requirements and score competitively on a points grid that heavily weights age, education, language, and skilled work experience."
+        },
+        "processing_time_months": {
+          "min": 6,
+          "max": 14,
+          "notes": "Standard processing for Express Entry has historically targeted about 67 months, but backlog conditions in early 2026 have pushed many cases into the 1014 month range."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 3,
+        "notes": "Successful Express Entry applicants receive permanent residence upon landing, and can apply for citizenship after 3 years (1,095 days) of physical presence within a 5‑year window."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Refugee Status Determination (IRCC / IRB)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "Eligibility is based on risk of persecution or serious harm, not on financial criteria."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Claim duration varies by case and hearing schedule; claimants receive documentation while their protection claim is assessed by the Immigration and Refugee Board."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 3,
+        "notes": "Recognized refugees can obtain permanent residence and later qualify for citizenship under the standard 3‑years‑in‑5 physical‑presence rule."
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "english_or_french_CLB4_6",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_common_law_partner",
+        "dependent_children"
+      ],
+      "years_to_pr": 0,
+      "years_to_citizenship": {
+        "min": 3,
+        "max": 5
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "Permanent residents must demonstrate English or French at roughly CLB 46 for citizenship, immediate family members are often included directly in PR applications, PR is obtained on arrival for Express Entry, and eligibility for citizenship generally arises after 3 years of physical presence within 5 years, with dual citizenship permitted."
+    },
+    "quality_of_life": {
+      "climate": "continental_cold_winters",
+      "english_proficiency": "native_high",
+      "major_expat_hubs": [
+        "Toronto",
+        "Vancouver",
+        "Montreal",
+        "Calgary"
+      ],
+      "time_zone_from_us_est": "0_to_-3",
+      "direct_flights_from_us": "extensive",
+      "notes": "Canada combines native‑English (and French in Quebec) environments with continental climates featuring cold winters and warm summers; major expat hubs like Toronto, Vancouver, Montreal, and Calgary have strong U.S. air links and time‑zone differences ranging roughly 0 to 3 hours from U.S. Eastern time."
+    },
+    "sources": [
+      {
+        "url": "https://immigration.ca/who-qualifies-for-canadian-permanent-residence-skilled-worker-immigration",
+        "source_type": "government_or_major_immigration_portal",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "high",
+        "notes": "Outlines Express Entry qualification, points system, and basic processing expectations."
+      },
+      {
+        "url": "https://www.visahq.com/news/2026-01-21/ca-express-entry-backlog-swells-to-three-year-high-pushing-skilled-workers-wait-times",
+        "source_type": "news",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Discusses 20252026 Express Entry processing backlogs and extended timelines."
+      },
+      {
+        "url": "research/healthcare.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Provides cost ranges for housing and supplemental private insurance in Canadian cities."
+      },
+      {
+        "url": "research/taxes.csv",
+        "source_type": "other",
+        "retrieved_at": "2026-01-31T00:00:00Z",
+        "reliability": "medium",
+        "notes": "Summarizes Canadas income‑tax bands and interaction with U.S. FEIE and foreign tax credits for U.S. citizens."
+      }
+    ],
+    "field_provenance": {
+      "rights_and_safety": {
+        "sources": [
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "healthcare": {
+        "sources": [
+          "research/healthcare.csv",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "taxation": {
+        "sources": [
+          "research/taxes.csv",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      },
+      "pathways": {
+        "sources": [
+          "research/passagr_research_v2.md",
+          "research/passagr_research.md"
+        ],
+        "confidence": "medium",
+        "change_type": "updated"
+      },
+      "language_family_citizenship": {
+        "sources": [
+          "research/language.csv"
+        ],
+        "confidence": "high",
+        "change_type": "unchanged"
+      },
+      "quality_of_life": {
+        "sources": [
+          "research/liveability.csv",
+          "research/passagr_research_v2.md"
+        ],
+        "confidence": "medium",
+        "change_type": "unchanged"
+      }
+    },
+    "diff_summary": {
+      "has_changes": true,
+      "changed_fields": [
+        "pathways",
+        "quality_of_life"
+      ],
+      "notes": "Added structured descriptions of Canadas lack of a digital‑nomad visa, Express Entry skilled‑worker route, refugee pathway, and expat‑relevant climate and hub information."
+    },
+    "issues": []
+  },
+  {
+    "country_identity": 6,
+    "country": {
+      "iso2": "JP",
+      "name": "Japan",
+      "region": "asia",
+      "subregion": "eastern_asia",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 2.5,
+      "lgbtq_notes": "Japan lacks comprehensive LGBTQ‑specific hate‑crime laws and nationwide anti‑discrimination protection, and equality indices therefore rate its legal environment considerably weaker than Western high‑protection countries.",
+      "abortion_status": "legal_with_restrictions",
+      "abortion_notes": "Abortion is legal but regulated with requirements such as spousal consent in many cases and permitted grounds tied to health and socio‑economic reasons up to roughly 22 weeks.",
+      "hate_crime_protections": "limited",
+      "hate_crime_notes": "There is no comprehensive national hate‑crime statute explicitly covering sexual orientation and gender identity, and existing protections are piecemeal."
+    },
+    "healthcare": {
+      "system_type": "universal_public_insurance",
+      "access_notes": "Residents, including expats with medium‑ to long‑term visas, must enroll in national or employees health insurance, which typically covers 7080 percent of approved medical costs with patients paying a 2030 percent copay.",
+      "quality_notes": "Japans system offers high‑quality care with predictable copays, but major cities like Tokyo are expensive, with central one‑bedroom rents around 100,000180,000 JPY and realistic single budgets in the 200,000350,000 JPY per‑month range."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_residence_based",
+      "tax_notes": "Japan has a U.S. tax treaty and taxes residents on worldwide income at progressive national rates of about 545 percent plus a typical 10 percent local residence tax, so U.S. citizens often rely on a mix of FEIE and foreign tax credits.",
+      "special_regimes": []
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated digital‑nomad visa (Business Manager option requires local entity)",
+        "job_offer_required": null,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "JPY",
+          "period": "monthly",
+          "notes": "Japan does not provide a non‑employment digital‑nomad visa; the Business Manager status requires company setup and capitalization rather than simple foreign passive income."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing depends on visa type and local immigration office; there is no standardized remote‑work stream."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Remote workers usually enter under regular work or business categories if they have Japanese clients or a local entity, rather than a pure location‑independent route."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Highly Skilled Professional Visa (points‑based)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "JPY",
+          "period": "annual",
+          "notes": "The category is points‑based, emphasizing salary, education, research record, and professional experience rather than a single published minimum; higher income yields more points."
+        },
+        "processing_time_months": {
+          "min": 1,
+          "max": 3,
+          "notes": "Typical processing for highly skilled applications is about 13 months once a complete file is submitted."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": 10,
+        "notes": "Long‑term residents on work or highly skilled status generally need around 10 years residence for naturalization, with some accelerated options for very high‑scoring applicants."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Refugee Recognition (Immigration Services Agency RSD)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "unknown",
+          "notes": "Eligibility is based on refugee‑status criteria; income is not a formal requirement."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Case durations vary widely; applicants must submit their claim at a regional immigration office and undergo a status‑determination interview."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Recognized refugees may later qualify for long‑term residence and, eventually, naturalization under Japans general 10‑year residency and integration rules."
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "near_native_japanese",
+      "difficulty": "very_difficult",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse",
+        "children"
+      ],
+      "years_to_pr": 10,
+      "years_to_citizenship": {
+        "min": 10,
+        "max": 10
+      },
+      "dual_citizenship_allowed": false,
+      "notes": "Japanese language is not required for basic residence but practical permanent residence and especially citizenship usually demand near‑native proficiency; dependent family can join immediately, PR often comes after roughly 10 years (or faster for some highly skilled), and naturalization normally requires about 10 years and renunciation of other citizenships."
+    },
+    "quality_of_life": {
+      "climate": "temperate_four_seasons",
+      "english_proficiency": "low_to_moderate_in_cities",
+      "major_expat_hubs": [
+        "Tokyo",
+        "Osaka",
+        "Kyoto",
+        "Fukuoka"
+      ],
+      "time_zone_from_us_est": "+14",
+      "direct_flights_from_us": "extensive_to_tokyo_and_osaka",
+      "notes": "Japan has a temperate climate with four distinct seasons, strong infrastructure, and major expat hubs like Tokyo, Osaka, Kyoto, and Fukuoka, but everyday English use is limited and the roughly 14‑hour time difference to U.S. Eastern time can complicate remote work."
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "Because Japans effective tax burden is moderate to high once residence and local taxes are included, many U.S. citizens lean on foreign tax credits instead of, or in addition to, the FEIE."
+    }
+  },
+  {
+    "country_identity": 7,
+    "country": {
+      "iso2": "TH",
+      "name": "Thailand",
+      "region": "asia",
+      "subregion": "south_eastern_asia",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 3.5,
+      "lgbtq_notes": "Thailand legalized same‑sex marriage on January 23, 2025, becoming the first country in Southeast Asia to do so, but broader hate‑crime and anti‑discrimination protections remain partial rather than comprehensive.",
+      "abortion_status": "legal_with_restrictions",
+      "abortion_notes": "Abortion is legal with gestational limits and specific grounds such as health and socio‑economic reasons, generally permitted up to about 22 weeks with some procedural restrictions.",
+      "hate_crime_protections": "limited",
+      "hate_crime_notes": "The Gender Equality Act 2015 offers some protection against discrimination, but there is no fully developed nationwide hate‑crime framework explicitly covering sexual orientation and gender identity."
+    },
+    "healthcare": {
+      "system_type": "mixed_public_private",
+      "access_notes": "Public facilities exist but many expats rely on private hospitals and clinics, where out‑of‑pocket costs are relatively low by global standards.",
+      "cost_notes": "Typical GP‑level visits range roughly 1030 USD in public settings and 3080 USD in private clinics, with private insurance premiums often around 50150 USD per month for basic coverage."
+    },
+    "economics_and_cost_of_living": {
+      "overall_cost_level": "low",
+      "rent_1br_city_center_usd": {
+        "min": 400,
+        "max": 800
+      },
+      "monthly_budget_single_usd": {
+        "min": 1000,
+        "max": 2000
+      },
+      "notes": "Thailand, especially Bangkok and major provincial cities, offers a significantly lower cost of living than Western Europe or North America, making it attractive for budget‑conscious expats."
+    },
+    "taxation": {
+      "tax_system_type": "territorial_with_progressive_rates",
+      "tax_notes": "Thailand taxes primarily Thai‑source income at progressive rates of about 035 percent, and foreign income is generally not taxed if it is not remitted to Thailand within the same tax year.",
+      "special_regimes": [
+        "territorial_non_remittance"
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work_financial_independence",
+        "name": "Elite Visa / Long‑Term Resident (LTR) structures",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": 25000,
+          "currency": "USD",
+          "period": "one_time_deposit_for_elite",
+          "notes": "Common Elite packages require a lump‑sum fee around 25,000 USD; some LTR categories also set income or asset thresholds rather than monthly proof."
+        },
+        "processing_time_months": {
+          "min": 1,
+          "max": 3,
+          "notes": "Typical Elite or LTR approvals fall in roughly a 412 week window depending on visa type."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": {
+          "min": 3,
+          "max": 10
+        },
+        "years_to_citizenship": null,
+        "notes": "Long‑stay visas can count toward permanent residency after approximately 310 years depending on category, but citizenship remains difficult and slow."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "BOI‑sponsored Work Permit  Non‑Immigrant B",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "THB",
+          "period": "monthly",
+          "notes": "Salary thresholds vary by role, employer type, and Board of Investment sponsorship rather than a single universal minimum."
+        },
+        "processing_time_months": {
+          "min": 1,
+          "max": 2,
+          "notes": "Processing for BOI‑linked Non‑Immigrant B work visas is typically about 48 weeks."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": {
+          "min": 3,
+          "max": 10
+        },
+        "years_to_citizenship": 10,
+        "notes": "Work‑permit holders can become eligible for permanent residence after several years of continuous stay; citizenship usually requires around 10 years and stringent criteria."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Refugee Status Determination  Ministry of Interior with UNHCR support",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Protection is based on refugee criteria rather than financial capacity."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Timelines vary and depend on Ministry and UNHCR procedures."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Applicants must be physically present in Thailand and lodge claims with the immigration bureau, often with UNHCR assistance."
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "basic_thai",
+      "difficulty": "very_difficult_for_citizenship",
+      "family_reunification_wait_months": {
+        "min": 0,
+        "max": 0
+      },
+      "eligible_family_members": [
+        "spouse",
+        "children"
+      ],
+      "years_to_pr": {
+        "min": 3,
+        "max": 10
+      },
+      "years_to_citizenship": 10,
+      "dual_citizenship_allowed": true,
+      "notes": "Thai language is not required for visas but basic proficiency is needed for naturalization; family members such as spouses and children can accompany primary visa holders; permanent residence generally takes 310 years, and citizenship is rare and typically requires around 10 years plus language and integration tests."
+    },
+    "quality_of_life": {
+      "climate": "tropical_hot_humid",
+      "english_proficiency": "moderate_in_tourist_areas_low_elsewhere",
+      "major_expat_hubs": [
+        "Bangkok",
+        "Chiang Mai",
+        "Phuket",
+        "Hua Hin"
+      ],
+      "time_zone_from_us_est": "+12",
+      "direct_flights_from_us": "direct_flights_to_bangkok_available",
+      "notes": "Thailand offers a warm tropical climate, large urban and beach‑town expat communities, and strong connectivity, but the 12‑hour time difference to U.S. Eastern time can be challenging for synchronous work."
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "Because Thailand uses a territorial system with 035 percent rates only on Thai‑source income and non‑remitted foreign income often outside scope, U.S. citizens commonly prioritize the FEIE, sometimes with limited foreign tax credits."
+    }
+  },
+  {
+    "country_identity": 8,
+    "country": {
+      "iso2": "IE",
+      "name": "Ireland",
+      "region": "europe",
+      "subregion": "northern_europe",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 4.5,
+      "lgbtq_notes": "Ireland has strong statutory protections for sexual orientation and gender identity and ranks among high‑protection countries in recent equality and hate‑crime law surveys.",
+      "abortion_status": "legal_on_request_with_limits",
+      "abortion_notes": "Abortion has been legal on request up to 12 weeks since 2018, with broader grounds thereafter, aligning Ireland with other liberal European regimes.",
+      "hate_crime_protections": "comprehensive",
+      "hate_crime_notes": "National hate‑crime legislation explicitly includes protections related to sexual orientation and gender identity alongside other protected characteristics."
+    },
+    "healthcare": {
+      "system_type": "public_private_mixed",
+      "access_notes": "Residents with legal permission to stay can access the public system, with costs free or heavily subsidized for those who qualify for a Medical Card, while others often combine public care with private insurance.",
+      "cost_notes": "Typical GP visits fall around 100250 USD equivalent, monthly private premiums often range 108271 USD, and Dublin is relatively expensive, with central one‑bedroom rents about 1,9552,715 USD and single‑person monthly budgets roughly 2,7154,345 USD."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_residence_based",
+      "tax_notes": "Ireland has a U.S. tax treaty and taxes residents on worldwide income at progressive rates around 2040 percent plus USC of 0.58 percent and a 4 percent PRSI charge; the Special Assignee Relief Program (SARP) can reduce Irish tax for certain inbound employees.",
+      "special_regimes": [
+        "SARP_for_inbound_employees"
+      ]
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated digital‑nomad visa",
+        "job_offer_required": null,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "EUR",
+          "period": "monthly",
+          "notes": "Ireland does not currently operate a non‑employment digital‑nomad or passive‑income visa; long‑stay options are usually tied to work, study, or specific schemes."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing depends on the underlying permission type rather than a dedicated remote‑work route."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Remote workers typically use standard employment or other long‑stay permissions instead of a purpose‑built nomad visa."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Critical Skills Employment Permit",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "EUR",
+          "period": "annual",
+          "notes": "The permit targets high‑demand occupations with minimum salary thresholds set by occupation list rather than a single fixed number."
+        },
+        "processing_time_months": {
+          "min": 2,
+          "max": 3,
+          "notes": "Typical processing time is about 812 weeks for complete Critical Skills Employment Permit applications."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": 5,
+        "notes": "Permit holders can normally qualify for long‑term residence after around 5 years of reckonable residence, and citizenship applications typically require 5 years residence including 1 year continuous immediately before application."
+      },
+      {
+        "pathway_type": "humanitarian_or_heritage",
+        "name": "International Protection (Asylum) and Grandparent Citizenship",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Eligibility is based on refugee criteria or documented Irish ancestry, not income."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Asylum timelines vary; ancestry‑based citizenship via an Irish‑born grandparent is available and follows standard citizenship processing once documentation is accepted."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": 0,
+        "notes": "Asylum applicants must file with the International Protection Office; those with an Irish‑born grandparent can often claim citizenship directly through the Foreign Births Register without prior PR."
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "english_(no_formal_test)_irish_helpful",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "dependent_children"
+      ],
+      "years_to_pr": 5,
+      "years_to_citizenship": {
+        "min": 5,
+        "max": 5
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "There is no formal language‑test requirement for citizenship, but everyday English is necessary; spouses and dependent children of work‑permit holders can usually join immediately; dual citizenship is permitted."
+    },
+    "quality_of_life": {
+      "climate": "temperate_maritime_rainy",
+      "english_proficiency": "native_english_speaking",
+      "major_expat_hubs": [
+        "Dublin",
+        "Cork",
+        "Galway"
+      ],
+      "time_zone_from_us_est": "+5",
+      "direct_flights_from_us": "direct_flights_to_dublin_and_shannon",
+      "notes": "Ireland offers a temperate but often rainy climate, strong English‑speaking communities, and direct transatlantic links, though Dublins housing and living costs are comparatively high."
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "Given Irelands 2040 percent income‑tax bands plus USC and PRSI, many U.S. citizens use either the FEIE for mid‑level incomes or foreign tax credits, sometimes combined with SARP where available."
+    }
+  },
+  {
+    "country_identity": 9,
+    "country": {
+      "iso2": "GB",
+      "name": "United Kingdom",
+      "region": "europe",
+      "subregion": "northern_europe",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 3.5,
+      "lgbtq_notes": "The UK retains legal protections for sexual orientation and race but has seen weakening gender‑identity protections and dropped to around 22nd place in recent European LGBTQ equality rankings.",
+      "abortion_status": "legal_on_request_with_limits",
+      "abortion_notes": "Abortion is legal on request up to about 24 weeks in Great Britain, aligning it with other liberal European regimes.",
+      "hate_crime_protections": "partial_to_comprehensive",
+      "hate_crime_notes": "Hate‑crime statutes cover protected characteristics such as sexual orientation and race, but debates and legal shifts have created uncertainty around the robustness of gender‑identity protections."
+    },
+    "healthcare": {
+      "system_type": "NHS_public_with_private_option",
+      "access_notes": "Medium‑ and long‑term visa holders generally gain access to the NHS by paying the Immigration Health Surcharge; once paid, most NHS services are free at the point of use.",
+      "cost_notes": "The Immigration Health Surcharge is about 1,035 USD equivalent per year, typical GP visits outside the NHS range 50200 USD, and London living costs are high, with city‑center one‑bedroom rents roughly 2,2703,150 USD and single budgets about 3,1505,040 USD monthly."
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_residence_based",
+      "tax_notes": "The UK has a U.S. tax treaty and taxes residents on worldwide income at progressive rates around 2045 percent plus National Insurance; the historic non‑dom tax status was ended in 2025, leaving no broad expat‑specific regime.",
+      "special_regimes": []
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated digital‑nomad visa",
+        "job_offer_required": null,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "GBP",
+          "period": "monthly",
+          "notes": "The UK does not operate a standalone digital‑nomad or passive‑income visa; most long‑stay routes are tied to work, study, or family."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing times depend entirely on the chosen underlying route rather than a specific remote‑work category."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Remote workers usually rely on standard work or other visa categories if they need to be physically present in the UK."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Skilled Worker Visa (formerly Tier 2)",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "GBP",
+          "period": "annual",
+          "notes": "Minimum salary thresholds vary by occupation and shortage‑occupation status, rather than a single universal figure."
+        },
+        "processing_time_months": {
+          "min": 0.75,
+          "max": 2,
+          "notes": "Standard decisions are often in about 3 weeks for applications from outside the UK and 8 weeks from inside."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": {
+          "min": 5,
+          "max": 6
+        },
+        "notes": "Skilled workers can typically apply for indefinite leave to remain after 5 years and then for citizenship after 56 years total residence, subject to language and integration tests."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Asylum via UK Visas and Immigration (UKVI)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Eligibility is based on persecution risk and refugee‑status criteria, not financial capacity."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Asylum processing times vary and can be lengthy; applicants must lodge claims with the Home Office and attend a substantive interview."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Recognized refugees can later transition to more secure long‑term residence statuses and eventually pursue citizenship under standard rules."
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "english_B1_plus_Life_in_the_UK_test",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "children_under_18"
+      ],
+      "years_to_pr": 5,
+      "years_to_citizenship": {
+        "min": 5,
+        "max": 6
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "Citizenship normally requires B1‑level English (or another recognized language test) plus the Life in the UK exam; spouses and minor children of visa holders can typically join immediately; dual citizenship is permitted."
+    },
+    "quality_of_life": {
+      "climate": "temperate_maritime_cool_and_rainy",
+      "english_proficiency": "native_english_speaking",
+      "major_expat_hubs": [
+        "London",
+        "Manchester",
+        "Edinburgh",
+        "Brighton"
+      ],
+      "time_zone_from_us_est": "+5",
+      "direct_flights_from_us": "extensive_direct_flights_to_multiple_UK_cities",
+      "notes": "The UK offers a cool, often rainy climate, very high English‑language convenience, and dense transatlantic air links, but major cities such as London are among Europes more expensive locations."
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "Because UK tax bands reach 2045 percent plus National Insurance, U.S. citizens often favor foreign tax credits over the FEIE for higher incomes, though the FEIE can still suit moderate earners."
+    }
+  },
+  {
+    "country_identity": 10,
+    "country": {
+      "iso2": "FR",
+      "name": "France",
+      "region": "europe",
+      "subregion": "western_europe",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 5,
+      "lgbtq_notes": "France sits in the top tier of European countries for LGBTQ protections, with comprehensive anti‑discrimination and hate‑crime legislation covering sexual orientation and gender identity.[cite:263][cite:264]",
+      "abortion_status": "constitutional_right_on_request",
+      "abortion_notes": "Abortion is protected as a constitutional right on request up to about 14 weeks of pregnancy, placing France among the most protective countries globally.[cite:264][cite:263]",
+      "hate_crime_protections": "comprehensive",
+      "hate_crime_notes": "National law and EU‑aligned directives provide strong hate‑crime protections that explicitly cover race, sexual orientation, and gender identity.[cite:264][cite:263]"
+    },
+    "healthcare": {
+      "system_type": "universal_public_with_private_topups",
+      "access_notes": "Residents who are registered with the French social‑security system receive a Carte Vitale and access the universal public healthcare scheme; many supplement it with private mutuelle insurance.[cite:258][cite:259]",
+      "cost_notes": "Typical GP visits cost around 50150 USD, much of which is reimbursed by the public system, and private top‑up insurance is in a similar monthly range.[cite:258][cite:259] Paris has high living costs, with a central one‑bedroom around 1,0002,500 USD and a single‑person monthly budget often 1,5003,000 USD.[cite:258][cite:259]"
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_residence_based",
+      "tax_notes": "France taxes tax‑resident individuals on worldwide income at progressive rates roughly 045 percent, plus social charges usually around 917 percent, making it a high‑tax jurisdiction.[cite:259]",
+      "special_regimes": [],
+      "us_tax_treaty": true
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated digital‑nomad visa",
+        "job_offer_required": null,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "EUR",
+          "period": "monthly",
+          "notes": "France does not operate a standalone digital‑nomad or passive‑income visa; long‑stays for remote workers usually rely on regular work, student, or family routes.[cite:259]"
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing time depends on the underlying visa category, as there is no specific remote‑work route.[cite:259]"
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Remote workers commonly use Talent Passport or other standard visas if they need to stay in France while working for foreign employers.[cite:259]"
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Talent Passport  Qualified Employee",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": 39582,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "The Talent Passport  Qualified Employee route requires a minimum salary of about 39,582 USD per year (around 3,298 USD/month), with thresholds adjusted periodically under French rules.[cite:264][cite:259]"
+        },
+        "processing_time_months": {
+          "min": 2,
+          "max": 4,
+          "notes": "Talent Passport applications are typically processed in about 24 months.[cite:264][cite:259]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 4,
+        "years_to_citizenship": {
+          "min": 5,
+          "max": 5
+        },
+        "notes": "After 4 years on a Talent Passport, holders can often obtain a 10‑year resident card, and they are generally eligible for citizenship after 5 years of legal residence in France.[cite:264][cite:262][cite:259]"
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Talent Passport  EU Blue Card",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": 59373,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "The French implementation of the EU Blue Card requires a higher salary threshold of about 59,373 USD per year, reflecting the highly qualified nature of the route.[cite:264][cite:259]"
+        },
+        "processing_time_months": {
+          "min": 2,
+          "max": 4,
+          "notes": "EU Blue Card Talent Passport cases typically see 24‑month processing times.[cite:264][cite:259]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 4,
+        "years_to_citizenship": {
+          "min": 5,
+          "max": 5
+        },
+        "notes": "Blue Card holders follow similar long‑term residence and citizenship timelines as other Talent Passport residents.[cite:264][cite:262]"
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "EU Asylum Procedure via OFPRA",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Asylum eligibility depends on persecution risk and refugee criteria, not financial resources.[cite:264][cite:263]"
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing times vary; claims are examined under EU asylum rules by the French Office for the Protection of Refugees and Stateless Persons (OFPRA) and appeal bodies.[cite:263]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Successful refugees can transition to more secure residence and may later apply for citizenship under standard residence‑duration rules.[cite:263][cite:259]"
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "french_B1",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "minor_children"
+      ],
+      "years_to_pr": 5,
+      "years_to_citizenship": {
+        "min": 5,
+        "max": 5
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "Naturalization typically requires B1‑level French and integration checks; spouses and minor children of French residents usually qualify for immediate family reunification; dual citizenship is permitted.[cite:262][cite:259]"
+    },
+    "quality_of_life": {
+      "climate": "temperate_with_mediterranean_south",
+      "english_proficiency": "high_in_paris_moderate_elsewhere",
+      "major_expat_hubs": [
+        "Paris",
+        "Lyon",
+        "Bordeaux",
+        "Nice"
+      ],
+      "time_zone_from_us_est": "+6",
+      "direct_flights_from_us": "extensive_direct_flights_to_paris_and_other_cities",
+      "notes": "France combines a temperate to Mediterranean climate, especially in the south, with strong cultural amenities and extensive direct air links to the U.S., but Paris and some major cities have relatively high living costs.[cite:259]"
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "Given Frances high tax and social‑charge levels, U.S. citizens often benefit more from the Foreign Tax Credit than from the Foreign Earned Income Exclusion, especially at higher income levels.[cite:259]"
+    }
+  },
+  {
+    "country_identity": 11,
+    "country": {
+      "iso2": "DE",
+      "name": "Germany",
+      "region": "europe",
+      "subregion": "western_europe",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 4.5,
+      "lgbtq_notes": "Germany is rated in the high‑protection tier, with strong anti‑discrimination and hate‑crime legislation covering sexual orientation, gender identity, and race.[cite:264][cite:259]",
+      "abortion_status": "legal_on_request_with_limits",
+      "abortion_notes": "Abortion is legal on broad grounds up to about 12 weeks following mandatory counseling, aligning Germany with other liberal European regimes.[cite:264][cite:259]",
+      "hate_crime_protections": "comprehensive",
+      "hate_crime_notes": "Federal criminal law provides robust hate‑crime protections for race, sexual orientation, and gender identity, and Germany is frequently cited for strong implementation standards.[cite:264][cite:259]"
+    },
+    "healthcare": {
+      "system_type": "mandatory_public_or_private_insurance",
+      "access_notes": "Health insurance is mandatory; residence visas generally require proof of statutory public insurance or qualifying private coverage.[cite:258][cite:259]",
+      "cost_notes": "Germanys healthcare is considered world‑class, with costs largely mediated through insurance contributions rather than high out‑of‑pocket GP fees; Berlins cost‑of‑living index is higher than Portugal and Spain and above the Southern Europe average.[cite:258][cite:259]"
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_residence_based",
+      "tax_notes": "Germany taxes residents on worldwide income at progressive rates of roughly 1445 percent plus a solidarity surcharge, making it a high‑tax jurisdiction.[cite:259]",
+      "special_regimes": [],
+      "us_tax_treaty": true
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "Freelance Visa (Freiberufler)",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": null,
+          "currency": "EUR",
+          "period": "monthly",
+          "notes": "There is no fixed statutory minimum, but applicants must document sufficient projected income and financial means to support themselves and any dependents.[cite:264][cite:259]"
+        },
+        "processing_time_months": {
+          "min": 1.5,
+          "max": 3,
+          "notes": "Typical processing ranges from about 612 weeks, with some fast‑track cases completing in 23 months.[cite:264][cite:259]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": {
+          "min": 5,
+          "max": 5
+        },
+        "notes": "After about 5 years of approved freelance activity, holders can generally apply for a permanent settlement permit; as of the 2025 reform, citizenship is usually possible after 5 years of residence.[cite:264][cite:259]"
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "EU Blue Card / Skilled Worker Visa (Sections 18a/18b)",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "EUR",
+          "period": "annual",
+          "notes": "Minimum salary thresholds depend on occupation and are updated annually; EU Blue Card roles must meet higher salary and qualification standards.[cite:259]"
+        },
+        "processing_time_months": {
+          "min": 1.5,
+          "max": 3,
+          "notes": "Standard processing is about 612 weeks, with some fast‑track channels around 23 months.[cite:264][cite:259]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 5,
+        "years_to_citizenship": {
+          "min": 5,
+          "max": 5
+        },
+        "notes": "Skilled workers can usually obtain a permanent residence title after roughly 5 years, and the 2025 law reduced the general citizenship residence requirement from 8 to 5 years, with dual citizenship now broadly allowed.[cite:259]"
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "EU Asylum Procedure via BAMF",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Asylum decisions are based on refugee‑status criteria, not financial capacity; applicants must usually be present in Germany or at its border.[cite:264][cite:259]"
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing times vary with caseload; applications are examined by the Federal Office for Migration and Refugees (BAMF) under common EU asylum rules.[cite:259]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Recognized refugees can transition to more secure residence status and later pursue citizenship once general residence‑duration and integration conditions are met.[cite:259]"
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "german_B1",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "minor_children"
+      ],
+      "years_to_pr": 5,
+      "years_to_citizenship": {
+        "min": 5,
+        "max": 5
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "Citizenship generally requires B1‑level German and integration criteria; family reunification is available for spouses/partners and minor children of residents; since 2024, Germany broadly permits dual citizenship.[cite:262][cite:259]"
+    },
+    "quality_of_life": {
+      "climate": "continental_with_moderate_summers_and_cold_winters",
+      "english_proficiency": "moderate_to_high_in_cities",
+      "major_expat_hubs": [
+        "Berlin",
+        "Munich",
+        "Frankfurt"
+      ],
+      "time_zone_from_us_est": "+6",
+      "direct_flights_from_us": "extensive_direct_flights_to_multiple_german_cities",
+      "notes": "Germany offers strong public services, excellent healthcare and education, and major expat hubs like Berlin, Munich, and Frankfurt, though living costs in big cities are higher than in Southern Europe.[cite:258][cite:259]"
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "Because Germanys effective tax rates are relatively high, U.S. citizens often find the Foreign Tax Credit more advantageous than the Foreign Earned Income Exclusion once income rises above moderate levels.[cite:259]"
+    }
+  },
+  {
+    "country_identity": 12,
+    "country": {
+      "iso2": "AU",
+      "name": "Australia",
+      "region": "oceania",
+      "subregion": "australia_and_new_zealand",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 4.5,
+      "lgbtq_notes": "Australia is in the high‑protection tier, with federal anti‑discrimination protections for sexual orientation and race and additional state‑level hate‑crime laws; rights are strong but implementation is still monitored by human‑rights groups.",
+      "abortion_status": "legal_on_request_with_state_variation",
+      "abortion_notes": "Abortion is legal in all states and territories, generally on request in early pregnancy, though specific rules and gestational limits vary by state.",
+      "hate_crime_protections": "mixed_federal_and_state",
+      "hate_crime_notes": "Hate‑crime and vilification protections exist but are split between federal and state frameworks, and recent reviews highlight the need for improved human‑rights oversight."
+    },
+    "healthcare": {
+      "system_type": "medicare_public_with_private_option",
+      "access_notes": "Australia runs a universal Medicare system; access for expats depends on visa class and any reciprocal agreements, and many temporary visa holders rely partly on private insurance.",
+      "cost_notes": "Typical GP visits for those covered by Medicare are subsidized, while private visits commonly run about AUD 150300; Sydneys cost‑of‑living index is around 75.1 with central one‑bedroom rents about AUD 2,5003,500 and single‑person monthly budgets roughly AUD 3,5005,000."
+    },
+    "taxation": {
+      "tax_system_type": "residence_based_worldwide",
+      "tax_notes": "Australia taxes residents on worldwide income at progressive rates of roughly 1945 percent plus a 2 percent Medicare levy, placing it among high‑tax countries.",
+      "special_regimes": [],
+      "us_tax_treaty": true
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated digital‑nomad visa",
+        "job_offer_required": null,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "AUD",
+          "period": "monthly",
+          "notes": "Australia does not offer a specific digital‑nomad or passive‑income visa; long stays typically require work, study, or family visas and may not legally support full‑time foreign‑employer remote work under all subclasses."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing depends entirely on the underlying visa (e.g., skilled, student, visitor) rather than a dedicated remote‑work route."
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Remote workers generally use standard skilled or other visas if they intend to base themselves in Australia long term."
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Skilled Independent (Subclass 189) / Skilled Nominated (Subclass 190)",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "AUD",
+          "period": "annual",
+          "notes": "These are points‑based permanent visas; there is no single salary minimum, but applicants must meet occupation, skill, and points thresholds rather than a fixed income bar."
+        },
+        "processing_time_months": {
+          "min": 8,
+          "max": 19,
+          "notes": "Current processing is about 818 months for Subclass 189 and 919 months for Subclass 190, with times fluctuating by queue and case complexity."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": {
+          "min": 4,
+          "max": 4
+        },
+        "notes": "These visas grant permanent residency on arrival; citizenship is typically available after about 4 years of lawful residence, including at least 1 year as a permanent resident."
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Protection Visa / Humanitarian Program",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Access is based on meeting refugee or complementary‑protection criteria, not on income or employment."
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing times vary widely; applications may be lodged onshore or via offshore humanitarian channels, sometimes with UNHCR referral."
+        },
+        "leads_to_pr": true,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Recognized refugees usually transition to permanent status and may become eligible for citizenship after fulfilling residence and character requirements."
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "english_required_in_pr_points_and_citizenship_test",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "dependent_children"
+      ],
+      "years_to_pr": 0,
+      "years_to_citizenship": {
+        "min": 4,
+        "max": 4
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "English is not a separate formal requirement for PR beyond points‑test scoring, but applicants must satisfy English criteria for skilled visas and later pass a citizenship test; family members are usually included in the primary skilled visa; citizenship normally follows after about 4 years of total residence including 1 year as a permanent resident, and dual citizenship is permitted."
+    },
+    "quality_of_life": {
+      "climate": "varied_temperate_to_tropical",
+      "english_proficiency": "native_english_speaking",
+      "major_expat_hubs": [
+        "Sydney",
+        "Melbourne",
+        "Brisbane",
+        "Perth"
+      ],
+      "time_zone_from_us_est": "+14_to_+16",
+      "direct_flights_from_us": "direct_flights_to_sydney_and_melbourne",
+      "notes": "Australia combines high living standards and English‑speaking cities with relatively high urban costs; Sydneys cost index is about 75.1 and central rents are significantly above many European cities."
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "Because Australias marginal rates reach roughly 45 percent plus a Medicare levy, U.S. citizens often favor the Foreign Tax Credit over the FEIE, especially at higher incomes."
+    }
+  },
+  {
+    "country_identity": 13,
+    "country": {
+      "iso2": "CR",
+      "name": "Costa Rica",
+      "region": "latin_america",
+      "subregion": "central_america",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 3,
+      "lgbtq_notes": "Costa Rica offers moderate LGBTQ protections but lacks specific LGBTQ‑focused hate‑crime laws and falls below top‑tier equality countries.[cite:259][cite:264]",
+      "abortion_status": "highly_restricted",
+      "abortion_notes": "Abortion is highly restricted and generally only permitted to protect life or health or in cases of rape, making access significantly tighter than in most of Europe.[cite:259][cite:264]",
+      "hate_crime_protections": "limited",
+      "hate_crime_notes": "There are limited hate‑crime provisions and no dedicated national framework explicitly covering LGBTQ status.[cite:259][cite:264]"
+    },
+    "healthcare": {
+      "system_type": "public_caja_with_private_option",
+      "access_notes": "Residents join the Caja Costarricense de Seguro Social (CCSS) system; expats with residency can enroll and also commonly use private clinics.[cite:258][cite:259]",
+      "cost_notes": "Public care is low‑cost, with GP visits roughly 50100 USD in public and 70200 USD in private clinics; overall healthcare is cheaper than in most developed countries.[cite:258][cite:259]"
+    },
+    "taxation": {
+      "tax_system_type": "territorial",
+      "tax_notes": "Costa Rica taxes only Costa‑Rica‑sourced income for residents; foreign‑sourced income is generally exempt, making it a favorable low‑tax base for foreign earners.[cite:259]",
+      "special_regimes": [],
+      "us_tax_treaty": false
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "Rentista Visa (Passive Income)",
+        "job_offer_required": false,
+        "remote_work_allowed": true,
+        "income_requirement": {
+          "amount": 2500,
+          "currency": "USD",
+          "period": "monthly",
+          "notes": "Applicants must show 2,500 USD per month in guaranteed income or a 60,000 USD deposit, often via an annuity or stable remote income.[cite:259][cite:264]"
+        },
+        "processing_time_months": {
+          "min": 3,
+          "max": 6,
+          "notes": "Typical processing ranges about 36 months.[cite:259][cite:264]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 3,
+        "years_to_citizenship": {
+          "min": 7,
+          "max": 7
+        },
+        "notes": "After 3 years on Rentista status you can usually apply for permanent residency; citizenship is commonly available after about 7 years of total residence.[cite:259][cite:264]"
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "General Work Permit",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "CRC",
+          "period": "monthly",
+          "notes": "Salaries must meet local labor‑law minima for the specific occupation, but there is no single, uniform threshold.[cite:259]"
+        },
+        "processing_time_months": {
+          "min": 2,
+          "max": 4,
+          "notes": "General work permits usually process in about 24 months.[cite:259][cite:264]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 3,
+        "years_to_citizenship": {
+          "min": 7,
+          "max": 7
+        },
+        "notes": "Time on a work permit counts toward the ~3‑year window for permanent residency and the ~7‑year citizenship track.[cite:259]"
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Refugee Status Determination",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Eligibility is based on persecution and refugee criteria, not financial capacity.[cite:259][cite:264]"
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Cases are handled by Costa Rican immigration authorities, sometimes with UNHCR support; timelines vary widely.[cite:259][cite:264]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Recognized refugees may later transition to permanent status and eventually citizenship under general residence rules.[cite:259]"
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "spanish_B1_for_citizenship",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "minor_children",
+        "dependent_parents"
+      ],
+      "years_to_pr": 3,
+      "years_to_citizenship": {
+        "min": 7,
+        "max": 7
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "Spanish is not required for residency but B1‑level Spanish is generally needed for citizenship; family reunification covers spouses, minor children, and dependent parents; permanent residence usually follows about 3 years with citizenship around 7 years.[cite:262][cite:259]"
+    },
+    "quality_of_life": {
+      "climate": "tropical_with_cooler_mountain_areas",
+      "english_proficiency": "moderate_in_expat_and_tourist_zones",
+      "major_expat_hubs": [
+        "San Jose",
+        "Central_Valley_towns"
+      ],
+      "time_zone_from_us_est": "-1",
+      "direct_flights_from_us": "direct_flights_from_multiple_us_cities_to_san_jose",
+      "notes": "Costa Rica offers a tropical climate with cooler highland regions, relatively low costs compared to North America, and established expat communities in and around San José and the Central Valley.[cite:259]"
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "no_us_tax_treaty",
+      "feie_vs_ftc": "The territorial system and lack of tax on foreign income make Costa Rica highly compatible with the Foreign Earned Income Exclusion; the Foreign Tax Credit is usually less relevant because local tax on foreign income is minimal.[cite:259]"
+    }
+  },
+  {
+    "country_identity": 14,
+    "country": {
+      "iso2": "NZ",
+      "name": "New Zealand",
+      "region": "oceania",
+      "subregion": "australia_and_new_zealand",
+      "policy_volatility": "medium",
+      "last_verified_at": "2026-01-31T00:00:00Z",
+      "verification_status": "proposed"
+    },
+    "rights_and_safety": {
+      "lgbtq_rights_score": 4.5,
+      "lgbtq_notes": "New Zealand is in the high‑protection tier, with strong anti‑discrimination and hate‑crime protections that explicitly include sexual orientation and gender identity.[cite:259][cite:264]",
+      "abortion_status": "legal_on_request_with_limits",
+      "abortion_notes": "Abortion is legal on request up to around 20 weeks, placing New Zealand among liberal jurisdictions for reproductive rights.[cite:259][cite:264]",
+      "hate_crime_protections": "comprehensive",
+      "hate_crime_notes": "Hate‑crime and hate‑speech laws protect LGBTQ people alongside other protected characteristics.[cite:259][cite:264]"
+    },
+    "healthcare": {
+      "system_type": "public_with_private_option",
+      "access_notes": "Public healthcare is available to residents, while temporary visa holders may have more limited access and often rely on private insurance; costs are subsidized once resident status is granted.[cite:258][cite:259]",
+      "cost_notes": "Typical GP visits cost about NZD 100250, with private insurance around NZD 60150 per month; Christchurchs cost‑of‑living index is about 59.4, with city‑center one‑bedroom rents roughly NZD 2,0003,000 and single budgets around NZD 3,0004,500 per month.[cite:258][cite:259]"
+    },
+    "taxation": {
+      "tax_system_type": "worldwide_residence_based",
+      "tax_notes": "New Zealand taxes residents on worldwide income at progressive rates of roughly 10.539 percent; there is no broad expat‑specific income‑tax regime.[cite:259]",
+      "special_regimes": [],
+      "us_tax_treaty": true
+    },
+    "pathways": [
+      {
+        "pathway_type": "remote_work",
+        "name": "No dedicated digital‑nomad visa",
+        "job_offer_required": null,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "NZD",
+          "period": "monthly",
+          "notes": "New Zealand does not have a stand‑alone digital‑nomad visa; long‑term stays for remote workers typically rely on standard work, study, or partner visas.[cite:259]"
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Processing time depends on the underlying visa category, not a specific remote‑work route.[cite:259]"
+        },
+        "leads_to_pr": null,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Remote workers usually look at Skilled Migrant or other employment‑based visas if they want to settle long‑term.[cite:259]"
+      },
+      {
+        "pathway_type": "skilled_worker",
+        "name": "Skilled Migrant Category Resident Visa",
+        "job_offer_required": true,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": "NZD",
+          "period": "annual",
+          "notes": "Requires an accredited‑employer job offer that meets occupation and wage thresholds; wage floors are adjusted periodically.[cite:259][cite:73][cite:74]"
+        },
+        "processing_time_months": {
+          "min": 6,
+          "max": 12,
+          "notes": "Current indications suggest about 612 months from application to decision, depending on volume and completeness.[cite:259][cite:264]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": 0,
+        "years_to_citizenship": {
+          "min": 5,
+          "max": 5
+        },
+        "notes": "The Skilled Migrant Category Resident Visa directly grants residence; citizenship is typically available after about 5 years of residence, subject to presence and character requirements.[cite:262][cite:259]"
+      },
+      {
+        "pathway_type": "humanitarian",
+        "name": "Refugee / Protection Pathways via Immigration New Zealand",
+        "job_offer_required": false,
+        "remote_work_allowed": false,
+        "income_requirement": {
+          "amount": null,
+          "currency": null,
+          "period": "none",
+          "notes": "Eligibility is based on refugee or protection status, not financial resources.[cite:259][cite:264]"
+        },
+        "processing_time_months": {
+          "min": null,
+          "max": null,
+          "notes": "Applications may be made in New Zealand or via offshore resettlement channels with UNHCR involvement; timeframes vary.[cite:259][cite:264]"
+        },
+        "leads_to_pr": true,
+        "years_to_pr": null,
+        "years_to_citizenship": null,
+        "notes": "Recognized refugees can obtain long‑term residence and may later qualify for citizenship under the standard 5‑year residence rule.[cite:259]"
+      }
+    ],
+    "language_family_citizenship": {
+      "language_for_citizenship": "english_required_for_citizenship_test",
+      "difficulty": "moderate",
+      "family_reunification_wait_months": 0,
+      "eligible_family_members": [
+        "spouse_or_partner",
+        "dependent_children"
+      ],
+      "years_to_pr": 0,
+      "years_to_citizenship": {
+        "min": 5,
+        "max": 5
+      },
+      "dual_citizenship_allowed": true,
+      "notes": "English is not formally required for residency but helps in points‑based assessments; family members are generally included in the main visa; citizenship normally follows after about 5 years of residence, and dual citizenship is allowed.[cite:262][cite:259]"
+    },
+    "quality_of_life": {
+      "climate": "temperate_maritime",
+      "english_proficiency": "native_english_speaking",
+      "major_expat_hubs": [
+        "Auckland",
+        "Wellington",
+        "Christchurch"
+      ],
+      "time_zone_from_us_est": "+17_to_+18",
+      "direct_flights_from_us": "direct_flights_to_auckland",
+      "notes": "New Zealand has a mild, oceanic climate, high overall quality of life, and English‑speaking cities, but it is geographically distant from North America with long travel times.[cite:259]"
+    },
+    "tax_notes_for_us_citizens": {
+      "treaty_status": "has_us_tax_treaty",
+      "feie_vs_ftc": "At moderate incomes the FEIE can work, but for higher incomes New Zealands 10.539 percent rates often make the Foreign Tax Credit competitive; optimal choice depends on individual income mix.[cite:259]"
+    }
+  }
+]

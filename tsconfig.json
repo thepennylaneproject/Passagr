@@ -30,7 +30,8 @@
     "api/**/*.ts",                                     /* Include all API files. */
     "workers/**/*.ts",                                 /* Include all Worker files. */
     "search/**/*.ts",                                  /* Include all Search files. */
-    "tests/**/*.ts"                                    /* Include all test files. */
+    "tests/**/*.ts",                                   /* Include all test files. */
+    "netlify/**/*.ts"
   ],
   "exclude": [
     "node_modules"

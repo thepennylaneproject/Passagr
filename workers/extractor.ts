@@ -1,12 +1,13 @@
 // workers/extractor.ts
 import { OpenAI } from 'openai';
-import { SupabaseClient, createClient } from '@supabase/supabase-js';
+import { supabase } from './supabase_client.ts';
 import { v4 as uuidv4 } from 'uuid';
+import { handler as validatorHandler } from './validator.ts';
+import { handler as differHandler } from './differ.ts';
+import { handler as editorialRouterHandler } from './editorial_router.ts';
+import { withRetry } from './retry.ts';
 
 const openai = new OpenAI();
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 interface ExtractorTask {
     sourceId: string;
@@ -35,16 +36,7 @@ const schemas = {
         "abortion_access_status": "",
         "hate_crime_law_snapshot": "",
         // -------------------------
-        "last_verified_at": "ISO8601",
-        "notes": [],
-        "section_confidence": {
-            "healthcare_overview": 0.0,
-            "rights_snapshot": 0.0,
-            "tax_snapshot": 0.0,
-            "lgbtq_rights_index": 0.0, // NEW
-            "abortion_access_status": 0.0 // NEW
-        },
-        "sources": [{ "field": "healthcare_overview", "url": "", "title": "", "publisher": "", "excerpt": "" }]
+        "last_verified_at": "ISO8601"
     },
     visa_path: {
         "country_id": "<countries.id>",
@@ -54,18 +46,19 @@ const schemas = {
         "eligibility": [],
         "work_rights": "",
         "dependents_rules": "",
-        "min_income": { "amount": null, "currency": "" },
-        "min_savings": { "amount": null, "currency": "" },
+        "min_income_amount": null,
+        "min_income_currency": "",
+        "min_savings_amount": null,
+        "min_savings_currency": "",
         "fees": [{ "label": "", "amount": null, "currency": "" }],
-        "processing_time_range": { "min_days": null, "max_days": null },
+        "processing_min_days": null,
+        "processing_max_days": null,
         "renewal_rules": "",
         "to_pr_citizenship_timeline": "",
         // --- NEW SAFETY FIELDS ---
         "in_country_conversion_path": "",
         // -------------------------
-        "sources": [{ "url": "", "title": "", "publisher": "", "excerpt": "" }],
-        "last_verified_at": "ISO8601",
-        "notes": []
+        "last_verified_at": "ISO8601"
     },
     // ... (Add schemas for requirements, steps, etc., including 'prep_mode' for requirements)
 };
@@ -113,9 +106,27 @@ export const handler = async (task: ExtractorTask) => {
             extractedJson.entity_id = task.entityId;
         }
 
-        // Enqueue for Validator
-        console.log("Extraction complete. Enqueuing for Validator.");
-        // `await validatorAgent.enqueue({ entityJson: extractedJson });`
+        // P-1.1: Chain to Validator → Differ → Editorial Router
+        const validationResult = await withRetry(
+            () => validatorHandler(extractedJson),
+            { label: `validator:${task.sourceId}` }
+        );
+
+        const differOutput = await withRetry(
+            () => differHandler({ proposedEntity: extractedJson, validationResult }),
+            { label: `differ:${task.sourceId}` }
+        );
+
+        if (differOutput) {
+            await withRetry(
+                () => editorialRouterHandler({
+                    proposedEntity: extractedJson,
+                    differOutput,
+                    validationResult
+                }),
+                { label: `editorial_router:${task.sourceId}` }
+            );
+        }
 
     } catch (e) {
         console.error("Extraction failed:", e);

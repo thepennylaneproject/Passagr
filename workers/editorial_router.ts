@@ -1,12 +1,10 @@
 // workers/editorial_router.ts
-import { Pool } from 'pg';
+import { createPgPool } from './db.ts';
+import { handler as publisherHandler } from './publisher.ts';
+import { handler as alertHandler } from './alert_writer.ts';
+import { withRetry } from './retry.ts';
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+const pool = createPgPool();
 
 interface EditorialRouterTask {
     proposedEntity: any;
@@ -24,6 +22,8 @@ const CRITICAL_SAFETY_FIELDS = [
     // Visa path critical fields
     'fees',
     'processing_time_range',
+    'processing_min_days',
+    'processing_max_days',
     'eligibility',
     'in_country_conversion_path',
 
@@ -48,6 +48,30 @@ export const handler = async (task: EditorialRouterTask) => {
     const entity_id = proposedEntity.entity_id || null;
     const entity_type = proposedEntity.entity_type;
 
+    // P-1.2: Removals always require editorial review
+    if (change_type === 'remove') {
+        try {
+            await pool.query(
+                `INSERT INTO editorial_reviews
+                 (entity_type, entity_id, status, notes, proposed_data, diff_summary, diff_fields)
+                 VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+                [
+                    entity_type,
+                    entity_id,
+                    'pending',
+                    'Entity removal requires editorial review.',
+                    JSON.stringify(proposedEntity),
+                    differOutput.diff_summary,
+                    JSON.stringify(differOutput.diff_fields)
+                ]
+            );
+            console.log(`[editorial_router] Removal review created for ${entity_type}:${entity_id}`);
+        } catch (error) {
+            console.error("[editorial_router] Failed to create removal review:", error);
+        }
+        return { requires_review: true, action: 'pending_review', impact };
+    }
+
     const requiresHumanReview = (
         change_type === 'add' || // First publication requires review
         impact === 'high' ||     // Validation errors (missing critical data, invalid format)
@@ -62,7 +86,7 @@ export const handler = async (task: EditorialRouterTask) => {
                 ? 'High impact validation error'
                 : 'Critical safety field change';
 
-        console.log(`Requires review. Reason: ${reason}.`);
+        console.log(`[editorial_router] Requires review. Reason: ${reason}.`);
 
         try {
             await pool.query(
@@ -79,18 +103,25 @@ export const handler = async (task: EditorialRouterTask) => {
                     JSON.stringify(differOutput.diff_fields)
                 ]
             );
-            console.log(`Editorial review created for ${entity_type} ${entity_id}`);
+            console.log(`[editorial_router] Editorial review created for ${entity_type} ${entity_id}`);
         } catch (error) {
-            console.error("Failed to create editorial review:", error);
+            console.error("[editorial_router] Failed to create editorial review:", error);
         }
     } else if (impact === 'medium') {
-        // Medium impact for a previously approved entity, auto-publish with notice
-        console.log(`Medium impact. Auto-publishing entity ${entity_type}: ${entity_id} and creating an alert.`);
-        // TODO: Enqueue Publisher and Alert Writer
-    } else { // impact === 'low'
-        // Low impact changes, auto-publish
-        console.log(`Low impact. Auto-publishing entity ${entity_type}: ${entity_id}.`);
-        // TODO: Enqueue Publisher
+        // P-4.1: Medium impact for a previously approved entity — auto-publish with alert
+        console.log(`[editorial_router] Medium impact. Auto-publishing ${entity_type}:${entity_id} with alert.`);
+        await withRetry(
+            () => publisherHandler({ entity: proposedEntity, differOutput }),
+            { label: `publisher:${entity_type}:${entity_id}` }
+        );
+        await alertHandler({ entity: proposedEntity, differOutput, impact });
+    } else {
+        // P-4.1: Low impact changes — auto-publish silently
+        console.log(`[editorial_router] Low impact. Auto-publishing ${entity_type}:${entity_id}.`);
+        await withRetry(
+            () => publisherHandler({ entity: proposedEntity, differOutput }),
+            { label: `publisher:${entity_type}:${entity_id}` }
+        );
     }
 
     return {
@@ -99,3 +130,4 @@ export const handler = async (task: EditorialRouterTask) => {
         impact
     };
 };
+

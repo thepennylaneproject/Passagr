@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { CheckCircle2, FileText, Globe, MapPin } from 'lucide-react';
+import { normalizeDocList } from '../lib/formatters';
 
 const PHASE_CONFIG = {
     'remote_only': {
@@ -23,16 +24,16 @@ const PHASE_CONFIG = {
 };
 
 const RequirementItem = ({ req }) => (
-    <div className="flex items-start p-4 bg-white border border-surface-200 rounded-lg mb-3 shadow-sm hover:shadow-md transition-shadow">
+    <div className="flex items-start p-4 bg-var(--color-ivory) border border-surface-200 rounded-lg mb-3 shadow-sm hover:shadow-md transition-shadow">
         <FileText className="w-5 h-5 text-surface-400 mt-0.5 mr-3 flex-shrink-0" />
         <div>
             <h4 className="font-semibold text-surface-900">{req.label}</h4>
             {req.details && <p className="text-sm text-surface-600 mt-1">{req.details}</p>}
-            {req.doc_list && req.doc_list.length > 0 && (
+            {normalizeDocList(req.doc_list).length > 0 && (
                 <div className="mt-2">
                     <p className="text-xs font-bold text-surface-500 uppercase tracking-wider mb-1">Documents:</p>
                     <ul className="list-disc list-inside text-xs text-surface-600 space-y-0.5 ml-1">
-                        {req.doc_list.map((doc, idx) => (
+                        {normalizeDocList(req.doc_list).map((doc, idx) => (
                             <li key={idx}>{doc}</li>
                         ))}
                     </ul>
@@ -56,6 +57,7 @@ const RequirementItem = ({ req }) => (
 
 export const VisaPathChecklist = ({ requirements }) => {
     const groupedRequirements = useMemo(() => {
+        if (!Array.isArray(requirements)) return {};
         const groups = {};
         requirements.forEach(req => {
             const mode = req.prep_mode || 'remote_only';
@@ -85,13 +87,10 @@ export const VisaPathChecklist = ({ requirements }) => {
                 const Icon = config.icon;
 
                 return (
-                    <div key={mode} className={`rounded-xl border ${config.color.split(' ')[1]} overflow-hidden`}>
-                        <div className={`p-4 ${config.color} border-b ${config.color.split(' ')[1]} flex items-start gap-3`}>
-                            <div className="p-2 bg-white bg-opacity-50 rounded-lg">
-                                <Icon className="w-6 h-6" />
-                            </div>
+                    <div key={mode} className={`rounded-xs overflow-hidden`}>
+                        <div className={`p-4 border-top border-var(--color-rule) flex items-start gap-3`}>
                             <div>
-                                <h3 className="text-lg font-serif font-bold">{config.label}</h3>
+                                <h3 className="text-md text-[var(--color-ink)]">{config.label}</h3>
                                 <p className="text-sm opacity-90">{config.description}</p>
                             </div>
                         </div>
@@ -104,5 +103,4 @@ export const VisaPathChecklist = ({ requirements }) => {
                 );
             })}
         </div>
-    );
-};
+    )}

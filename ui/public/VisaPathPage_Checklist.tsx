@@ -31,7 +31,7 @@ const getPhaseDetails = (mode: 'remote_only' | 'in_person' | 'on_arrival') => {
     }
 };
 
-export const VisaPathChecklist: React.FC<{ requirements: Requirement[] }> = ({ requirements = mockRequirements }) => {
+export const VisaPathChecklist: React.FC<{ requirements: Requirement[] }> = ({ requirements = [] }) => {
     
     const requirementsByPhase = useMemo(() => {
         return requirements.reduce((acc, req) => {
@@ -45,9 +45,18 @@ export const VisaPathChecklist: React.FC<{ requirements: Requirement[] }> = ({ r
 
     const phases: Requirement['prep_mode'][] = ['remote_only', 'in_person', 'on_arrival'];
 
+    if (requirements.length === 0) {
+        return (
+            <div className="p-8 text-center text-gray-500">
+                <p className="text-lg font-medium">No requirements available yet.</p>
+                <p className="text-sm mt-2">Check back once pathway requirements have been verified.</p>
+            </div>
+        );
+    }
+
     return (
         <div className="space-y-12">
-            <h2 className="text-3xl font-bold text-indigo-700">Preparedness Checklist: Your Path to Safety</h2>
+            <h2 className="text-3xl font-bold text-accent-700">Preparedness Checklist: Your Path to Safety</h2>
             <p className="text-gray-600">Follow these steps sequentially to minimize travel and ensure you bring the correct documents to your critical appointments.</p>
             
             {phases.map(mode => {
@@ -56,7 +65,7 @@ export const VisaPathChecklist: React.FC<{ requirements: Requirement[] }> = ({ r
                 if (list.length === 0) return null;
 
                 return (
-                    <section key={mode} className="p-6 border border-gray-200 rounded-lg bg-white shadow-lg">
+                    <section key={mode} className="p-6 border border-gray-200 rounded-lg bg-var(--color-ivory) shadow-lg">
                         <h3 className="text-2xl font-bold mb-2 flex items-center">
                             {phaseData.icon} {phaseData.title}
                         </h3>
@@ -64,11 +73,11 @@ export const VisaPathChecklist: React.FC<{ requirements: Requirement[] }> = ({ r
                         
                         <ul className="space-y-4">
                             {list.map((req, index) => (
-                                <li key={index} className="border-l-4 border-indigo-400 pl-4 py-2 bg-indigo-50 rounded-r-md">
+                                <li key={index} className="border-l-4 border-accent-400 pl-4 py-2 bg-accent-50 rounded-r-md">
                                     <h4 className="font-semibold text-gray-900">{req.label}</h4>
                                     <p className="text-sm text-gray-700 mt-1">{req.details}</p>
                                     <div className="flex space-x-3 text-xs mt-2">
-                                        <span className="text-indigo-600 font-medium">Documents: {req.doc_list.join(', ')}</span>
+                                        <span className="text-accent-600 font-medium">Documents: {req.doc_list.join(', ')}</span>
                                         {req.notarization_needed && <span className="px-2 py-0.5 bg-red-100 text-red-700 rounded-full">Requires Notary</span>}
                                         {req.apostille_needed && <span className="px-2 py-0.5 bg-red-100 text-red-700 rounded-full">Requires Apostille</span>}
                                     </div>

@@ -1,13 +1,8 @@
 // workers/differ.ts
-import { Pool } from 'pg';
 import deepdiff from 'deep-diff';
+import { createPgPool } from './db.ts';
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+const pool = createPgPool();
 
 interface DifferTask {
     proposedEntity: any;
@@ -25,7 +20,11 @@ function getTableName(entityType: string): string {
         'source': 'sources',
         'city': 'cities'
     };
-    return tableMap[entityType] || entityType + 's';
+    const tableName = tableMap[entityType];
+    if (!tableName) {
+        throw new Error(`Invalid entity type: ${entityType}`);
+    }
+    return tableName;
 }
 
 export const handler = async (task: DifferTask) => {
@@ -46,7 +45,7 @@ export const handler = async (task: DifferTask) => {
             }
         } catch (error) {
             console.error(`Failed to fetch current entity ${entity_id}:`, error);
-            // Treat as a new addition if we can't find it
+            return null;
         }
     }
 
@@ -59,7 +58,9 @@ export const handler = async (task: DifferTask) => {
         diff_summary = `New ${entity_type} added.`;
     } else {
         change_type = 'update';
-        const diffs = deepdiff.diff(currentEntity, proposedEntity);
+        const normalizedCurrent = normalizeForDiff(currentEntity);
+        const normalizedProposed = normalizeForDiff(proposedEntity);
+        const diffs = deepdiff.diff(normalizedCurrent, normalizedProposed);
         if (diffs) {
             diff_fields = diffs.map(d => {
                 const field = d.path ? d.path.join('.') : 'unknown';
@@ -96,6 +97,31 @@ export const handler = async (task: DifferTask) => {
         source_ids: [proposedEntity.source_id]
     };
 
-    console.log("Diff complete. Enqueuing for Editorial Router.");
+    // Chaining to editorial_router is handled by the caller (extractor.ts)
     return differOutput;
 };
+
+function normalizeForDiff(value: any): any {
+    if (typeof value === 'string') {
+        return value
+            .normalize('NFC')
+            .replace(/\r\n/g, '\n')
+            .replace(/[ \t]+\n/g, '\n')
+            .replace(/\n{3,}/g, '\n\n')
+            .trim();
+    }
+
+    if (Array.isArray(value)) {
+        return value.map((item) => normalizeForDiff(item));
+    }
+
+    if (value && typeof value === 'object') {
+        const output: Record<string, any> = {};
+        for (const [key, nested] of Object.entries(value)) {
+            output[key] = normalizeForDiff(nested);
+        }
+        return output;
+    }
+
+    return value;
+}

@@ -50,7 +50,7 @@ export const CountryFilter: React.FC = () => {
                     <select
                         value={minLgbtqIndex}
                         onChange={(e) => setMinLgbtqIndex(Number(e.target.value))}
-                        className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                        className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-accent-500 focus:border-accent-500 sm:text-sm rounded-md"
                     >
                         <option value={4}>4+ (Strong Legal Protections)</option>
                         <option value={3}>3+ (Legal but Ambiguous)</option>
@@ -65,7 +65,7 @@ export const CountryFilter: React.FC = () => {
                     <select
                         value={accessFilter}
                         onChange={(e) => setAccessFilter(e.target.value)}
-                        className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                        className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-accent-500 focus:border-accent-500 sm:text-sm rounded-md"
                     >
                         <option value="All">All Countries</option>
                         <option value="Protected">Protected by Law</option>
@@ -79,7 +79,7 @@ export const CountryFilter: React.FC = () => {
             <h2 className="text-2xl font-semibold mb-4">Matching Destinations ({filteredCountries.length})</h2>
             <div className="space-y-4">
                 {filteredCountries.map(country => (
-                    <a key={country.id} href={`/countries/${country.id}`} className="block p-4 border rounded-lg shadow-sm hover:ring-2 hover:ring-indigo-400 transition">
+                    <a key={country.id} href={`/countries/${country.id}`} className="block p-4 border rounded-lg shadow-sm hover:ring-2 hover:ring-accent-400 transition">
                         <div className="flex justify-between items-center">
                             <h3 className="text-xl font-bold">{country.name} ({country.iso2})</h3>
                             <span className={`px-3 py-1 text-sm font-semibold rounded-full ${getSafetyColor(country.lgbtq_rights_index)}`}>
