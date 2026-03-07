@@ -1,23 +1,10 @@
-- **Hero / Title (“The Machine Is Working”)**: “A vast, intricate mechanical tax machine made of filing cabinets, gears, and paper forms; a conveyor belt carries paychecks in, but polished gold bars and stock certificates come out the top; dramatic moody lighting, high detail, editorial illustration, muted palette, no text, 16:9”
-- **Representation Without Resemblance**: “Inside a marble hall with faceless suited figures seated at a long desk; their shadows are shaped like towering mansions and stock charts; below the balcony, a diverse crowd of workers holds W-2 forms and receipts; cinematic composition, realistic painterly style, 4:5”
-- **Money & Elections (Citizens United vibe, without logos)**: “A ballot box on a scale; on one side a handful of massive coins tipping it down, on the other side thousands of tiny paper votes floating upward; stark minimal background, bold graphic poster style, high contrast, 1:1”
-- **Complexity Is Not an Accident**: “An endless labyrinth built from IRS-style forms and legal pages; a few people with maps and lanterns walk easily while others hit dead ends; overhead view, intricate linework, etching/woodcut feel, 4:5”
-- **The Same Dollar, Taxed Differently (Wages vs Gains)**: “Two identical dollar bills split-screen: left becomes a paycheck with heavy chains labeled ‘withholding’ (no readable text), right becomes a glowing stock certificate drifting upward; clean editorial illustration, limited color accents, 16:9”
-- **Realization / Unrealized Gains**: “An iceberg: above water a small ‘taxable’ tip as sold assets; below water an enormous submerged mass of rising stock tickers and assets; calm ocean, minimal surrealism, photoreal composite, 16:9”
-- **Buy, Borrow, Die**: “A sleek staircase of three steps: ‘buy’ (seed to tree of assets), ‘borrow’ (tree tapped like a syrup line into a credit stream), ‘die’ (tree becomes an inheritance ribbon); symbolic, modern flat illustration, no text, 16:9”
-- **Stepped-Up Basis (The Wipe)**: “A fingerprint-smudged chalkboard eraser sweeps across a glowing price chart, leaving the board clean while a vault door clicks open for heirs; noir lighting, cinematic realism, 4:5”
-- **The Hidden Stack (Regressive layers)**: “A layered sandwich/tower of taxes: payroll, sales, rent/property, fees—stack presses down on a worker’s shoulders, while an investor stands beside it untouched; clean infographic-style illustration without labels, 4:5”
-- **Where the Money Goes (Funnel Points Up)**: “A giant funnel labeled by imagery (not text): taxes as coins pouring in; exiting as a narrow stream into three silhouettes—contractors, insurers, finance; glossy editorial 3D render, neutral background, 16:9”
-- **Healthcare Toll Road**: “A highway toll plaza shaped like a hospital; multiple booths with different price meters; an ambulance and families queue while executives ride an express lane; photoreal, documentary lighting, 16:9”
-- **Admin Bloat / Paperwork**: “A patient in a hospital gown buried under stacks of forms and denial letters (no readable text), while a maze of office cubicles surrounds them; grim but not gory, cinematic, 4:5”
-- **Care Outsourced, Control Funded**: “Split scene: left, exhausted volunteers holding a fraying safety net over families; right, a gleaming armored control tower with cameras and floodlights; painterly realism, subdued colors, 16:9”
-- **Why It Persists (Feedback Loops)**: “A looping conveyor belt: debt → time scarcity → low civic participation → policy complexity → more debt; shown as a closed industrial circuit with arrows as shapes (no text); minimalist isometric illustration, 1:1”
-- **Closing Question (“Who was it built to serve?”)**: “A massive machine with two control panels: one pristine with gold inlays, one worn and taped; a single hand reaches toward the gold panel while many hands reach the broken one; dramatic editorial illustration, 4:5”
-
-[model_providers.askcodi]
-# Name of the provider that will be displayed in the Codex UI.
-name = "AskCodi"
-base_url = "https://api.askcodi.com/v1"
-env_key = "ASKCODI_API_KEY=ak-42b1048d14cd8d937d0c56bc323109593fcfe4ab9a343635b9d678e39f2b1b0e"
-wire_api = "responses"
-query_params = {}
+# schema.txt
+#
+# NOTE: This file previously contained misplaced content (AI image generation prompts
+# and a third-party API key from an unrelated project). That content has been removed.
+#
+# The canonical Passagr database schema is maintained in:
+#   supabase/migrations/  (Supabase SQL migrations — authoritative)
+#   migrations/archive/   (legacy node-pg-migrate JS migrations)
+#
+# See also: module_manifest.md for a full file-by-file inventory of the codebase.
