@@ -15,10 +15,6 @@ interface ExtractorTask {
     entityType: 'country' | 'visa_path';
 }
 
-// workers/extractor.ts - Updated Extractor, Country JSON Schema
-
-// ... (Rest of the Extractor.ts file remains the same until the schemas block)
-
 const schemas = {
     country: {
         "name": "",
@@ -31,11 +27,9 @@ const schemas = {
         "healthcare_overview": "",
         "rights_snapshot": "",
         "tax_snapshot": "",
-        // --- NEW SAFETY FIELDS ---
         "lgbtq_rights_index": 0, // 0-5 scale, based on external NGO data
         "abortion_access_status": "",
         "hate_crime_law_snapshot": "",
-        // -------------------------
         "last_verified_at": "ISO8601"
     },
     visa_path: {
@@ -55,15 +49,10 @@ const schemas = {
         "processing_max_days": null,
         "renewal_rules": "",
         "to_pr_citizenship_timeline": "",
-        // --- NEW SAFETY FIELDS ---
         "in_country_conversion_path": "",
-        // -------------------------
         "last_verified_at": "ISO8601"
     },
-    // ... (Add schemas for requirements, steps, etc., including 'prep_mode' for requirements)
 };
-
-// ... (Rest of the Extractor.ts file)
 
 export const handler = async (task: ExtractorTask) => {
     const { data: source, error } = await supabase.from('sources').select('url, content_type, excerpt').eq('id', task.sourceId).single();

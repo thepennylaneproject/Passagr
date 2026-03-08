@@ -15,6 +15,10 @@ export function verifyAdminAuth(req: Request, res: Response, next: Function) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
+    // A-3: reviewer identity is derived server-side, not from request body.
+    // Configure ADMIN_REVIEWER_UID in the environment to reflect the actual reviewer.
+    res.locals.reviewer_uid = process.env.ADMIN_REVIEWER_UID || 'admin';
+
     next();
 }
 
@@ -117,7 +121,8 @@ export const getReviewDetails = async (req: Request, res: Response) => {
 export const approveReview = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { notes } = req.body;
-    const reviewer_uid = 'admin'; // A-3: derived server-side, not from request body
+    // A-3: reviewer identity is derived server-side via verifyAdminAuth middleware
+    const reviewer_uid = (res.locals.reviewer_uid as string) || 'admin';
 
     try {
         const result = await pool.query(
@@ -153,7 +158,8 @@ export const approveReview = async (req: Request, res: Response) => {
 export const rejectReview = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { notes } = req.body;
-    const reviewer_uid = 'admin'; // A-3: derived server-side, not from request body
+    // A-3: reviewer identity is derived server-side via verifyAdminAuth middleware
+    const reviewer_uid = (res.locals.reviewer_uid as string) || 'admin';
 
     try {
         const result = await pool.query(
